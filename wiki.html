@@ -52,7 +52,7 @@
     <h1>Introduction</h1>
     <p class="desc">Arca is a modern, lightweight framework for FiveM roleplay servers.</p>
 
-    <p>Everything goes through <strong>arca_core</strong> &mdash; the same way <code>qb-core</code> or <code>qbx_core</code> work. You grab the core object once and use it for players, callbacks, notifications and UI.</p>
+    <p>Everything goes through <strong>arca_core</strong>, the same way <code>qb-core</code> or <code>qbx_core</code> work. You grab the core object once and use it for players, callbacks, notifications and UI.</p>
 
     <pre><code class="language-lua">local Arca = exports.arca_core:GetCoreObject()</code></pre>
 
@@ -81,7 +81,7 @@
     <ul>
         <li>A recent FXServer build with <strong>txAdmin</strong> (recommended).</li>
         <li><strong>MariaDB</strong> 10.6 or newer.</li>
-        <li><a href="https://github.com/overextended/oxmysql" target="_blank" rel="noopener">oxmysql</a> &mdash; installed for you by the recipe.</li>
+        <li><a href="https://github.com/overextended/oxmysql" target="_blank" rel="noopener">oxmysql</a>, installed for you by the recipe.</li>
         <li><em>Optional:</em> <code>illenium-appearance</code> + <code>ox_lib</code> for character clothing.</li>
     </ul>
 
@@ -112,7 +112,7 @@
         <ul>
             <li>Install <strong>MariaDB</strong> directly from <a href="https://mariadb.org/download/" target="_blank" rel="noopener">mariadb.org</a>.</li>
             <li><strong>Minimum:</strong> MariaDB 10.6 &middot; <strong>Recommended:</strong> the latest LTS release.</li>
-            <li>Remember the <strong>root password</strong> you set during setup &mdash; txAdmin will ask for it.</li>
+            <li>Remember the <strong>root password</strong> you set during setup, txAdmin will ask for it.</li>
         </ul>
     </div>
 
@@ -163,7 +163,7 @@
         <li>The console shows <code>[oxmysql] Database server connection established</code>.</li>
         <li>No red errors from <code>arca_core</code>, <code>arca_target</code> or <code>arca_character</code>.</li>
         <li>When you join, the character selection screen appears.</li>
-        <li>Type <code>/job</code> in chat after spawning &mdash; you should see <em>Civilian - Freelancer</em>.</li>
+        <li>Type <code>/job</code> in chat after spawning, you should see <em>Civilian - Freelancer</em>.</li>
     </ul>
 
     <h2>Give yourself admin</h2>
@@ -197,7 +197,7 @@
     <p>Create a database called <code>arca</code> and run <code>arca_core/sql/arca.sql</code> in HeidiSQL (or any SQL client).</p>
 
     <h2>3. Configure server.cfg</h2>
-    <p>Order matters &mdash; dependencies must start before the resources that use them.</p>
+    <p>Order matters, dependencies must start before the resources that use them.</p>
     <pre data-title="server.cfg"><code class="language-ini">set mysql_connection_string "mysql://root:password@localhost/arca?charset=utf8mb4"
 
 ensure oxmysql
@@ -211,7 +211,7 @@ add_ace group.admin arca.god allow</code></pre>
 
     <div class="callout warn">
         <div class="title">Warning</div>
-        <p>Do not run <code>qb-core</code> or <code>qb-multicharacter</code> alongside Arca. <code>arca_core</code> already answers as <code>qb-core</code> &mdash; see <a href="#qb-bridge">qb-core bridge</a>.</p>
+        <p>Do not run <code>qb-core</code> or <code>qb-multicharacter</code> alongside Arca. <code>arca_core</code> already answers as <code>qb-core</code>, see <a href="#qb-bridge">qb-core bridge</a>.</p>
     </div>
 </article>
 
@@ -408,13 +408,13 @@ end)</code></pre>
     <h2>Database errors</h2>
     <ul>
         <li>Check <code>mysql_connection_string</code> in <code>server.cfg</code> (user, password, database name).</li>
-        <li>Make sure <code>arca.sql</code> was run &mdash; the <code>players</code> table must exist.</li>
+        <li>Make sure <code>arca.sql</code> was run, the <code>players</code> table must exist.</li>
         <li>Use MariaDB, not XAMPP or MySQL 5.</li>
     </ul>
 
     <h2>illenium-appearance doesn't save clothes</h2>
     <ul>
-        <li>Use the <a href="#illenium-appearance">Arca fork</a> of illenium-appearance &mdash; it detects Arca natively.</li>
+        <li>Use the <a href="#illenium-appearance">Arca fork</a> of illenium-appearance, it detects Arca natively.</li>
         <li>Start <code>arca_core</code> <strong>before</strong> illenium-appearance (the recipe already does).</li>
     </ul>
 
@@ -425,7 +425,7 @@ end)</code></pre>
     <p>With <code>InvConfig.Weapons.StripUnknownWeapons</code> on, any weapon that didn't come from the inventory is removed. Give weapons as items (<code>/giveitem me weapon_pistol 1</code>) instead of with natives or other scripts.</p>
 
     <h2>A qb resource doesn't work</h2>
-    <p>Most qb resources work through the <a href="#qb-bridge">bridge</a>. If one doesn't, check if it needs a qb resource Arca replaces: use <a href="#arca-inventory">arca_inventory</a> for inventory, <a href="#arca-target">arca_target</a> for targeting and the <a href="#context-menu">context menu</a> for menus, or uses a rarely-used qb-core function. Arca can't fix third-party scripts &mdash; contact the script's author.</p>
+    <p>Most qb resources work through the <a href="#qb-bridge">bridge</a>. If one doesn't, check if it needs a qb resource Arca replaces: use <a href="#arca-inventory">arca_inventory</a> for inventory, <a href="#arca-target">arca_target</a> for targeting and the <a href="#context-menu">context menu</a> for menus, or uses a rarely-used qb-core function. Arca can't fix third-party scripts, contact the script's author.</p>
 
     <h2>Radial or target key does nothing</h2>
     <p>Keys are registered as key mappings. If a player changed them, check <strong>Settings &rarr; Key Bindings &rarr; FiveM</strong>. Both only work once a character is loaded.</p>
@@ -604,7 +604,7 @@ end</code></pre>
         <h3><code>GetPlayerData(cb?)</code> <span class="badge client">client</span></h3>
         <p>Returns the local PlayerData (or passes it to <code>cb</code>).</p>
         <h3><code>IsLoggedIn()</code> <span class="badge client">client</span></h3>
-        <p><code>true</code> once a character is loaded. Also available as <code>LocalPlayer.state.isLoggedIn</code> on the client (it isn't sent to the server &mdash; there, check <code>GetPlayer(source)</code>).</p>
+        <p><code>true</code> once a character is loaded. Also available as <code>LocalPlayer.state.isLoggedIn</code> on the client (it isn't sent to the server, there, check <code>GetPlayer(source)</code>).</p>
         <h3><code>HasJob(name, onDutyOnly?)</code> <span class="badge client">client</span></h3>
         <h3><code>GetClosestPlayer(coords?, maxDist?)</code> <span class="badge client">client</span></h3>
         <p>Returns <code>playerId, distance</code> (or <code>-1</code>).</p>
@@ -644,8 +644,8 @@ local coords = Arca.Callback.Await('admin:getCoords', source, 5000)</code></pre>
         <ul>
             <li>Callbacks can return multiple values.</li>
             <li>If a callback errors or times out, <code>Await</code> returns <code>nil</code>. Client &rarr; server calls time out after 10s (a warning is printed in F8); server &rarr; client calls use the timeout you pass (default 10s).</li>
-            <li><code>Await</code> blocks the current thread &mdash; call it inside an event handler, command or <code>CreateThread</code>.</li>
-            <li>Always validate arguments on the server &mdash; clients can send anything.</li>
+            <li><code>Await</code> blocks the current thread, call it inside an event handler, command or <code>CreateThread</code>.</li>
+            <li>Always validate arguments on the server, clients can send anything.</li>
         </ul>
     </div>
 </article>
@@ -726,7 +726,7 @@ end)</code></pre>
         <thead><tr><th>Event</th><th>Arguments</th><th>Listen with</th></tr></thead>
         <tbody>
             <tr><td><code>arca_core:client:onPlayerLoaded</code></td><td><code>PlayerData</code></td><td><code>AddEventHandler</code></td></tr>
-            <tr><td><code>arca_core:client:onPlayerUnloaded</code></td><td>&mdash;</td><td><code>AddEventHandler</code></td></tr>
+            <tr><td><code>arca_core:client:onPlayerUnloaded</code></td><td>-</td><td><code>AddEventHandler</code></td></tr>
             <tr><td><code>arca_core:client:onPlayerDataUpdated</code></td><td><code>PlayerData</code></td><td><code>AddEventHandler</code></td></tr>
             <tr><td><code>arca_core:client:onJobUpdate</code></td><td><code>job</code></td><td><code>RegisterNetEvent</code></td></tr>
             <tr><td><code>arca_core:client:onGangUpdate</code></td><td><code>gang</code></td><td><code>RegisterNetEvent</code></td></tr>
@@ -745,7 +745,7 @@ end)
 RegisterNetEvent('arca_core:client:onJobUpdate', function(job)
     print('New job: ' .. job.label)
 end)</code></pre>
-    <p>All server events are local to the server &mdash; use <code>AddEventHandler</code>.</p>
+    <p>All server events are local to the server, use <code>AddEventHandler</code>.</p>
 </article>
 
 <article class="doc" id="jobs-gangs" data-group="Core" data-title="Jobs &amp; gangs">
@@ -765,7 +765,7 @@ end)</code></pre>
 },</code></pre>
 
     <h2>Multi-job &amp; duty</h2>
-    <p>A character can hold several jobs (<code>ArcaConfig.Jobs.MaxJobs</code>, default 3) and switch the <strong>active</strong> one. Only the active job counts for duty, paychecks, <code>groups</code> checks and <code>PlayerData.job</code> &mdash; so existing scripts keep working unchanged.</p>
+    <p>A character can hold several jobs (<code>ArcaConfig.Jobs.MaxJobs</code>, default 3) and switch the <strong>active</strong> one. Only the active job counts for duty, paychecks, <code>groups</code> checks and <code>PlayerData.job</code>, so existing scripts keep working unchanged.</p>
     <ul>
         <li><code>/jobs</code> or the <strong>Jobs</strong> radial entry opens a menu to switch jobs, go on / off duty or clock out to civilian.</li>
         <li><code>/duty</code> toggles duty for the active job.</li>
@@ -884,9 +884,9 @@ if job.isboss then ... end</code></pre>
     <h2>Money</h2>
     <ul>
         <li>Always use <code>player.AddMoney</code> / <code>RemoveMoney</code> (server). Accounts: <code>cash</code>, <code>bank</code>, <code>crypto</code>.</li>
-        <li><code>RemoveMoney</code> returns <code>false</code> when they can't afford it &mdash; check it before giving anything.</li>
+        <li><code>RemoveMoney</code> returns <code>false</code> when they can't afford it, check it before giving anything.</li>
         <li>The inventory's <code>cash</code> item follows the cash balance by itself. Don't add or remove <code>cash</code> items for payments.</li>
-        <li>Pass a <code>reason</code> &mdash; it appears in the <code>onMoneyChange</code> events and in the player's arca_bank activity.</li>
+        <li>Pass a <code>reason</code>, it appears in the <code>onMoneyChange</code> events and in the player's arca_bank activity.</li>
         <li>For job money, fines and shared accounts use <a href="#arca-bank">arca_bank</a>'s exports (<code>AddJobMoney</code>, <code>RemoveMoney('p:CID', ...)</code>&hellip;).</li>
     </ul>
 
@@ -926,9 +926,9 @@ exports.arca_inventory:SetBusy(false)</code></pre>
 
     <h2>Vehicles: spawning, keys and fuel</h2>
     <ul>
-        <li><strong>Spawned vehicles</strong> &mdash; when Arca spawns a vehicle for a player (<code>/car</code>, admin menu), it fires <code>arca_core:client:vehicleSpawned</code> with <code>vehicle, plate</code>. A keys script should listen to it and give keys.</li>
-        <li><strong>Fuel</strong> &mdash; store fuel in the vehicle statebag <code>Entity(vehicle).state.fuel</code> (0&ndash;100). The HUD and admin refuel use it, falling back to <code>GetVehicleFuelLevel</code>.</li>
-        <li><strong>Seatbelt</strong> &mdash; tell the HUD with <code>TriggerEvent('seatbelt:client:ToggleSeatbelt', state)</code> or <code>exports.arca_hud:SetSeatbelt(state)</code>.</li>
+        <li><strong>Spawned vehicles</strong>, when Arca spawns a vehicle for a player (<code>/car</code>, admin menu), it fires <code>arca_core:client:vehicleSpawned</code> with <code>vehicle, plate</code>. A keys script should listen to it and give keys.</li>
+        <li><strong>Fuel</strong>, store fuel in the vehicle statebag <code>Entity(vehicle).state.fuel</code> (0&ndash;100). The HUD and admin refuel use it, falling back to <code>GetVehicleFuelLevel</code>.</li>
+        <li><strong>Seatbelt</strong>, tell the HUD with <code>TriggerEvent('seatbelt:client:ToggleSeatbelt', state)</code> or <code>exports.arca_hud:SetSeatbelt(state)</code>.</li>
     </ul>
     <pre data-title="client.lua"><code class="language-lua">AddEventHandler('arca_core:client:vehicleSpawned', function(vehicle, plate)
     TriggerServerEvent('mykeys:give', plate)
@@ -940,7 +940,7 @@ Entity(vehicle).state:set('fuel', 65.0, true)</code></pre>
     <p>The HUD reads <code>LocalPlayer.state.proximity.index</code> (voice range) and <code>LocalPlayer.state.radioChannel</code>, the statebags pma-voice uses.</p>
 
     <h2>Weather and time</h2>
-    <p>Don't set weather or time directly &mdash; arca_admin keeps them in sync and will overwrite you. Use <code>exports.arca_admin:SetWeather('RAIN')</code> and <code>SetTime(22, 0)</code> on the server.</p>
+    <p>Don't set weather or time directly, arca_admin keeps them in sync and will overwrite you. Use <code>exports.arca_admin:SetWeather('RAIN')</code> and <code>SetTime(22, 0)</code> on the server.</p>
 
     <h2>UI</h2>
     <ul>
@@ -951,7 +951,7 @@ Entity(vehicle).state:set('fuel', 65.0, true)</code></pre>
     <h2>Naming</h2>
     <ul>
         <li>Prefix events and callbacks with your resource name: <code>my_garage:server:takeOut</code>, <code>my_garage:getVehicles</code>.</li>
-        <li>Never trust arguments from the client in a server event &mdash; re-check distance, job, items and money.</li>
+        <li>Never trust arguments from the client in a server event, re-check distance, job, items and money.</li>
     </ul>
 </article>
 
@@ -1296,7 +1296,7 @@ exports.arca_target:removeZone(zone)</code></pre>
             <tr><td><code>id</code></td><td>Unique name.</td></tr>
             <tr><td><code>label</code> / <code>area</code></td><td>Shown on the card.</td></tr>
             <tr><td><code>icon</code></td><td>Font Awesome class.</td></tr>
-            <tr><td><code>coords</code></td><td><code>vector4</code> &mdash; position and heading.</td></tr>
+            <tr><td><code>coords</code></td><td><code>vector4</code>, position and heading.</td></tr>
             <tr><td><code>groups</code></td><td>Optional. Only these jobs / gangs see it, with a <strong>JOB</strong> badge.</td></tr>
         </tbody>
     </table></div>
@@ -1339,9 +1339,9 @@ end)</code></pre>
         </tbody>
     </table></div>
     <ul>
-        <li><strong>Cards</strong> &mdash; setting a PIN turns an account into a virtual card. ATMs list only accounts you can use, and only ones with a card work. Three wrong PINs lock the card for 2 minutes.</li>
+        <li><strong>Cards</strong>, setting a PIN turns an account into a virtual card. ATMs list only accounts you can use, and only ones with a card work. Three wrong PINs lock the card for 2 minutes.</li>
         <li><strong>Transfers</strong> go to a <strong>citizen ID</strong> (that person's personal account, even offline) or an <strong>account number</strong>.</li>
-        <li><strong>Locations</strong> &mdash; all Fleeca branches, Blaine County Savings and Pacific Standard (teller ped + blip), and every ATM prop in the map. Third-eye them, or press <kbd>E</kbd>.</li>
+        <li><strong>Locations</strong>, all Fleeca branches, Blaine County Savings and Pacific Standard (teller ped + blip), and every ATM prop in the map. Third-eye them, or press <kbd>E</kbd>.</li>
     </ul>
 
     <h2>Job accounts</h2>
@@ -1419,14 +1419,14 @@ exports.arca_bank:OpenATM()</code></pre>
 
 <article class="doc" id="arca-phone" data-group="Resources" data-title="arca_phone">
     <h1>arca_phone</h1>
-    <p class="desc">An iFruit smartphone with calls, messages, contacts and Fleeca banking &mdash; built around phone chips.</p>
+    <p class="desc">An iFruit smartphone with calls, messages, contacts and Fleeca banking, built around phone chips.</p>
 
     <h2>Phone chips</h2>
-    <p>A phone's number, contacts, messages, call history and settings live on its <strong>chip</strong> &mdash; not on the phone or the character.</p>
+    <p>A phone's number, contacts, messages, call history and settings live on its <strong>chip</strong>, not on the phone or the character.</p>
     <ul>
         <li>Every new phone (shops, <code>/giveitem</code>, the starter phone) comes with its own chip and a <code>555-####</code> number.</li>
         <li><strong>Right-click a phone</strong> in the inventory to see its chip, <strong>remove</strong> it (it becomes a <code>phone_chip</code> item) or <strong>insert</strong> one.</li>
-        <li>No chip = the phone shows an <strong>"OS visual issue"</strong> screen. Whoever holds your phone can take your chip &mdash; and your number and messages with it.</li>
+        <li>No chip = the phone shows an <strong>"OS visual issue"</strong> screen. Whoever holds your phone can take your chip, and your number and messages with it.</li>
         <li>Spare chips are sold at the <strong>Digital Den</strong> electronics stores.</li>
     </ul>
 
@@ -1436,7 +1436,7 @@ exports.arca_bank:OpenATM()</code></pre>
         <tbody>
             <tr><td>Phone</td><td>Keypad, recent calls, contacts. Calls ring the other player and use pma-voice for audio.</td></tr>
             <tr><td>Messages</td><td>Conversations with unread badges, delivered live to whoever carries that chip.</td></tr>
-            <tr><td>Contacts</td><td>Add, edit, delete, search &mdash; call or message from the list.</td></tr>
+            <tr><td>Contacts</td><td>Add, edit, delete, search, call or message from the list.</td></tr>
             <tr><td>Fleeca</td><td>Account balances, activity and transfers (needs <a href="#arca-bank">arca_bank</a>).</td></tr>
             <tr><td>Settings</td><td>Chip number, silent mode, wallpapers.</td></tr>
         </tbody>
@@ -1466,9 +1466,9 @@ local holders = exports.arca_phone:GetHolders('555-0123')   -- players carrying 
 
     <h2>How it works</h2>
     <ol>
-        <li><strong>Downed</strong> &mdash; at 0 health you go into last stand. Press <kbd>G</kbd> to call EMS. A timer counts down until you bleed out.</li>
-        <li><strong>Unconscious</strong> &mdash; after the timer (or with last stand off). Once <code>DeathTime</code> has passed, <strong>hold <kbd>E</kbd></strong> to respawn at the nearest hospital for a fee.</li>
-        <li><strong>Revived</strong> &mdash; by EMS, an admin or a script, at any point.</li>
+        <li><strong>Downed</strong>, at 0 health you go into last stand. Press <kbd>G</kbd> to call EMS. A timer counts down until you bleed out.</li>
+        <li><strong>Unconscious</strong>, after the timer (or with last stand off). Once <code>DeathTime</code> has passed, <strong>hold <kbd>E</kbd></strong> to respawn at the nearest hospital for a fee.</li>
+        <li><strong>Revived</strong>, by EMS, an admin or a script, at any point.</li>
     </ol>
     <p>The state is saved in metadata, so relogging doesn't get you out of it.</p>
 
@@ -1527,12 +1527,12 @@ end)</code></pre>
     <p class="desc">Player status, speedometer and a framed minimap.</p>
 
     <ul>
-        <li><strong>Status</strong> &mdash; health, armour, hunger, thirst and stress.</li>
-        <li><strong>Vehicle</strong> &mdash; speed (mph or km/h), fuel and seatbelt.</li>
-        <li><strong>Location</strong> &mdash; street, area and compass.</li>
-        <li><strong>Money</strong> &mdash; pops up when cash or bank changes (or always / never).</li>
-        <li><strong><code>/hud</code></strong> &mdash; a settings menu where players turn HUD elements on and off.</li>
-        <li><strong>GTA HUD</strong> &mdash; hides the GTA pieces Arca replaces (wanted stars, cash, street name&hellip;).</li>
+        <li><strong>Status</strong>, health, armour, hunger, thirst and stress.</li>
+        <li><strong>Vehicle</strong>, speed (mph or km/h), fuel and seatbelt.</li>
+        <li><strong>Location</strong>, street, area and compass.</li>
+        <li><strong>Money</strong>, pops up when cash or bank changes (or always / never).</li>
+        <li><strong><code>/hud</code></strong>, a settings menu where players turn HUD elements on and off.</li>
+        <li><strong>GTA HUD</strong>, hides the GTA pieces Arca replaces (wanted stars, cash, street name&hellip;).</li>
     </ul>
 
     <h2>Config</h2>
@@ -1554,7 +1554,7 @@ end)</code></pre>
     <h1>arca_loadingscreen</h1>
     <p class="desc">An Arca-themed loading screen: welcome, tips, links, team and a real progress bar.</p>
 
-    <p>Everything is set in <code>web/config.js</code> &mdash; no Lua needed:</p>
+    <p>Everything is set in <code>web/config.js</code>, no Lua needed:</p>
     <pre data-title="web/config.js"><code class="language-js">window.ArcaLoading = {
     serverName: 'Arca Roleplay',    // sv_projectName overrides this
     tagline: 'Your story starts here.',
@@ -1628,9 +1628,9 @@ exports.arca_chattheme:Send('error', 'You can\'t do that here')</code></pre>
     <h1>illenium-appearance</h1>
     <p class="desc">The Arca fork of illenium-appearance.</p>
     <ul>
-        <li><strong>Native Arca support</strong> &mdash; detects <code>arca_core</code> directly (no qb-core detection tricks) and handles first-character creation with starter clothes.</li>
-        <li><strong>Arca theme</strong> &mdash; dark panels, the Arca green and Inter; set as <code>currentTheme = "arca"</code> in <code>shared/theme.lua</code>.</li>
-        <li><strong>Creates its tables</strong> &mdash; outfit and skin tables are created on start if missing.</li>
+        <li><strong>Native Arca support</strong>, detects <code>arca_core</code> directly (no qb-core detection tricks) and handles first-character creation with starter clothes.</li>
+        <li><strong>Arca theme</strong>, dark panels, the Arca green and Inter; set as <code>currentTheme = "arca"</code> in <code>shared/theme.lua</code>.</li>
+        <li><strong>Creates its tables</strong>, outfit and skin tables are created on start if missing.</li>
         <li>Admins can open it for any player from the <a href="#arca-admin">admin menu</a>.</li>
     </ul>
     <p>Start <code>arca_core</code> before it so it picks Arca as the framework.</p>
@@ -1645,20 +1645,20 @@ exports.arca_chattheme:Send('error', 'You can\'t do that here')</code></pre>
 
     <h2>Features</h2>
     <ul>
-        <li><strong>Containers</strong> &mdash; player, ground drops, trunks (size per vehicle class), gloveboxes, stashes, shops and dumpsters, side by side. Windows can be dragged and remember their position.</li>
-        <li><strong>Weight or slots</strong> &mdash; weights in grams, or set <code>UseWeight = false</code> for slot-only.</li>
-        <li><strong>Hotbar</strong> &mdash; slots 1&ndash;5 are used with keys <kbd>1</kbd>&ndash;<kbd>5</kbd>.</li>
-        <li><strong>Cash as an item</strong> &mdash; the <code>cash</code> item always equals the player's cash balance. Dropping, giving or storing it moves the money.</li>
-        <li><strong>Rarity</strong> &mdash; common, uncommon, rare and legendary slot highlights.</li>
-        <li><strong>Weapons</strong> &mdash; see <a href="#inventory-weapons">Weapons</a>.</li>
-        <li><strong>Server-owned</strong> &mdash; the server validates every move, purchase and use.</li>
+        <li><strong>Containers</strong>, player, ground drops, trunks (size per vehicle class), gloveboxes, stashes, shops and dumpsters, side by side. Windows can be dragged and remember their position.</li>
+        <li><strong>Weight or slots</strong>, weights in grams, or set <code>UseWeight = false</code> for slot-only.</li>
+        <li><strong>Hotbar</strong>, slots 1&ndash;5 are used with keys <kbd>1</kbd>&ndash;<kbd>5</kbd>.</li>
+        <li><strong>Cash as an item</strong>, the <code>cash</code> item always equals the player's cash balance. Dropping, giving or storing it moves the money.</li>
+        <li><strong>Rarity</strong>, common, uncommon, rare and legendary slot highlights.</li>
+        <li><strong>Weapons</strong>, see <a href="#inventory-weapons">Weapons</a>.</li>
+        <li><strong>Server-owned</strong>, the server validates every move, purchase and use.</li>
     </ul>
 
     <h2>Controls</h2>
     <div class="table-wrap"><table>
         <thead><tr><th>Action</th><th>How</th></tr></thead>
         <tbody>
-            <tr><td>Open</td><td><kbd>I</kbd> (rebindable) &mdash; opens the trunk you stand behind or the glovebox you sit in</td></tr>
+            <tr><td>Open</td><td><kbd>I</kbd> (rebindable), opens the trunk you stand behind or the glovebox you sit in</td></tr>
             <tr><td>Move</td><td>Drag; <kbd>Shift</kbd>+drag moves half a stack</td></tr>
             <tr><td>Use</td><td>Double-click, or the hotbar keys</td></tr>
             <tr><td>Weapon menu</td><td>Right-click a weapon to see ammo, durability, registration and remove attachments</td></tr>
@@ -1885,10 +1885,10 @@ RegisterNetEvent('myres:sell', function(name)
         player.AddMoney('cash', count * price, 'sold ' .. name)
     end
 end)</code></pre>
-    <p>With <code>CashItem</code> on, the <code>cash</code> item updates by itself &mdash; always use <code>player.AddMoney</code> / <code>RemoveMoney</code> for money, not <code>AddItem('cash')</code>.</p>
+    <p>With <code>CashItem</code> on, the <code>cash</code> item updates by itself, always use <code>player.AddMoney</code> / <code>RemoveMoney</code> for money, not <code>AddItem('cash')</code>.</p>
 
     <h2>Only show an option if they have the item</h2>
-    <p>The client exports read the player's own inventory &mdash; perfect for <code>canInteract</code>:</p>
+    <p>The client exports read the player's own inventory, perfect for <code>canInteract</code>:</p>
     <pre data-title="client.lua"><code class="language-lua">exports.arca_target:addGlobalVehicle({
     {
         name = 'myres:lockpick',
@@ -1902,7 +1902,7 @@ end)</code></pre>
 })</code></pre>
     <div class="callout warn">
         <div class="title">Always check again on the server</div>
-        <p>The client check is only for showing the option. Check <code>HasItem</code> / <code>RemoveItem</code> again in the server event &mdash; clients can be modified.</p>
+        <p>The client check is only for showing the option. Check <code>HasItem</code> / <code>RemoveItem</code> again in the server event, clients can be modified.</p>
     </div>
 
     <h2>A job stash</h2>
@@ -2036,8 +2036,8 @@ exports.arca_inventory:OpenStash('police_evidence')</code></pre>
         <li><strong>Equip / holster</strong> by using the weapon. The GTA weapon wheel is disabled and weapons that didn't come from the inventory are removed.</li>
         <li><strong>Ammo lives on the weapon.</strong> Press <kbd>R</kbd> (or use an ammo item) to load ammo items from your inventory.</li>
         <li><strong>Durability</strong> drops with every shot (<code>wear</code>). At 0% the weapon breaks until repaired.</li>
-        <li><strong>Attachments</strong> &mdash; equip the weapon and use an attachment item; remove them from the right-click menu.</li>
-        <li><strong>Throwables</strong> &mdash; grenades, smoke, tear gas, molotovs and flares stack like normal items; each throw uses one.</li>
+        <li><strong>Attachments</strong>, equip the weapon and use an attachment item; remove them from the right-click menu.</li>
+        <li><strong>Throwables</strong>, grenades, smoke, tear gas, molotovs and flares stack like normal items; each throw uses one.</li>
     </ul>
 
     <h2>Item fields</h2>
@@ -2063,8 +2063,8 @@ weapon_repairkit = { label = 'Weapon Repair Kit', weight = 1500, stack = true, r
 
     <h2>Repairs</h2>
     <ul>
-        <li><strong>Repair kit</strong> &mdash; hold the weapon and use the kit to restore <code>repair</code> durability points.</li>
-        <li><strong>Repair benches</strong> &mdash; third-eye the bench, pick a damaged weapon and pay per point to restore it to 100%.</li>
+        <li><strong>Repair kit</strong>, hold the weapon and use the kit to restore <code>repair</code> durability points.</li>
+        <li><strong>Repair benches</strong>, third-eye the bench, pick a damaged weapon and pay per point to restore it to 100%.</li>
     </ul>
 
     <h2>Config</h2>
@@ -2118,8 +2118,8 @@ weapon_repairkit = { label = 'Weapon Repair Kit', weight = 1500, stack = true, r
 
     <h2>Not supported yet</h2>
     <ul>
-        <li>Resources hard-wired to other qb resources &mdash; switch them to <a href="#arca-target">arca_target</a>, the <a href="#context-menu">context menu</a> and <a href="#arca-inventory">arca_inventory</a>.</li>
-        <li><code>AddPermission</code> / <code>RemovePermission</code> &mdash; use <a href="#permissions">aces</a> instead.</li>
+        <li>Resources hard-wired to other qb resources, switch them to <a href="#arca-target">arca_target</a>, the <a href="#context-menu">context menu</a> and <a href="#arca-inventory">arca_inventory</a>.</li>
+        <li><code>AddPermission</code> / <code>RemovePermission</code>, use <a href="#permissions">aces</a> instead.</li>
         <li>Rarely-used or undocumented qb-core internals.</li>
     </ul>
 
@@ -2166,7 +2166,7 @@ weapon_repairkit = { label = 'Weapon Repair Kit', weight = 1500, stack = true, r
             <tr><td><code>type = 'client', event = 'x'</code></td><td><code>event = 'x'</code></td></tr>
             <tr><td><code>type = 'server', event = 'x'</code></td><td><code>serverEvent = 'x'</code></td></tr>
             <tr><td><code>type = 'command', event = 'x'</code></td><td><code>command = 'x'</code></td></tr>
-            <tr><td><code>action = function(entity)</code></td><td><code>onSelect = function(data)</code> &mdash; <code>data.entity</code>, <code>data.coords</code></td></tr>
+            <tr><td><code>action = function(entity)</code></td><td><code>onSelect = function(data)</code>, <code>data.entity</code>, <code>data.coords</code></td></tr>
             <tr><td><code>job = 'police'</code> / <code>job = { police = 2 }</code></td><td><code>groups = 'police'</code> / <code>groups = { police = 2 }</code></td></tr>
             <tr><td><code>canInteract = function(entity, distance)</code></td><td><code>canInteract = function(entity, distance, coords)</code></td></tr>
             <tr><td><code>distance</code> (on the whole call)</td><td><code>distance</code> on each option</td></tr>
@@ -2204,12 +2204,12 @@ Arca.ShowContext('garage')</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>qb-inventory</th><th>arca_inventory</th></tr></thead>
         <tbody>
-            <tr><td>Items in <code>qb-core/shared/items.lua</code></td><td>Items in <code>arca_inventory/shared/items.lua</code> (<a href="#inventory-items">format</a>) &mdash; weight in grams</td></tr>
+            <tr><td>Items in <code>qb-core/shared/items.lua</code></td><td>Items in <code>arca_inventory/shared/items.lua</code> (<a href="#inventory-items">format</a>), weight in grams</td></tr>
             <tr><td>Images in <code>qb-inventory/html/images</code></td><td><code>arca_inventory/web/images/&lt;item&gt;.png</code></td></tr>
             <tr><td><code>TriggerServerEvent('inventory:server:OpenInventory', 'stash', id)</code></td><td>Server: <code>RegisterStash(id, data)</code> once &middot; client: <code>OpenStash(id)</code></td></tr>
             <tr><td><code>exports['qb-inventory']:AddItem(src, item, amount)</code></td><td><code>exports.arca_inventory:AddItem(src, item, amount)</code></td></tr>
             <tr><td><code>exports['qb-inventory']:HasItem(src, item, amount)</code></td><td><code>exports.arca_inventory:HasItem(src, item, amount)</code></td></tr>
-            <tr><td><code>TriggerClientEvent('inventory:client:ItemBox', ...)</code></td><td>Not needed &mdash; use <code>Arca.Notify</code> if you want a message</td></tr>
+            <tr><td><code>TriggerClientEvent('inventory:client:ItemBox', ...)</code></td><td>Not needed, use <code>Arca.Notify</code> if you want a message</td></tr>
             <tr><td><code>item.info</code></td><td><code>item.metadata</code> (<code>info</code> also works)</td></tr>
         </tbody>
     </table></div>
@@ -2231,7 +2231,7 @@ Arca.ShowContext('garage')</code></pre>
             <tr><td><code>QBCore.Functions.CreateUseableItem</code></td><td><code>Arca.Functions.CreateUseableItem</code></td></tr>
             <tr><td><code>QBCore:Client:OnPlayerLoaded</code></td><td><code>arca_core:client:onPlayerLoaded</code> (receives PlayerData)</td></tr>
             <tr><td><code>QBCore:Client:OnJobUpdate</code></td><td><code>arca_core:client:onJobUpdate</code> (<code>RegisterNetEvent</code>)</td></tr>
-            <tr><td><code>Player.PlayerData.job.grade.level</code></td><td>same &mdash; PlayerData has the same shape</td></tr>
+            <tr><td><code>Player.PlayerData.job.grade.level</code></td><td>same. PlayerData has the same shape</td></tr>
         </tbody>
     </table></div>
 
@@ -2254,24 +2254,24 @@ Arca.ShowContext('garage')</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
         <tbody>
-            <tr><td><code>GetCoreObject</code></td><td>&mdash;</td><td>Arca object</td></tr>
+            <tr><td><code>GetCoreObject</code></td><td>-</td><td>Arca object</td></tr>
             <tr><td><code>GetPlayer</code></td><td><code>source</code></td><td>player | nil</td></tr>
             <tr><td><code>GetPlayerByCitizenId</code></td><td><code>citizenid</code></td><td>player | nil</td></tr>
-            <tr><td><code>GetPlayers</code></td><td>&mdash;</td><td>sources</td></tr>
+            <tr><td><code>GetPlayers</code></td><td>-</td><td>sources</td></tr>
             <tr><td><code>GetPlayersByJob</code></td><td><code>job, onDutyOnly?</code></td><td>sources</td></tr>
             <tr><td><code>HasPermission</code></td><td><code>source, level</code></td><td>boolean</td></tr>
-            <tr><td><code>Notify</code></td><td><code>source, data | text, type?, duration?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>RegisterCallback</code></td><td><code>name, fn(source, ...)</code></td><td>&mdash;</td></tr>
-            <tr><td><code>AddCommand</code></td><td><code>name, help, perm?, fn</code></td><td>&mdash;</td></tr>
-            <tr><td><code>CreateUseableItem</code></td><td><code>item, fn</code></td><td>&mdash;</td></tr>
+            <tr><td><code>Notify</code></td><td><code>source, data | text, type?, duration?</code></td><td>-</td></tr>
+            <tr><td><code>RegisterCallback</code></td><td><code>name, fn(source, ...)</code></td><td>-</td></tr>
+            <tr><td><code>AddCommand</code></td><td><code>name, help, perm?, fn</code></td><td>-</td></tr>
+            <tr><td><code>CreateUseableItem</code></td><td><code>item, fn</code></td><td>-</td></tr>
             <tr><td><code>CanUseItem</code></td><td><code>item</code></td><td>function | nil</td></tr>
-            <tr><td><code>GetJobs</code> / <code>GetGangs</code></td><td>&mdash;</td><td>table</td></tr>
+            <tr><td><code>GetJobs</code> / <code>GetGangs</code></td><td>-</td><td>table</td></tr>
             <tr><td><code>AddPlayerJob</code> / <code>RemovePlayerJob</code> / <code>SwitchJob</code></td><td><code>source, job, grade?</code></td><td>ok, reason</td></tr>
             <tr><td><code>GetPlayerJobs</code> / <code>HoldsJob</code></td><td><code>source, job?, minGrade?</code></td><td>list / boolean</td></tr>
             <tr><td><code>SetDuty</code> / <code>ToggleDuty</code> / <code>IsOnDuty</code></td><td><code>source, state | job?</code></td><td>boolean</td></tr>
             <tr><td><code>GetOnDuty</code> / <code>GetDutyCount</code></td><td><code>job?</code></td><td>sources / number</td></tr>
             <tr><td><code>Login</code></td><td><code>source, citizenid?, newData?</code></td><td>player | false</td></tr>
-            <tr><td><code>Logout</code></td><td><code>source</code></td><td>&mdash;</td></tr>
+            <tr><td><code>Logout</code></td><td><code>source</code></td><td>-</td></tr>
             <tr><td><code>GetCharacters</code></td><td><code>source</code></td><td>rows</td></tr>
             <tr><td><code>DeleteCharacter</code></td><td><code>source, citizenid</code></td><td>boolean</td></tr>
             <tr><td><code>AddJob</code> / <code>AddGang</code> / <code>AddItem</code></td><td><code>name, data</code></td><td>ok, message</td></tr>
@@ -2285,24 +2285,24 @@ Arca.ShowContext('garage')</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
         <tbody>
-            <tr><td><code>GetCoreObject</code></td><td>&mdash;</td><td>Arca object</td></tr>
-            <tr><td><code>GetPlayerData</code></td><td>&mdash;</td><td>PlayerData</td></tr>
-            <tr><td><code>IsLoggedIn</code></td><td>&mdash;</td><td>boolean</td></tr>
+            <tr><td><code>GetCoreObject</code></td><td>-</td><td>Arca object</td></tr>
+            <tr><td><code>GetPlayerData</code></td><td>-</td><td>PlayerData</td></tr>
+            <tr><td><code>IsLoggedIn</code></td><td>-</td><td>boolean</td></tr>
             <tr><td><code>HasJob</code></td><td><code>name, onDutyOnly?</code></td><td>boolean</td></tr>
-            <tr><td><code>OpenJobMenu</code> / <code>GetJobs</code> / <code>IsOnDuty</code></td><td>&mdash; / &mdash; / <code>job?</code></td><td>&mdash; / table / boolean</td></tr>
-            <tr><td><code>Notify</code></td><td><code>data | text, type?, duration?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>OpenJobMenu</code> / <code>GetJobs</code> / <code>IsOnDuty</code></td><td>- /. / <code>job?</code></td><td>- / table / boolean</td></tr>
+            <tr><td><code>Notify</code></td><td><code>data | text, type?, duration?</code></td><td>-</td></tr>
             <tr><td><code>Progress</code></td><td><code>data</code></td><td>boolean</td></tr>
-            <tr><td><code>ProgressActive</code> / <code>CancelProgress</code></td><td>&mdash;</td><td>boolean / &mdash;</td></tr>
-            <tr><td><code>ShowTextUI</code></td><td><code>text, options?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>HideTextUI</code> / <code>IsTextUIOpen</code></td><td>&mdash;</td><td>&mdash; / boolean, text</td></tr>
-            <tr><td><code>RegisterContext</code></td><td><code>menu | menus</code></td><td>&mdash;</td></tr>
-            <tr><td><code>ShowContext</code> / <code>HideContext</code> / <code>GetOpenContext</code></td><td><code>id</code> / &mdash; / &mdash;</td><td>&mdash; / &mdash; / id</td></tr>
-            <tr><td><code>AddRadialItem</code> / <code>RemoveRadialItem</code></td><td><code>item(s)</code> / <code>id</code></td><td>&mdash;</td></tr>
-            <tr><td><code>RegisterRadial</code></td><td><code>{ id, items }</code></td><td>&mdash;</td></tr>
-            <tr><td><code>ClearRadialItems</code> / <code>OpenRadial</code> / <code>CloseRadial</code></td><td>&mdash;</td><td>&mdash;</td></tr>
-            <tr><td><code>DisableRadial</code></td><td><code>state</code></td><td>&mdash;</td></tr>
-            <tr><td><code>DrawText</code> / <code>ChangeText</code></td><td><code>text, position?</code></td><td>&mdash; (qb bridge)</td></tr>
-            <tr><td><code>HideText</code> / <code>KeyPressed</code></td><td>&mdash;</td><td>&mdash; (qb bridge)</td></tr>
+            <tr><td><code>ProgressActive</code> / <code>CancelProgress</code></td><td>-</td><td>boolean / -</td></tr>
+            <tr><td><code>ShowTextUI</code></td><td><code>text, options?</code></td><td>-</td></tr>
+            <tr><td><code>HideTextUI</code> / <code>IsTextUIOpen</code></td><td>-</td><td>- / boolean, text</td></tr>
+            <tr><td><code>RegisterContext</code></td><td><code>menu | menus</code></td><td>-</td></tr>
+            <tr><td><code>ShowContext</code> / <code>HideContext</code> / <code>GetOpenContext</code></td><td><code>id</code> /. / -</td><td>- /. / id</td></tr>
+            <tr><td><code>AddRadialItem</code> / <code>RemoveRadialItem</code></td><td><code>item(s)</code> / <code>id</code></td><td>-</td></tr>
+            <tr><td><code>RegisterRadial</code></td><td><code>{ id, items }</code></td><td>-</td></tr>
+            <tr><td><code>ClearRadialItems</code> / <code>OpenRadial</code> / <code>CloseRadial</code></td><td>-</td><td>-</td></tr>
+            <tr><td><code>DisableRadial</code></td><td><code>state</code></td><td>-</td></tr>
+            <tr><td><code>DrawText</code> / <code>ChangeText</code></td><td><code>text, position?</code></td><td>- (qb bridge)</td></tr>
+            <tr><td><code>HideText</code> / <code>KeyPressed</code></td><td>-</td><td>- (qb bridge)</td></tr>
         </tbody>
     </table></div>
 
@@ -2310,15 +2310,15 @@ Arca.ShowContext('garage')</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
         <tbody>
-            <tr><td><code>addGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>options</code></td><td>&mdash;</td></tr>
-            <tr><td><code>removeGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>names?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>addModel</code> / <code>removeModel</code></td><td><code>models, options</code> / <code>models, names?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>addEntity</code> / <code>removeEntity</code></td><td><code>netIds, options</code> / <code>netIds, names?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>addLocalEntity</code> / <code>removeLocalEntity</code></td><td><code>entities, options</code> / <code>entities, names?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>addGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>options</code></td><td>-</td></tr>
+            <tr><td><code>removeGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>names?</code></td><td>-</td></tr>
+            <tr><td><code>addModel</code> / <code>removeModel</code></td><td><code>models, options</code> / <code>models, names?</code></td><td>-</td></tr>
+            <tr><td><code>addEntity</code> / <code>removeEntity</code></td><td><code>netIds, options</code> / <code>netIds, names?</code></td><td>-</td></tr>
+            <tr><td><code>addLocalEntity</code> / <code>removeLocalEntity</code></td><td><code>entities, options</code> / <code>entities, names?</code></td><td>-</td></tr>
             <tr><td><code>addSphereZone</code> / <code>addBoxZone</code></td><td><code>data</code></td><td>zone ID</td></tr>
-            <tr><td><code>removeZone</code></td><td><code>idOrName</code></td><td>&mdash;</td></tr>
-            <tr><td><code>disableTargeting</code></td><td><code>state</code></td><td>&mdash;</td></tr>
-            <tr><td><code>isActive</code></td><td>&mdash;</td><td>boolean</td></tr>
+            <tr><td><code>removeZone</code></td><td><code>idOrName</code></td><td>-</td></tr>
+            <tr><td><code>disableTargeting</code></td><td><code>state</code></td><td>-</td></tr>
+            <tr><td><code>isActive</code></td><td>-</td><td>boolean</td></tr>
         </tbody>
     </table></div>
 
@@ -2332,10 +2332,10 @@ Arca.ShowContext('garage')</code></pre>
             <tr><td><code>HasItem</code></td><td><code>target, items, amount?</code></td><td>boolean</td></tr>
             <tr><td><code>CanCarryItem</code></td><td><code>target, name, count</code></td><td>boolean</td></tr>
             <tr><td><code>GetItemByName</code> / <code>GetItemsByName</code> / <code>GetItemBySlot</code></td><td><code>target, name | slot</code></td><td>item(s)</td></tr>
-            <tr><td><code>GetInventory</code> / <code>ClearInventory</code> / <code>SetInventory</code></td><td><code>target, items?</code></td><td>&mdash;</td></tr>
-            <tr><td><code>RegisterStash</code></td><td><code>id, data</code></td><td>&mdash;</td></tr>
-            <tr><td><code>GetItems</code></td><td>&mdash;</td><td>item list</td></tr>
-            <tr><td><code>OpenPlayerInventory</code></td><td><code>adminSource, target</code></td><td>&mdash;</td></tr>
+            <tr><td><code>GetInventory</code> / <code>ClearInventory</code> / <code>SetInventory</code></td><td><code>target, items?</code></td><td>-</td></tr>
+            <tr><td><code>RegisterStash</code></td><td><code>id, data</code></td><td>-</td></tr>
+            <tr><td><code>GetItems</code></td><td>-</td><td>item list</td></tr>
+            <tr><td><code>OpenPlayerInventory</code></td><td><code>adminSource, target</code></td><td>-</td></tr>
             <tr><td><code>HasLicence</code> / <code>SetLicence</code></td><td><code>source, name, state?</code></td><td>boolean</td></tr>
             <tr><td><code>GetWeaponRegistration</code></td><td><code>serial</code></td><td>row | nil</td></tr>
         </tbody>
@@ -2345,12 +2345,12 @@ Arca.ShowContext('garage')</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
         <tbody>
-            <tr><td><code>OpenStash</code> / <code>OpenTrunk</code></td><td><code>id</code> / <code>vehicle</code></td><td>&mdash;</td></tr>
-            <tr><td><code>CloseInventory</code></td><td>&mdash;</td><td>&mdash;</td></tr>
-            <tr><td><code>SetBusy</code> / <code>IsBusy</code></td><td><code>state, reason?</code> / &mdash;</td><td>&mdash; / boolean</td></tr>
+            <tr><td><code>OpenStash</code> / <code>OpenTrunk</code></td><td><code>id</code> / <code>vehicle</code></td><td>-</td></tr>
+            <tr><td><code>CloseInventory</code></td><td>-</td><td>-</td></tr>
+            <tr><td><code>SetBusy</code> / <code>IsBusy</code></td><td><code>state, reason?</code> / -</td><td>- / boolean</td></tr>
             <tr><td><code>HasItem</code> / <code>GetItemCount</code></td><td><code>items, amount?</code> / <code>name</code></td><td>boolean / number</td></tr>
-            <tr><td><code>GetPlayerItems</code></td><td>&mdash;</td><td>items</td></tr>
-            <tr><td><code>GetEquippedWeapon</code> / <code>Disarm</code></td><td>&mdash;</td><td>weapon | nil / &mdash;</td></tr>
+            <tr><td><code>GetPlayerItems</code></td><td>-</td><td>items</td></tr>
+            <tr><td><code>GetEquippedWeapon</code> / <code>Disarm</code></td><td>-</td><td>weapon | nil / -</td></tr>
         </tbody>
     </table></div>
 
