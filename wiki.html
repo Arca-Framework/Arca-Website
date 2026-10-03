@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arca Docs</title>
+    <meta name="description" content="Documentation for the Arca FiveM framework: installation, configuration and full API reference.">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link id="hl-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link id="hl-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" disabled>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/wiki.css">
+    <script>try { document.documentElement.dataset.theme = localStorage.getItem('arca-theme') || 'dark'; } catch (e) {}</script>
+</head>
+<body>
+    <header class="topbar">
+        <button class="icon-btn menu-btn" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <a href="index.html" class="brand"><img src="assets/logo.png" alt=""> Arca <small>Docs</small></a>
+        <nav class="top-links">
+            <a href="#introduction" class="active">Guide</a>
+            <a href="#core-object">API</a>
+            <a href="#qb-bridge">qb Bridge</a>
+            <a href="https://github.com/Arca-Framework" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+        <div class="top-actions">
+            <button class="search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <span class="label">Search</span>
+                <span class="keys"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+            </button>
+            <button class="icon-btn theme-toggle" aria-label="Toggle theme">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar"></aside>
+
+        <main class="content">
+            <div class="crumbs"></div>
+
+<!-- =====================================================================
+     GETTING STARTED
+====================================================================== -->
+<article class="doc" id="introduction" data-group="Getting Started" data-title="Introduction">
+    <h1>Introduction</h1>
+    <p class="desc">Arca is a modern, lightweight framework for FiveM roleplay servers.</p>
+
+    <p>Everything goes through <strong>arca_core</strong> &mdash; the same way <code>qb-core</code> or <code>qbx_core</code> work. You grab the core object once and use it for players, callbacks, notifications and UI.</p>
+
+    <pre><code class="language-lua">local Arca = exports.arca_core:GetCoreObject()</code></pre>
+
+    <h2>What's included</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Resource</th><th>What it does</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca_core</code></td><td>Players, money, jobs, gangs, callbacks, commands, UI modules (notify, progress, text UI, context, radial) and the qb-core bridge.</td><td>Available</td></tr>
+            <tr><td><code>arca_target</code></td><td>Third-eye targeting for entities, models and zones.</td><td>Available</td></tr>
+            <tr><td><code>arca_character</code></td><td>Character selection and creation, with illenium-appearance support.</td><td>Available</td></tr>
+            <tr><td><code>arca_inventory</code></td><td>Container inventory: drops, trunks, gloveboxes, stashes, shops with a cart, dumpsters, cash as an item, rarity and weapons (ammo, durability, attachments, throwables, licences, registry, repairs).</td><td>Available</td></tr>
+            <tr><td><code>arca_hud</code></td><td>Status bars, speedometer, framed minimap, location and a <code>/hud</code> settings menu.</td><td>Available</td></tr>
+            <tr><td><code>arca_loadingscreen</code></td><td>Themed loading screen with tips, links, team and optional music or video.</td><td>Available</td></tr>
+            <tr><td><code>arca_admin</code></td><td><code>/admin</code> menu: players, vehicles, weather &amp; time, bans, resources and dev tools.</td><td>Available</td></tr>
+            <tr><td><code>arca_chattheme</code></td><td>Arca look for the default chat, with badge templates.</td><td>Available</td></tr>
+            <tr><td><code>illenium-appearance</code> (Arca fork)</td><td>Clothing and character creator with native Arca support and an Arca theme.</td><td>Available</td></tr>
+            <tr><td><code>arca_spawn</code></td><td>Spawn selector with a flying camera, job spawns and forced last location.</td><td>Available</td></tr>
+            <tr><td><code>arca_health</code></td><td>Last stand, death screen, injuries, bleeding, EMS and hospital respawns.</td><td>Available</td></tr>
+            <tr><td><code>arca_bank</code></td><td>Personal, shared and job accounts, Fleeca branches, ATMs with card PINs.</td><td>Available</td></tr>
+            <tr><td><code>arca_phone</code></td><td>iFruit phone with chips, calls, messages, contacts and Fleeca banking.</td><td>Available</td></tr>
+            <tr><td><code>arca_identity</code></td><td>Planned resource.</td><td>Coming soon</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li>A recent FXServer build with <strong>txAdmin</strong> (recommended).</li>
+        <li><strong>MariaDB</strong> 10.6 or newer.</li>
+        <li><a href="https://github.com/overextended/oxmysql" target="_blank" rel="noopener">oxmysql</a> &mdash; installed for you by the recipe.</li>
+        <li><em>Optional:</em> <code>illenium-appearance</code> + <code>ox_lib</code> for character clothing.</li>
+    </ul>
+
+    <h2>Where to go next</h2>
+    <div class="cards">
+        <a class="card" href="#installation"><strong>Install with txAdmin</strong><span>The fastest way to get a server running.</span></a>
+        <a class="card" href="#first-resource"><strong>Your first resource</strong><span>A complete script in three files.</span></a>
+        <a class="card" href="#core-object"><strong>Core object</strong><span>Start writing resources for Arca.</span></a>
+        <a class="card" href="#qb-bridge"><strong>Run qb resources</strong><span>How the qb-core bridge works.</span></a>
+        <a class="card" href="#exports"><strong>All exports</strong><span>Every export on one page.</span></a>
+    </div>
+</article>
+
+<article class="doc" id="installation" data-group="Getting Started" data-title="Installation (txAdmin)">
+    <h1>Installation</h1>
+    <p class="desc">Set up a complete Arca server using the official txAdmin recipe.</p>
+
+    <div class="callout info">
+        <div class="title">Info</div>
+        <ul>
+            <li>We highly recommend using <strong>txAdmin</strong> to install your server. The recipe downloads every resource, creates the database tables and writes your <code>server.cfg</code>.</li>
+            <li>Prefer to do it by hand? See <a href="#manual-installation">Manual installation</a>.</li>
+        </ul>
+    </div>
+
+    <div class="callout danger">
+        <div class="title">XAMPP is not supported</div>
+        <ul>
+            <li>Install <strong>MariaDB</strong> directly from <a href="https://mariadb.org/download/" target="_blank" rel="noopener">mariadb.org</a>.</li>
+            <li><strong>Minimum:</strong> MariaDB 10.6 &middot; <strong>Recommended:</strong> the latest LTS release.</li>
+            <li>Remember the <strong>root password</strong> you set during setup &mdash; txAdmin will ask for it.</li>
+        </ul>
+    </div>
+
+    <h2>Installation steps</h2>
+    <ol class="steps">
+        <li>
+            <strong>Download the server</strong>
+            <p>Download the latest <em>recommended</em> Windows artifact from the <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/" target="_blank" rel="noopener">FiveM artifacts page</a>. On Linux, use the <a href="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/" target="_blank" rel="noopener">Linux artifacts</a>.</p>
+        </li>
+        <li>
+            <strong>Extract the artifacts</strong>
+            <p>Create a folder such as <code>C:\FXServer\server</code> and extract the archive into it. Keep your server data in a separate folder, for example <code>C:\FXServer\arca</code>.</p>
+        </li>
+        <li>
+            <strong>Start the server</strong>
+            <p>Run <code>FXServer.exe</code>. A console window opens and shows a txAdmin link and a <strong>PIN</strong>. Open the link in your browser, enter the PIN and link your Cfx.re account.</p>
+        </li>
+        <li>
+            <strong>Start the recipe installation</strong>
+            <p>In the setup wizard, pick a server name, then choose <strong>Popular Recipes &rarr; Remote URL Template</strong> and paste the Arca recipe URL:</p>
+            <pre data-title="Recipe URL"><code class="language-text">https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml</code></pre>
+            <p>Choose the folder for your server data (e.g. <code>C:\FXServer\arca</code>).</p>
+        </li>
+        <li>
+            <strong>Deploy the recipe</strong>
+            <p>Enter your <a href="https://portal.cfx.re/servers/registration-keys" target="_blank" rel="noopener">Cfx.re license key</a> and your MariaDB details (host <code>localhost</code>, user <code>root</code>, your password, database name <code>arca</code>). Click <strong>Run Recipe</strong> and wait for every task to finish.</p>
+        </li>
+        <li>
+            <strong>Run the server</strong>
+            <p>Click <strong>Save &amp; Run Server</strong>. Connect with FiveM (<code>F8</code> &rarr; <code>connect localhost</code>) and create your first character.</p>
+        </li>
+    </ol>
+
+    <h2>What the recipe installs</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Task</th><th>Details</th></tr></thead>
+        <tbody>
+            <tr><td>CFX default resources</td><td><code>chat</code>, <code>spawnmanager</code>, <code>sessionmanager</code>, <code>mapmanager</code>, <code>hardcap</code></td></tr>
+            <tr><td>Dependencies</td><td><code>oxmysql</code>, <code>ox_lib</code>, <code>bob74_ipl</code>, <code>illenium-appearance</code> (Arca fork) &rarr; <code>resources/[standalone]</code></td></tr>
+            <tr><td>Arca</td><td><code>arca_core</code>, <code>arca_target</code>, <code>arca_character</code>, <code>arca_inventory</code>, <code>arca_hud</code>, <code>arca_loadingscreen</code>, <code>arca_admin</code> &rarr; <code>resources/[arca]</code></td></tr>
+            <tr><td>Database</td><td>Runs <code>arca.sql</code>, <code>inventory.sql</code> and illenium's outfit tables. Resources also create their own tables on start (<code>arca_inventories</code>, <code>arca_weapon_registry</code>, <code>arca_bans</code>, outfit tables).</td></tr>
+            <tr><td><code>server.cfg</code></td><td>License key, database connection, resource order and admin permissions (including the ace that lets arca_admin start / stop resources)</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>First-boot checks</h2>
+    <ul>
+        <li>The console shows <code>[oxmysql] Database server connection established</code>.</li>
+        <li>No red errors from <code>arca_core</code>, <code>arca_target</code> or <code>arca_character</code>.</li>
+        <li>When you join, the character selection screen appears.</li>
+        <li>Type <code>/job</code> in chat after spawning &mdash; you should see <em>Civilian - Freelancer</em>.</li>
+    </ul>
+
+    <h2>Give yourself admin</h2>
+    <p>The recipe adds your txAdmin account as admin automatically. To add someone else, put their identifier in <code>server.cfg</code>:</p>
+    <pre data-title="server.cfg"><code class="language-ini">add_principal identifier.fivem:1234567 group.admin</code></pre>
+    <p>See <a href="#permissions">Permissions</a> for the full permission system.</p>
+
+    <div class="callout tip">
+        <div class="title">Tip</div>
+        <p>Stuck? Check <a href="#troubleshooting">Troubleshooting</a> for the most common problems.</p>
+    </div>
+</article>
+
+<article class="doc" id="manual-installation" data-group="Getting Started" data-title="Manual installation">
+    <h1>Manual installation</h1>
+    <p class="desc">Install Arca on an existing server without txAdmin's recipe.</p>
+
+    <h2>1. Download the resources</h2>
+    <p>Download each repository and place it in your <code>resources</code> folder. Folder names must match exactly.</p>
+    <pre data-title="folder layout"><code class="language-text">resources/
+├─ [standalone]/
+│  ├─ oxmysql/
+│  ├─ ox_lib/                 (only needed for illenium-appearance)
+│  └─ illenium-appearance/    (optional)
+└─ [arca]/
+   ├─ arca_core/
+   ├─ arca_target/
+   └─ arca_character/</code></pre>
+
+    <h2>2. Create the database</h2>
+    <p>Create a database called <code>arca</code> and run <code>arca_core/sql/arca.sql</code> in HeidiSQL (or any SQL client).</p>
+
+    <h2>3. Configure server.cfg</h2>
+    <p>Order matters &mdash; dependencies must start before the resources that use them.</p>
+    <pre data-title="server.cfg"><code class="language-ini">set mysql_connection_string "mysql://root:password@localhost/arca?charset=utf8mb4"
+
+ensure oxmysql
+ensure arca_core
+ensure arca_target
+ensure ox_lib
+ensure illenium-appearance
+ensure arca_character
+
+add_ace group.admin arca.god allow</code></pre>
+
+    <div class="callout warn">
+        <div class="title">Warning</div>
+        <p>Do not run <code>qb-core</code> or <code>qb-multicharacter</code> alongside Arca. <code>arca_core</code> already answers as <code>qb-core</code> &mdash; see <a href="#qb-bridge">qb-core bridge</a>.</p>
+    </div>
+</article>
+
+<article class="doc" id="configuration" data-group="Getting Started" data-title="Configuration">
+    <h1>Configuration</h1>
+    <p class="desc">Every option in <code>arca_core/shared/config.lua</code>.</p>
+
+    <h2>Server</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Debug</code></td><td><code>false</code></td><td>Prints extra logs to the console.</td></tr>
+            <tr><td><code>Server.MaxCharacters</code></td><td><code>4</code></td><td>Character slots per player.</td></tr>
+            <tr><td><code>Server.PVP</code></td><td><code>true</code></td><td>Allow players to damage each other.</td></tr>
+            <tr><td><code>Server.Permissions</code></td><td><code>{ 'god', 'admin', 'mod' }</code></td><td>Permission levels, highest first. See <a href="#permissions">Permissions</a>.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Player</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Player.SaveInterval</code></td><td><code>5</code></td><td>Minutes between automatic saves.</td></tr>
+            <tr><td><code>Player.DefaultSpawn</code></td><td>Legion Square</td><td><code>vector4</code> where new characters spawn.</td></tr>
+            <tr><td><code>Player.Money</code></td><td><code>cash 500, bank 5000, crypto 0</code></td><td>Starting money.</td></tr>
+            <tr><td><code>Player.MoneyTypes</code></td><td><code>{ 'cash', 'bank', 'crypto' }</code></td><td>Valid money accounts.</td></tr>
+            <tr><td><code>Player.DefaultMetadata</code></td><td>hunger, thirst, stress&hellip;</td><td>Metadata every new character starts with.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Modules</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Bridge.qb</code></td><td><code>true</code></td><td>Enable the qb-core compatibility layer.</td></tr>
+            <tr><td><code>Progress.CancelKey</code></td><td><code>73</code> (X)</td><td>Control used to cancel a progress bar.</td></tr>
+            <tr><td><code>TextUI.Position</code></td><td><code>'left-center'</code></td><td><code>left-center</code>, <code>right-center</code>, <code>top-center</code> or <code>bottom-center</code>.</td></tr>
+            <tr><td><code>Radial.Key</code></td><td><code>'Z'</code></td><td>Default radial key. Players can rebind it in GTA settings.</td></tr>
+            <tr><td><code>Notify.Position</code></td><td><code>'top-right'</code></td><td>Default notification position.</td></tr>
+            <tr><td><code>Notify.Duration</code></td><td><code>5000</code></td><td>Default notification time in ms.</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="permissions" data-group="Getting Started" data-title="Permissions">
+    <h1>Permissions</h1>
+    <p class="desc">Arca uses FiveM's built-in ACE system.</p>
+
+    <p>Each level in <code>Config.Server.Permissions</code> maps to an ace called <code>arca.&lt;level&gt;</code>. Levels are ordered highest first, and a higher level <strong>includes every level below it</strong>.</p>
+
+    <div class="table-wrap"><table>
+        <thead><tr><th>Ace</th><th>Has access to</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca.god</code></td><td>god, admin, mod</td></tr>
+            <tr><td><code>arca.admin</code></td><td>admin, mod</td></tr>
+            <tr><td><code>arca.mod</code></td><td>mod</td></tr>
+        </tbody>
+    </table></div>
+
+    <pre data-title="server.cfg"><code class="language-ini"># give the group a level
+add_ace group.admin arca.admin allow
+add_ace group.mod arca.mod allow
+
+# put a player in a group
+add_principal identifier.license:abc123 group.admin</code></pre>
+
+    <p>Check a permission in code:</p>
+    <pre><code class="language-lua">if Arca.Functions.HasPermission(source, 'admin') then
+    -- source is admin or god
+end</code></pre>
+</article>
+
+<article class="doc" id="first-resource" data-group="Getting Started" data-title="Your first resource">
+    <h1>Your first resource</h1>
+    <p class="desc">A complete, working Arca script in three files: a car wash with a target zone, a fee and a progress bar.</p>
+
+    <h2>1. The folder</h2>
+    <pre data-title="resources/[local]/my_carwash"><code class="language-text">my_carwash/
+├─ fxmanifest.lua
+├─ client.lua
+└─ server.lua</code></pre>
+
+    <h2>2. fxmanifest.lua</h2>
+    <pre data-title="fxmanifest.lua"><code class="language-lua">fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+
+-- gives every file a global `Arca` (the core object)
+shared_script '@arca_core/shared/import.lua'
+
+client_script 'client.lua'
+server_script 'server.lua'
+
+dependencies { 'arca_core', 'arca_target' }</code></pre>
+    <p>No import? Put <code>local Arca = exports.arca_core:GetCoreObject()</code> at the top of each file instead.</p>
+
+    <h2>3. server.lua</h2>
+    <p>The server owns money and decides. Never trust the client for prices or rewards.</p>
+    <pre data-title="server.lua"><code class="language-lua">local PRICE = 50
+local WASH = vector3(26.5, -1392.0, 29.3)
+
+-- the client asks "can I wash?"; the server checks and takes the money
+Arca.Callback.Register('my_carwash:pay', function(source)
+    local player = Arca.Functions.GetPlayer(source)
+    if not player then return false end
+
+    -- are they actually at the car wash?
+    local coords = GetEntityCoords(GetPlayerPed(source))
+    if #(coords - WASH) > 10.0 then return false end
+
+    if not player.RemoveMoney('cash', PRICE, 'car wash') then
+        Arca.Notify(source, ('You need $%d cash'):format(PRICE), 'error')
+        return false
+    end
+    return true
+end)</code></pre>
+
+    <h2>4. client.lua</h2>
+    <pre data-title="client.lua"><code class="language-lua">local WASH = vector3(26.5, -1392.0, 29.3)
+
+local function wash()
+    local veh = GetVehiclePedIsIn(PlayerPedId(), false)
+    if veh == 0 then return Arca.Notify('Drive in first', 'error') end
+
+    if not Arca.Callback.Await('my_carwash:pay') then return end
+
+    local done = Arca.Progress({
+        label = 'Washing vehicle',
+        duration = 6000,
+        canCancel = false,
+        disable = { car = true },
+    })
+    if done then
+        SetVehicleDirtLevel(veh, 0.0)
+        WashDecalsFromVehicle(veh, 1.0)
+        Arca.Notify('Squeaky clean!', 'success')
+    end
+end
+
+-- third-eye option on the wash bay
+exports.arca_target:addSphereZone({
+    name = 'my_carwash',
+    coords = WASH,
+    radius = 4.0,
+    options = {
+        { name = 'my_carwash:wash', label = 'Wash vehicle ($50)', icon = 'fa-solid fa-soap', onSelect = wash },
+    },
+})
+
+-- a blip so players can find it
+CreateThread(function()
+    local blip = AddBlipForCoord(WASH.x, WASH.y, WASH.z)
+    SetBlipSprite(blip, 100)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentSubstringPlayerName('Car Wash')
+    EndTextCommandSetBlipName(blip)
+end)</code></pre>
+
+    <h2>5. Start it</h2>
+    <pre data-title="server.cfg"><code class="language-ini">ensure my_carwash</code></pre>
+    <p>Make sure it starts <strong>after</strong> <code>arca_core</code> and <code>arca_target</code>. Restart it live with <code>restart my_carwash</code> in the server console.</p>
+
+    <h2>The pattern every Arca script follows</h2>
+    <ol>
+        <li><strong>Client</strong> shows things: target options, menus, progress bars, notifications.</li>
+        <li><strong>Server</strong> decides: checks distance, job, items and money, then changes them.</li>
+        <li>They talk with <a href="#callbacks">callbacks</a> (when the client needs an answer) or events (fire and forget).</li>
+    </ol>
+
+    <h2>Next steps</h2>
+    <div class="cards">
+        <a class="card" href="#conventions"><strong>Conventions</strong><span>Jobs, death, cuffs, fuel, keys, money&hellip;</span></a>
+        <a class="card" href="#inventory-examples"><strong>Inventory examples</strong><span>Items, crafting, stashes, weapons.</span></a>
+        <a class="card" href="#context-menu"><strong>Context menu</strong><span>Menus with submenus and metadata.</span></a>
+        <a class="card" href="#qb-porting"><strong>Port a qb script</strong><span>Move existing scripts to Arca.</span></a>
+    </div>
+</article>
+
+<article class="doc" id="troubleshooting" data-group="Getting Started" data-title="Troubleshooting">
+    <h1>Troubleshooting</h1>
+    <p class="desc">Fixes for the most common problems.</p>
+
+    <h2>Stuck on a black screen when joining</h2>
+    <ul>
+        <li>Make sure <code>arca_character</code> is started and shows no errors in F8 or the server console.</li>
+        <li>Make sure <code>arca_core</code> starts <strong>before</strong> <code>arca_character</code>.</li>
+        <li>Check that no other multicharacter resource (like <code>qb-multicharacter</code>) is running.</li>
+    </ul>
+
+    <h2>"No Rockstar license found"</h2>
+    <p>Arca needs a Rockstar license identifier. Restart FiveM, make sure you are signed in to the Rockstar launcher, and try again.</p>
+
+    <h2>Database errors</h2>
+    <ul>
+        <li>Check <code>mysql_connection_string</code> in <code>server.cfg</code> (user, password, database name).</li>
+        <li>Make sure <code>arca.sql</code> was run &mdash; the <code>players</code> table must exist.</li>
+        <li>Use MariaDB, not XAMPP or MySQL 5.</li>
+    </ul>
+
+    <h2>illenium-appearance doesn't save clothes</h2>
+    <ul>
+        <li>Use the <a href="#illenium-appearance">Arca fork</a> of illenium-appearance &mdash; it detects Arca natively.</li>
+        <li>Start <code>arca_core</code> <strong>before</strong> illenium-appearance (the recipe already does).</li>
+    </ul>
+
+    <h2>"Table 'player_outfits' doesn't exist"</h2>
+    <p>illenium's outfit tables were never created. The Arca fork creates them on start; on an older copy, run the four files in <code>illenium-appearance/sql/</code> on your database.</p>
+
+    <h2>Weapons disappear when I take them out</h2>
+    <p>With <code>InvConfig.Weapons.StripUnknownWeapons</code> on, any weapon that didn't come from the inventory is removed. Give weapons as items (<code>/giveitem me weapon_pistol 1</code>) instead of with natives or other scripts.</p>
+
+    <h2>A qb resource doesn't work</h2>
+    <p>Most qb resources work through the <a href="#qb-bridge">bridge</a>. If one doesn't, check if it needs a qb resource Arca replaces: use <a href="#arca-inventory">arca_inventory</a> for inventory, <a href="#arca-target">arca_target</a> for targeting and the <a href="#context-menu">context menu</a> for menus, or uses a rarely-used qb-core function. Arca can't fix third-party scripts &mdash; contact the script's author.</p>
+
+    <h2>Radial or target key does nothing</h2>
+    <p>Keys are registered as key mappings. If a player changed them, check <strong>Settings &rarr; Key Bindings &rarr; FiveM</strong>. Both only work once a character is loaded.</p>
+</article>
+
+<!-- =====================================================================
+     CORE
+====================================================================== -->
+<article class="doc" id="core-object" data-group="Core" data-title="Core object">
+    <h1>Core object</h1>
+    <p class="desc">The single entry point to everything Arca does.</p>
+
+    <h2>Getting the object</h2>
+    <p>Call the export once at the top of a file. It works on both server and client.</p>
+    <pre><code class="language-lua">local Arca = exports.arca_core:GetCoreObject()</code></pre>
+
+    <p>Or add the import file to your <code>fxmanifest.lua</code> to get a global <code>Arca</code>:</p>
+    <pre data-title="fxmanifest.lua"><code class="language-lua">shared_script '@arca_core/shared/import.lua'
+
+dependency 'arca_core'</code></pre>
+
+    <h2>What's inside</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Field</th><th>Side</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Arca.Functions</code></td><td>both</td><td><a href="#server-functions">Server</a> / <a href="#client-functions">client</a> helper functions.</td></tr>
+            <tr><td><code>Arca.Callback</code></td><td>both</td><td><a href="#callbacks">Callbacks</a>.</td></tr>
+            <tr><td><code>Arca.Notify</code></td><td>both</td><td><a href="#notify">Notifications</a>.</td></tr>
+            <tr><td><code>Arca.Players</code></td><td>server</td><td>All loaded <a href="#player-object">player objects</a>, keyed by source.</td></tr>
+            <tr><td><code>Arca.Player</code></td><td>server</td><td>Login, logout and character functions.</td></tr>
+            <tr><td><code>Arca.Commands</code></td><td>server</td><td><a href="#commands">Commands</a>.</td></tr>
+            <tr><td><code>Arca.PlayerData</code></td><td>client</td><td>The local player's data.</td></tr>
+            <tr><td><code>Arca.Shared</code></td><td>both</td><td>Jobs, gangs and utility functions.</td></tr>
+            <tr><td><code>Arca.Config</code></td><td>both</td><td>The core config.</td></tr>
+            <tr><td><code>Arca.Progress</code>, <code>ShowTextUI</code>, <code>RegisterContext</code>, <code>AddRadialItem</code>&hellip;</td><td>client</td><td>UI modules.</td></tr>
+        </tbody>
+    </table></div>
+
+    <div class="callout warn">
+        <div class="title">Player data is a snapshot</div>
+        <p>The core object is <strong>copied</strong> when another resource receives it, so <code>Arca.PlayerData</code> in your resource won't update by itself. Use <code>exports.arca_core:GetPlayerData()</code>, or keep a local copy updated with the <a href="#events">events</a>:</p>
+    </div>
+    <pre><code class="language-lua">local PlayerData = exports.arca_core:GetPlayerData()
+
+AddEventHandler('arca_core:client:onPlayerLoaded', function(data) PlayerData = data end)
+AddEventHandler('arca_core:client:onPlayerDataUpdated', function(data) PlayerData = data end)
+AddEventHandler('arca_core:client:onPlayerUnloaded', function() PlayerData = {} end)</code></pre>
+
+    <h2>Shared utilities</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Function</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>Arca.Shared.Round(value, decimals)</code></td><td>Rounded number</td></tr>
+            <tr><td><code>Arca.Shared.Trim(str)</code></td><td>String without surrounding spaces</td></tr>
+            <tr><td><code>Arca.Shared.FirstToUpper(str)</code></td><td>String with first letter capitalised</td></tr>
+            <tr><td><code>Arca.Shared.RandomStr(length)</code></td><td>Random uppercase letters</td></tr>
+            <tr><td><code>Arca.Shared.RandomInt(length)</code></td><td>Random digits as a string</td></tr>
+            <tr><td><code>Arca.Shared.Copy(tbl)</code></td><td>Deep copy of a table</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="player-object" data-group="Core" data-title="Player object">
+    <h1>Player object</h1>
+    <p class="desc">The server-side object for a loaded character.</p>
+
+    <pre><code class="language-lua">local player = Arca.Functions.GetPlayer(source)
+if not player then return end -- not logged in
+
+print(player.PlayerData.citizenid)
+player.AddMoney('bank', 500, 'salary bonus')</code></pre>
+
+    <p>Every method is also available under <code>player.Functions</code> (qb style), so <code>player.AddMoney(...)</code> and <code>player.Functions.AddMoney(...)</code> are the same.</p>
+
+    <h2>PlayerData</h2>
+    <pre><code class="language-lua">{
+    source = 1,
+    citizenid = 'ABC12345',
+    cid = 1,                       -- character slot
+    license = 'license:...',
+    name = 'SteamName',
+    charinfo = { firstname, lastname, birthdate, gender, nationality, phone },
+    money = { cash = 500, bank = 5000, crypto = 0 },
+    job = {
+        name = 'police', label = 'Law Enforcement', type = 'leo',
+        onduty = true, payment = 75, isboss = false,
+        grade = { level = 1, name = 'Officer' },
+    },
+    gang = { name = 'none', label = 'No Gang', isboss = false, grade = { level = 0, name = 'Unaffiliated' } },
+    metadata = { hunger = 100, thirst = 100, stress = 0, isdead = false, ... },
+    position = { x, y, z, w },
+}</code></pre>
+
+    <h2>Methods</h2>
+    <div class="api">
+        <h3><code>player.SetJob(name, grade)</code></h3>
+        <p>Sets the job. Returns <code>false</code> if the job doesn't exist.</p>
+        <h3><code>player.SetJobDuty(onduty)</code></h3>
+        <p>Sets on/off duty.</p>
+        <h3><code>player.SetGang(name, grade)</code></h3>
+        <p>Sets the gang. Returns <code>false</code> if the gang doesn't exist.</p>
+        <h3><code>player.AddMoney(type, amount, reason?)</code></h3>
+        <p>Adds money. Returns <code>true</code> on success.</p>
+        <h3><code>player.RemoveMoney(type, amount, reason?)</code></h3>
+        <p>Removes money. Returns <code>false</code> if they don't have enough.</p>
+        <h3><code>player.SetMoney(type, amount, reason?)</code></h3>
+        <p>Sets an account to an exact amount.</p>
+        <h3><code>player.GetMoney(type)</code></h3>
+        <p>Returns the balance of an account.</p>
+        <h3><code>player.SetMetaData(key, value)</code> / <code>player.GetMetaData(key)</code></h3>
+        <p>Read or write metadata (hunger, thirst, custom values&hellip;).</p>
+        <h3><code>player.SetCharInfo(key, value)</code></h3>
+        <p>Change a character info field.</p>
+        <h3><code>player.UpdatePlayerData()</code></h3>
+        <p>Sends the current PlayerData to the client. Called automatically by every setter.</p>
+        <h3><code>player.Save()</code></h3>
+        <p>Saves the character to the database now.</p>
+        <h3><code>player.Logout()</code></h3>
+        <p>Saves and returns the player to character selection.</p>
+    </div>
+
+    <div class="callout info">
+        <div class="title">Info</div>
+        <p>Characters are saved automatically every <code>Config.Player.SaveInterval</code> minutes, when a player leaves, and when <code>arca_core</code> stops.</p>
+    </div>
+</article>
+
+<article class="doc" id="server-functions" data-group="Core" data-title="Server functions">
+    <h1>Server functions</h1>
+    <p class="desc">Everything under <code>Arca.Functions</code> on the server.</p>
+
+    <div class="api">
+        <h3><code>GetPlayer(source)</code> <span class="badge server">server</span></h3>
+        <p>Returns the <a href="#player-object">player object</a> or <code>nil</code>.</p>
+        <h3><code>GetPlayerByCitizenId(citizenid)</code> <span class="badge server">server</span></h3>
+        <p>Finds an online player by citizen ID.</p>
+        <h3><code>GetPlayers()</code> <span class="badge server">server</span></h3>
+        <p>Returns a list of sources of all logged-in players.</p>
+        <h3><code>GetPlayersByJob(job, onDutyOnly?)</code> <span class="badge server">server</span></h3>
+        <p>Returns sources with that job.</p>
+        <h3><code>GetIdentifier(source, type?)</code> <span class="badge server">server</span></h3>
+        <p>Returns an identifier, <code>license</code> by default.</p>
+        <h3><code>HasPermission(source, level)</code> <span class="badge server">server</span></h3>
+        <p>See <a href="#permissions">Permissions</a>. The console (<code>0</code>) always passes.</p>
+        <h3><code>CreateUseableItem(item, fn)</code> / <code>CanUseItem(item)</code> <span class="badge server">server</span></h3>
+        <p>Register a handler for an item, used by the inventory.</p>
+        <h3><code>AddJob(name, data)</code> / <code>AddGang(name, data)</code> <span class="badge server">server</span></h3>
+        <p>Add a job or gang at runtime.</p>
+    </div>
+
+    <h2>Example</h2>
+    <pre><code class="language-lua">-- pay every on-duty officer a bonus
+for _, src in ipairs(Arca.Functions.GetPlayersByJob('police', true)) do
+    local player = Arca.Functions.GetPlayer(src)
+    player.AddMoney('bank', 250, 'bonus')
+    Arca.Notify(src, 'You received a $250 bonus', 'success')
+end</code></pre>
+
+    <h2>Characters</h2>
+    <p>Used by <code>arca_character</code>. You only need these if you build your own character menu.</p>
+    <div class="api">
+        <h3><code>Arca.Player.Login(source, citizenid?, newData?)</code> <span class="badge server">server</span></h3>
+        <p>Loads an existing character, or creates one when <code>newData = { cid, charinfo }</code> is given. Returns the player object or <code>false</code>.</p>
+        <h3><code>Arca.Player.Logout(source)</code> <span class="badge server">server</span></h3>
+        <h3><code>Arca.Player.GetCharacters(source)</code> <span class="badge server">server</span></h3>
+        <p>All characters for the player's license.</p>
+        <h3><code>Arca.Player.DeleteCharacter(source, citizenid)</code> <span class="badge server">server</span></h3>
+    </div>
+</article>
+
+<article class="doc" id="client-functions" data-group="Core" data-title="Client functions">
+    <h1>Client functions</h1>
+    <p class="desc">Everything under <code>Arca.Functions</code> on the client.</p>
+
+    <div class="api">
+        <h3><code>GetPlayerData(cb?)</code> <span class="badge client">client</span></h3>
+        <p>Returns the local PlayerData (or passes it to <code>cb</code>).</p>
+        <h3><code>IsLoggedIn()</code> <span class="badge client">client</span></h3>
+        <p><code>true</code> once a character is loaded. Also available as <code>LocalPlayer.state.isLoggedIn</code> on the client (it isn't sent to the server &mdash; there, check <code>GetPlayer(source)</code>).</p>
+        <h3><code>HasJob(name, onDutyOnly?)</code> <span class="badge client">client</span></h3>
+        <h3><code>GetClosestPlayer(coords?, maxDist?)</code> <span class="badge client">client</span></h3>
+        <p>Returns <code>playerId, distance</code> (or <code>-1</code>).</p>
+        <h3><code>LoadModel(model)</code> <span class="badge client">client</span></h3>
+        <p>Loads a model, returns its hash or <code>false</code> after 5s.</p>
+        <h3><code>LoadAnimDict(dict)</code> <span class="badge client">client</span></h3>
+        <p>Loads an animation dictionary, returns <code>true</code>/<code>false</code>.</p>
+    </div>
+</article>
+
+<article class="doc" id="callbacks" data-group="Core" data-title="Callbacks">
+    <h1>Callbacks</h1>
+    <p class="desc">Ask the other side for data and wait for the answer.</p>
+
+    <h2>Client &rarr; server</h2>
+    <pre data-title="server.lua"><code class="language-lua">Arca.Callback.Register('garage:getVehicles', function(source, garage)
+    local player = Arca.Functions.GetPlayer(source)
+    return MySQL.query.await('SELECT * FROM vehicles WHERE citizenid = ?', { player.PlayerData.citizenid })
+end)</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">-- waits for the result
+local vehicles = Arca.Callback.Await('garage:getVehicles', 'legion')
+
+-- or without waiting
+Arca.Callback.Trigger('garage:getVehicles', function(vehicles)
+    print(#vehicles)
+end, 'legion')</code></pre>
+
+    <h2>Server &rarr; client</h2>
+    <pre data-title="client.lua"><code class="language-lua">Arca.Callback.Register('admin:getCoords', function()
+    return GetEntityCoords(PlayerPedId())
+end)</code></pre>
+    <pre data-title="server.lua"><code class="language-lua">-- name, target, timeout (ms, default 10000), ...args
+local coords = Arca.Callback.Await('admin:getCoords', source, 5000)</code></pre>
+
+    <div class="callout info">
+        <div class="title">Info</div>
+        <ul>
+            <li>Callbacks can return multiple values.</li>
+            <li>If a callback errors or times out, <code>Await</code> returns <code>nil</code>. Client &rarr; server calls time out after 10s (a warning is printed in F8); server &rarr; client calls use the timeout you pass (default 10s).</li>
+            <li><code>Await</code> blocks the current thread &mdash; call it inside an event handler, command or <code>CreateThread</code>.</li>
+            <li>Always validate arguments on the server &mdash; clients can send anything.</li>
+        </ul>
+    </div>
+</article>
+
+<article class="doc" id="commands" data-group="Core" data-title="Commands">
+    <h1>Commands</h1>
+    <p class="desc">Register chat commands with optional permission checks.</p>
+
+    <pre><code class="language-lua">-- name, help text, permission (nil = everyone), handler
+Arca.Commands.Add('heal', 'Heal a player: /heal id', 'admin', function(source, args)
+    local target = tonumber(args[1]) or source
+    TriggerClientEvent('myres:heal', target)
+end)</code></pre>
+    <p>From another resource: <code>exports.arca_core:AddCommand(name, help, perm, fn)</code>.</p>
+
+    <h2>Built-in commands</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Command</th><th>Permission</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>/job</code></td><td>everyone</td><td>Shows your active job, grade and duty.</td></tr>
+            <tr><td><code>/jobs</code></td><td>everyone</td><td>Job menu: switch jobs, duty, clock out.</td></tr>
+            <tr><td><code>/duty</code></td><td>everyone</td><td>Toggle duty for your active job.</td></tr>
+            <tr><td><code>/addjob id job grade</code> &middot; <code>/removejob id job</code></td><td>admin</td><td>Give or take a job (multi-job).</td></tr>
+            <tr><td><code>/setjob id job grade</code></td><td>admin</td><td>Set a player's job.</td></tr>
+            <tr><td><code>/setgang id gang grade</code></td><td>admin</td><td>Set a player's gang.</td></tr>
+            <tr><td><code>/givemoney id type amount</code></td><td>admin</td><td>Add money to an account.</td></tr>
+            <tr><td><code>/setmoney id type amount</code></td><td>admin</td><td>Set an account balance.</td></tr>
+            <tr><td><code>/logout</code></td><td>admin</td><td>Back to character selection.</td></tr>
+            <tr><td><code>/car model</code></td><td>admin</td><td>Spawn a vehicle and get in.</td></tr>
+            <tr><td><code>/dv [radius]</code></td><td>admin</td><td>Delete your / the nearest vehicle, or all within a radius.</td></tr>
+            <tr><td><code>/fix</code></td><td>admin</td><td>Repair the vehicle you're in.</td></tr>
+            <tr><td><code>/tp id</code> &middot; <code>/tp x y z</code></td><td>admin</td><td>Teleport to a player or coordinates.</td></tr>
+            <tr><td><code>/tpm</code></td><td>admin</td><td>Teleport to your waypoint.</td></tr>
+            <tr><td><code>/coords</code></td><td>admin</td><td>Coords editor: aim a marker, fine-tune with arrows, copy vector2/3/4.</td></tr>
+            <tr><td><code>/vector2</code> &middot; <code>/vector3</code> &middot; <code>/vector4</code></td><td>admin</td><td>Copy your position to the clipboard.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Commands from other Arca resources</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Command</th><th>Resource</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>/admin</code> (F10)</td><td>arca_admin</td><td>Open the <a href="#arca-admin">admin menu</a>.</td></tr>
+            <tr><td><code>/giveitem id|me item count</code></td><td>arca_inventory</td><td>Give an item.</td></tr>
+            <tr><td><code>/givelicence</code> &middot; <code>/revokelicence id type</code></td><td>arca_inventory</td><td>Issue or revoke a licence (admins and licence issuer jobs).</td></tr>
+            <tr><td><code>/checkserial serial</code></td><td>arca_inventory</td><td>Look up a registered weapon (police and admins).</td></tr>
+            <tr><td><code>/hud</code></td><td>arca_hud</td><td>HUD settings menu.</td></tr>
+            <tr><td><code>/inventory</code> (I)</td><td>arca_inventory</td><td>Open your inventory.</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="events" data-group="Core" data-title="Events">
+    <h1>Events</h1>
+    <p class="desc">Listen to these to react to player changes.</p>
+
+    <h2>Server events</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Event</th><th>Arguments</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca_core:server:playerLoaded</code></td><td><code>player</code></td></tr>
+            <tr><td><code>arca_core:server:playerUnloaded</code></td><td><code>source</code></td></tr>
+            <tr><td><code>arca_core:server:playerDataUpdated</code></td><td><code>source, PlayerData</code></td></tr>
+            <tr><td><code>arca_core:server:onJobUpdate</code></td><td><code>source, job</code></td></tr>
+            <tr><td><code>arca_core:server:onGangUpdate</code></td><td><code>source, gang</code></td></tr>
+            <tr><td><code>arca_core:server:onMoneyChange</code></td><td><code>source, type, change, reason, op</code> (<code>op</code> = add / remove / set)</td></tr>
+            <tr><td><code>arca_core:server:setDuty</code></td><td><code>source, onduty</code></td></tr>
+            <tr><td><code>arca_core:server:characterDeleted</code></td><td><code>source, citizenid</code></td></tr>
+        </tbody>
+    </table></div>
+    <pre><code class="language-lua">AddEventHandler('arca_core:server:playerLoaded', function(player)
+    print(player.PlayerData.charinfo.firstname .. ' logged in')
+end)</code></pre>
+
+    <h2>Client events</h2>
+    <p>Some client events are sent from the server (<strong>network</strong>) and some are fired locally on the client. Network events need <code>RegisterNetEvent</code> in your resource, or your handler never runs.</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Event</th><th>Arguments</th><th>Listen with</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca_core:client:onPlayerLoaded</code></td><td><code>PlayerData</code></td><td><code>AddEventHandler</code></td></tr>
+            <tr><td><code>arca_core:client:onPlayerUnloaded</code></td><td>&mdash;</td><td><code>AddEventHandler</code></td></tr>
+            <tr><td><code>arca_core:client:onPlayerDataUpdated</code></td><td><code>PlayerData</code></td><td><code>AddEventHandler</code></td></tr>
+            <tr><td><code>arca_core:client:onJobUpdate</code></td><td><code>job</code></td><td><code>RegisterNetEvent</code></td></tr>
+            <tr><td><code>arca_core:client:onGangUpdate</code></td><td><code>gang</code></td><td><code>RegisterNetEvent</code></td></tr>
+            <tr><td><code>arca_core:client:onMoneyChange</code></td><td><code>type, change, reason, op</code></td><td><code>RegisterNetEvent</code></td></tr>
+            <tr><td><code>arca_core:client:setDuty</code></td><td><code>onduty</code></td><td><code>RegisterNetEvent</code></td></tr>
+            <tr><td><code>arca_core:client:vehicleSpawned</code></td><td><code>vehicle, plate</code></td><td><code>AddEventHandler</code></td></tr>
+            <tr><td><code>arca_character:client:spawned</code></td><td><code>PlayerData</code></td><td><code>AddEventHandler</code></td></tr>
+        </tbody>
+    </table></div>
+    <pre><code class="language-lua">-- local event
+AddEventHandler('arca_core:client:onPlayerLoaded', function(data)
+    print('Welcome ' .. data.charinfo.firstname)
+end)
+
+-- network event: RegisterNetEvent, not AddEventHandler
+RegisterNetEvent('arca_core:client:onJobUpdate', function(job)
+    print('New job: ' .. job.label)
+end)</code></pre>
+    <p>All server events are local to the server &mdash; use <code>AddEventHandler</code>.</p>
+</article>
+
+<article class="doc" id="jobs-gangs" data-group="Core" data-title="Jobs &amp; gangs">
+    <h1>Jobs &amp; gangs</h1>
+    <p class="desc">Defined in <code>arca_core/shared/jobs.lua</code> and <code>gangs.lua</code>.</p>
+
+    <p>The format is the same as qb-core, so you can paste qb job files straight in. Grade keys are strings.</p>
+    <pre data-title="shared/jobs.lua"><code class="language-lua">mechanic = {
+    label = 'Mechanic',
+    type = 'mechanic',
+    defaultDuty = true,
+    grades = {
+        ['0'] = { name = 'Trainee', payment = 50 },
+        ['1'] = { name = 'Mechanic', payment = 75 },
+        ['2'] = { name = 'Owner', payment = 120, isboss = true },
+    },
+},</code></pre>
+
+    <h2>Multi-job &amp; duty</h2>
+    <p>A character can hold several jobs (<code>ArcaConfig.Jobs.MaxJobs</code>, default 3) and switch the <strong>active</strong> one. Only the active job counts for duty, paychecks, <code>groups</code> checks and <code>PlayerData.job</code> &mdash; so existing scripts keep working unchanged.</p>
+    <ul>
+        <li><code>/jobs</code> or the <strong>Jobs</strong> radial entry opens a menu to switch jobs, go on / off duty or clock out to civilian.</li>
+        <li><code>/duty</code> toggles duty for the active job.</li>
+        <li>Admins: <code>/addjob id job grade</code>, <code>/removejob id job</code>. <code>/setjob</code> still makes a job active straight away (and adds it to their jobs).</li>
+        <li>Held jobs are stored in <code>PlayerData.metadata.jobs</code> as <code>{ police = 2, mechanic = 0 }</code>.</li>
+    </ul>
+    <pre data-title="arca_core/shared/config.lua"><code class="language-lua">ArcaConfig.Jobs = {
+    MaxJobs = 3,                -- jobs one character can hold
+    DutyOnSwitch = false,       -- go on duty when switching jobs
+    RespectDefaultDuty = true,  -- ...unless the job has defaultDuty = true
+}</code></pre>
+
+    <h3>Player methods</h3>
+    <div class="api">
+        <h3><code>player.AddJob(name, grade)</code></h3><p>Hold a job without switching to it. Returns <code>false, reason</code> if the job doesn't exist or they hold too many.</p>
+        <h3><code>player.RemoveJob(name)</code></h3><p>Stop holding it. If it was active they switch to their next job (or civilian).</p>
+        <h3><code>player.SwitchJob(name)</code></h3><p>Make a held job active (<code>'unemployed'</code> clocks out).</p>
+        <h3><code>player.GetJobs()</code></h3><p>List of <code>{ name, label, grade, gradeName, payment, isboss, active }</code>.</p>
+        <h3><code>player.HoldsJob(name, minGrade?)</code></h3><p>Do they hold this job at all (not only the active one)?</p>
+    </div>
+
+    <h3>Exports</h3>
+    <pre data-title="server.lua"><code class="language-lua">local core = exports.arca_core
+
+-- hire someone as a mechanic (keeps their current job active)
+core:AddPlayerJob(source, 'mechanic', 0)
+core:RemovePlayerJob(source, 'mechanic')
+core:SwitchJob(source, 'mechanic')
+local jobs = core:GetPlayerJobs(source)
+if core:HoldsJob(source, 'police', 2) then ... end
+
+-- duty
+core:SetDuty(source, true)                 -- also notifies the player
+core:ToggleDuty(source)
+if core:IsOnDuty(source, 'police') then ... end
+local medics = core:GetOnDuty('ambulance') -- sources
+local count = core:GetDutyCount('police')
+
+-- add a whole new job from your resource (then hire people into it)
+core:AddJob('taxi', { label = 'Downtown Cab Co.', defaultDuty = false,
+    grades = { ['0'] = { name = 'Driver', payment = 40 }, ['1'] = { name = 'Dispatcher', payment = 60, isboss = true } } })</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_core:OpenJobMenu()
+local held = exports.arca_core:GetJobs()         -- { police = 2, mechanic = 0 }
+if exports.arca_core:IsOnDuty('police') then ... end
+
+-- a duty point for your job
+exports.arca_target:addSphereZone({
+    coords = vector3(441.8, -982.1, 30.7), radius = 1.0,
+    options = { { name = 'mrpd_duty', label = 'Toggle duty', icon = 'fa-solid fa-clipboard-check', groups = 'police',
+        onSelect = function() TriggerServerEvent('arca_core:server:requestDuty', not exports.arca_core:IsOnDuty()) end } },
+})</code></pre>
+    <p>Event: <code>arca_core:server:jobsChanged</code> (<code>source, jobs</code>) fires when a player is given or loses a job.</p>
+
+    <h2>Job bank accounts</h2>
+    <p>Add <code>bank = { minGrade = n }</code> to a job and <a href="#arca-bank">arca_bank</a> creates a shared account for it. Members at grade <code>n</code> or higher can use it at branches, ATMs and on the phone.</p>
+
+    <h2>Paychecks</h2>
+    <p>Every 15 minutes, players who are <strong>on duty</strong> receive their grade's <code>payment</code> in their bank.</p>
+
+    <h2>Adding jobs from a resource</h2>
+    <pre><code class="language-lua">Arca.Functions.AddJob('taxi', {
+    label = 'Taxi',
+    defaultDuty = true,
+    grades = { ['0'] = { name = 'Driver', payment = 40 } },
+})</code></pre>
+</article>
+
+<article class="doc" id="database" data-group="Core" data-title="Database">
+    <h1>Database</h1>
+    <p class="desc">Tables created by <code>arca_core/sql/arca.sql</code>.</p>
+
+    <h2>players</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>citizenid</code></td><td>VARCHAR(16)</td><td>Unique character ID.</td></tr>
+            <tr><td><code>cid</code></td><td>TINYINT</td><td>Character slot.</td></tr>
+            <tr><td><code>license</code></td><td>VARCHAR(60)</td><td>Owner's Rockstar license.</td></tr>
+            <tr><td><code>name</code></td><td>VARCHAR(64)</td><td>FiveM name at last save.</td></tr>
+            <tr><td><code>money</code>, <code>charinfo</code>, <code>job</code>, <code>gang</code>, <code>position</code>, <code>metadata</code></td><td>JSON</td><td>Character data.</td></tr>
+            <tr><td><code>last_updated</code></td><td>TIMESTAMP</td><td>Last save time.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>playerskins</h2>
+    <p>Used for clothing. Same layout as qb-core, so existing skins and tools keep working.</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>citizenid</code></td><td>VARCHAR(16)</td><td>Character the skin belongs to.</td></tr>
+            <tr><td><code>model</code></td><td>VARCHAR(255)</td><td>Ped model.</td></tr>
+            <tr><td><code>skin</code></td><td>TEXT</td><td>illenium-appearance JSON.</td></tr>
+            <tr><td><code>active</code></td><td>TINYINT</td><td>Current skin flag.</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="conventions" data-group="Core" data-title="Conventions">
+    <h1>Conventions</h1>
+    <p class="desc">How Arca resources agree on shared state, so your scripts fit in with everything else.</p>
+
+    <div class="callout info">
+        <div class="title">What Arca doesn't ship yet</div>
+        <p>There is no Arca vehicle keys, fuel, garage or phone resource yet. If you build one, follow the conventions below so the HUD, inventory and admin menu work with it automatically. Death and EMS are handled by <a href="#arca-health">arca_health</a>.</p>
+    </div>
+
+    <h2>Checking jobs and duty</h2>
+    <pre data-title="server.lua"><code class="language-lua">local player = Arca.Functions.GetPlayer(source)
+local job = player.PlayerData.job
+if job.name ~= 'police' or not job.onduty then return end
+if job.grade.level &lt; 2 then return end     -- sergeant and up
+if job.isboss then ... end</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">if Arca.Functions.HasJob('police', true) then ... end   -- on duty only</code></pre>
+    <p>Players can hold several jobs; checks use the <strong>active</strong> one. Use <code>exports.arca_core:HoldsJob(source, name)</code> to check any job they hold. arca_target and inventory shops/stashes take a <code>groups</code> table in the same shape: <code>{ police = 0, ambulance = 2 }</code> = job (or gang) name &rarr; minimum grade.</p>
+
+    <h2>Money</h2>
+    <ul>
+        <li>Always use <code>player.AddMoney</code> / <code>RemoveMoney</code> (server). Accounts: <code>cash</code>, <code>bank</code>, <code>crypto</code>.</li>
+        <li><code>RemoveMoney</code> returns <code>false</code> when they can't afford it &mdash; check it before giving anything.</li>
+        <li>The inventory's <code>cash</code> item follows the cash balance by itself. Don't add or remove <code>cash</code> items for payments.</li>
+        <li>Pass a <code>reason</code> &mdash; it appears in the <code>onMoneyChange</code> events and in the player's arca_bank activity.</li>
+        <li>For job money, fines and shared accounts use <a href="#arca-bank">arca_bank</a>'s exports (<code>AddJobMoney</code>, <code>RemoveMoney('p:CID', ...)</code>&hellip;).</li>
+    </ul>
+
+    <h2>Metadata</h2>
+    <p>Per-character values stored in <code>PlayerData.metadata</code>. Read and write them on the server with <code>player.GetMetaData</code> / <code>SetMetaData</code>.</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Key</th><th>Values</th><th>Used by</th></tr></thead>
+        <tbody>
+            <tr><td><code>hunger</code>, <code>thirst</code></td><td>0&ndash;100, drop every minute</td><td>HUD; at 0 the player slowly loses health</td></tr>
+            <tr><td><code>stress</code></td><td>0&ndash;100</td><td>HUD stress ring (your stress script sets it)</td></tr>
+            <tr><td><code>isdead</code>, <code>inlaststand</code></td><td>boolean</td><td>Inventory is blocked, hunger/thirst stop dropping, admin revive clears them</td></tr>
+            <tr><td><code>ishandcuffed</code></td><td>boolean</td><td>Inventory blocked while true</td></tr>
+            <tr><td><code>armor</code></td><td>0&ndash;100</td><td>Saved armour</td></tr>
+            <tr><td><code>jailtime</code></td><td>minutes</td><td>For your jail script</td></tr>
+            <tr><td><code>licences</code></td><td><code>{ weapon = true, ... }</code></td><td>Inventory licence checks</td></tr>
+        </tbody>
+    </table></div>
+    <p>Add your own keys freely (<code>player.SetMetaData('fishingxp', 120)</code>). Set defaults for new characters in <code>ArcaConfig.Player.DefaultMetadata</code>.</p>
+
+    <h2>Death and revive</h2>
+    <p><a href="#arca-health">arca_health</a> owns death: it sets <code>isdead</code> / <code>inlaststand</code> / <code>deathcause</code> in metadata and <code>Player(src).state.healthState</code>. Check it with <code>exports.arca_health:IsDown(src)</code> and revive with <code>exports.arca_health:Revive(src)</code>. Any revive (arca_health, admin menu) fires:</p>
+    <pre data-title="client.lua"><code class="language-lua">AddEventHandler('arca_core:client:revived', function()
+    -- reset your death screen, timers, etc.
+end)
+-- 'hospital:client:Revive' is fired too, for qb ambulance scripts</code></pre>
+
+    <h2>Handcuffs and "busy"</h2>
+    <pre data-title="client.lua"><code class="language-lua">-- cuffed: set either of these (the inventory checks both)
+LocalPlayer.state:set('isCuffed', true, true)
+-- or, server: player.SetMetaData('ishandcuffed', true)
+
+-- any action that shouldn't overlap with the inventory
+exports.arca_inventory:SetBusy(true)
+-- ...
+exports.arca_inventory:SetBusy(false)</code></pre>
+    <p>Any <code>Arca.Progress</code> bar already counts as busy.</p>
+
+    <h2>Vehicles: spawning, keys and fuel</h2>
+    <ul>
+        <li><strong>Spawned vehicles</strong> &mdash; when Arca spawns a vehicle for a player (<code>/car</code>, admin menu), it fires <code>arca_core:client:vehicleSpawned</code> with <code>vehicle, plate</code>. A keys script should listen to it and give keys.</li>
+        <li><strong>Fuel</strong> &mdash; store fuel in the vehicle statebag <code>Entity(vehicle).state.fuel</code> (0&ndash;100). The HUD and admin refuel use it, falling back to <code>GetVehicleFuelLevel</code>.</li>
+        <li><strong>Seatbelt</strong> &mdash; tell the HUD with <code>TriggerEvent('seatbelt:client:ToggleSeatbelt', state)</code> or <code>exports.arca_hud:SetSeatbelt(state)</code>.</li>
+    </ul>
+    <pre data-title="client.lua"><code class="language-lua">AddEventHandler('arca_core:client:vehicleSpawned', function(vehicle, plate)
+    TriggerServerEvent('mykeys:give', plate)
+end)
+
+Entity(vehicle).state:set('fuel', 65.0, true)</code></pre>
+
+    <h2>Voice</h2>
+    <p>The HUD reads <code>LocalPlayer.state.proximity.index</code> (voice range) and <code>LocalPlayer.state.radioChannel</code>, the statebags pma-voice uses.</p>
+
+    <h2>Weather and time</h2>
+    <p>Don't set weather or time directly &mdash; arca_admin keeps them in sync and will overwrite you. Use <code>exports.arca_admin:SetWeather('RAIN')</code> and <code>SetTime(22, 0)</code> on the server.</p>
+
+    <h2>UI</h2>
+    <ul>
+        <li>Use <code>Arca.Notify</code>, <code>Arca.Progress</code>, <code>Arca.ShowTextUI</code>, the <a href="#context-menu">context menu</a> and <a href="#arca-target">arca_target</a> instead of shipping your own, so every script looks the same.</li>
+        <li>For custom NUI, match the theme: background <code>#0d1114</code>, panels <code>#12171b</code>, accent <code>#00ff6a</code>, text on accent <code>#03140a</code>, font Inter.</li>
+    </ul>
+
+    <h2>Naming</h2>
+    <ul>
+        <li>Prefix events and callbacks with your resource name: <code>my_garage:server:takeOut</code>, <code>my_garage:getVehicles</code>.</li>
+        <li>Never trust arguments from the client in a server event &mdash; re-check distance, job, items and money.</li>
+    </ul>
+</article>
+
+<!-- =====================================================================
+     UI MODULES
+====================================================================== -->
+<article class="doc" id="notify" data-group="UI Modules" data-title="Notify">
+    <h1>Notify</h1>
+    <p class="desc">Toast notifications.</p>
+
+    <h2>Client</h2>
+    <pre><code class="language-lua">Arca.Notify('Vehicle locked', 'success')
+
+Arca.Notify({
+    title = 'Bank',
+    description = 'You received $500',
+    type = 'success',      -- inform | success | error | warning
+    duration = 5000,
+    position = 'top-right', -- top-right | top-left | top | bottom-right | bottom-left | bottom
+})</code></pre>
+
+    <h2>Server</h2>
+    <pre><code class="language-lua">Arca.Notify(source, 'You were paid', 'success', 4000)
+Arca.Notify(source, { title = 'Police', description = 'Backup requested', type = 'warning' })</code></pre>
+
+    <p>Export: <code>exports.arca_core:Notify(...)</code> (same arguments).</p>
+</article>
+
+<article class="doc" id="progress" data-group="UI Modules" data-title="Progress bar">
+    <h1>Progress bar</h1>
+    <p class="desc">A progress bar with animations, props and control locks.</p>
+
+    <pre><code class="language-lua">local done = Arca.Progress({
+    label = 'Repairing vehicle',
+    duration = 8000,
+    canCancel = true,          -- X to cancel
+    useWhileDead = false,
+    disable = { move = true, car = true, combat = true, mouse = false },
+    anim = { dict = 'mini@repair', clip = 'fixing_a_ped' },
+    -- or anim = { scenario = 'PROP_HUMAN_BUM_BIN' },
+    prop = { model = 'prop_tool_wrench', bone = 57005, pos = vec3(0.1, 0.0, 0.0), rot = vec3(0.0, 0.0, 0.0) },
+})
+
+if done then
+    print('finished')
+else
+    print('cancelled')
+end</code></pre>
+
+    <div class="callout info">
+        <div class="title">Info</div>
+        <p><code>Arca.Progress</code> waits until the bar finishes, so call it from a thread or event handler.</p>
+    </div>
+
+    <h2>Functions</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Function</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Arca.Progress(data)</code></td><td>Show a bar. Returns <code>true</code> if completed.</td></tr>
+            <tr><td><code>Arca.ProgressActive()</code></td><td><code>true</code> while a bar is running.</td></tr>
+            <tr><td><code>Arca.CancelProgress()</code></td><td>Cancel the current bar.</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="textui" data-group="UI Modules" data-title="Text UI">
+    <h1>Text UI</h1>
+    <p class="desc">A small prompt on the side of the screen.</p>
+
+    <pre><code class="language-lua">Arca.ShowTextUI('[E] Open garage', { icon = 'fa-solid fa-warehouse', position = 'left-center' })
+
+Arca.HideTextUI()
+
+local isOpen, text = Arca.IsTextUIOpen()</code></pre>
+    <p>Text inside <code>[ ]</code> is drawn as a key. Icons use <a href="https://fontawesome.com/search?o=r&amp;m=free" target="_blank" rel="noopener">Font Awesome 6</a> classes.</p>
+</article>
+
+<article class="doc" id="context-menu" data-group="UI Modules" data-title="Context menu">
+    <h1>Context menu</h1>
+    <p class="desc">Clickable menus with submenus.</p>
+
+    <pre><code class="language-lua">Arca.RegisterContext({
+    id = 'garage_menu',
+    title = 'Legion Garage',
+    options = {
+        {
+            title = 'Sultan RS',
+            description = 'Plate: ARCA123',
+            icon = 'fa-solid fa-car',
+            metadata = { Fuel = '82%', Engine = '100%' },
+            onSelect = function(args) print('take out', args.plate) end,
+            args = { plate = 'ARCA123' },
+        },
+        { title = 'Settings', icon = 'fa-solid fa-gear', menu = 'garage_settings' },
+        { title = 'Locked', disabled = true },
+    },
+})
+
+Arca.RegisterContext({
+    id = 'garage_settings',
+    title = 'Settings',
+    menu = 'garage_menu', -- adds a back button
+    options = {
+        { title = 'Rename garage', serverEvent = 'garage:rename' },
+    },
+})
+
+Arca.ShowContext('garage_menu')</code></pre>
+
+    <h2>Menu fields</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Field</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>id</code></td><td>Unique menu ID.</td></tr>
+            <tr><td><code>title</code></td><td>Header text.</td></tr>
+            <tr><td><code>menu</code></td><td>Parent menu ID (shows a back button).</td></tr>
+            <tr><td><code>canClose</code></td><td>Set <code>false</code> to block closing.</td></tr>
+            <tr><td><code>onExit</code></td><td>Function called when closed.</td></tr>
+            <tr><td><code>options</code></td><td>List of options.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Option fields</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Field</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>title</code>, <code>description</code>, <code>icon</code></td><td>Display text and icon.</td></tr>
+            <tr><td><code>disabled</code></td><td>Greys out the option.</td></tr>
+            <tr><td><code>metadata</code></td><td>Key/value lines under the option.</td></tr>
+            <tr><td><code>menu</code></td><td>Opens another menu.</td></tr>
+            <tr><td><code>onSelect</code></td><td>Function, receives <code>args</code>.</td></tr>
+            <tr><td><code>event</code> / <code>serverEvent</code></td><td>Event triggered with <code>args</code>.</td></tr>
+            <tr><td><code>args</code></td><td>Any value passed along.</td></tr>
+        </tbody>
+    </table></div>
+
+    <p>Also: <code>Arca.HideContext()</code> and <code>Arca.GetOpenContext()</code>. <kbd>Esc</kbd> closes, <kbd>Backspace</kbd> goes back.</p>
+</article>
+
+<article class="doc" id="radial-menu" data-group="UI Modules" data-title="Radial menu">
+    <h1>Radial menu</h1>
+    <p class="desc">A circular quick-action menu, opened with <kbd>Z</kbd>.</p>
+
+    <pre><code class="language-lua">Arca.AddRadialItem({
+    { id = 'lock_vehicle', label = 'Lock', icon = 'fa-solid fa-lock', onSelect = function() ExecuteCommand('lock') end },
+    { id = 'emotes', label = 'Emotes', icon = 'fa-solid fa-face-smile', menu = 'emote_menu' },
+})
+
+Arca.RegisterRadial({
+    id = 'emote_menu',
+    items = {
+        { id = 'wave', label = 'Wave', icon = 'fa-solid fa-hand', onSelect = function() ExecuteCommand('e wave') end },
+        { id = 'sit', label = 'Sit', icon = 'fa-solid fa-chair', onSelect = function() ExecuteCommand('e sit') end },
+    },
+})</code></pre>
+
+    <h2>Functions</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Function</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>AddRadialItem(item | items)</code></td><td>Add to the main menu. Same <code>id</code> replaces.</td></tr>
+            <tr><td><code>RemoveRadialItem(id)</code></td><td>Remove an item.</td></tr>
+            <tr><td><code>ClearRadialItems()</code></td><td>Remove everything.</td></tr>
+            <tr><td><code>RegisterRadial({ id, items })</code></td><td>Register a submenu.</td></tr>
+            <tr><td><code>OpenRadial()</code> / <code>CloseRadial()</code></td><td>Open or close by code.</td></tr>
+            <tr><td><code>DisableRadial(state)</code></td><td>Block the menu (e.g. while cuffed).</td></tr>
+        </tbody>
+    </table></div>
+    <p>Item fields: <code>id</code>, <code>label</code>, <code>icon</code>, <code>onSelect</code>, <code>menu</code>, <code>keepOpen</code>.</p>
+</article>
+
+<!-- =====================================================================
+     RESOURCES
+====================================================================== -->
+<article class="doc" id="arca-target" data-group="Resources" data-title="arca_target">
+    <h1>arca_target</h1>
+    <p class="desc">Third-eye interaction. Hold <kbd>Left Alt</kbd>, look at something and click an option.</p>
+
+    <h2>Quick example</h2>
+    <pre><code class="language-lua">exports.arca_target:addGlobalVehicle({
+    {
+        name = 'check_plate',
+        label = 'Check plate',
+        icon = 'fa-solid fa-id-card',
+        groups = { police = 0 },
+        distance = 2.5,
+        onSelect = function(data)
+            print(GetVehicleNumberPlateText(data.entity))
+        end,
+    },
+})</code></pre>
+
+    <h2>Option fields</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Field</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>name</code></td><td>Unique name, used for removing. Generated if empty.</td></tr>
+            <tr><td><code>label</code></td><td>Text shown.</td></tr>
+            <tr><td><code>icon</code></td><td>Font Awesome class.</td></tr>
+            <tr><td><code>distance</code></td><td>Max distance (default <code>2.5</code>).</td></tr>
+            <tr><td><code>groups</code></td><td><code>'police'</code>, <code>{ 'police', 'ambulance' }</code> or <code>{ police = 2 }</code> (min grade). Checks job and gang.</td></tr>
+            <tr><td><code>canInteract</code></td><td><code>function(entity, distance, coords, name)</code> &rarr; <code>boolean</code></td></tr>
+            <tr><td><code>onSelect</code></td><td><code>function(data)</code></td></tr>
+            <tr><td><code>event</code> / <code>serverEvent</code></td><td>Triggered with <code>data</code>. For server events, <code>data.entity</code> is a network ID.</td></tr>
+            <tr><td><code>command</code></td><td>Command to run.</td></tr>
+        </tbody>
+    </table></div>
+    <p><code>data</code> contains <code>entity</code>, <code>coords</code>, <code>distance</code>, <code>name</code> and <code>zone</code>.</p>
+
+    <h2>Exports</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>addGlobalPed(options)</code></td><td>All non-player peds.</td></tr>
+            <tr><td><code>addGlobalPlayer(options)</code></td><td>All players.</td></tr>
+            <tr><td><code>addGlobalVehicle(options)</code></td><td>All vehicles.</td></tr>
+            <tr><td><code>addGlobalObject(options)</code></td><td>All objects.</td></tr>
+            <tr><td><code>removeGlobalPed/Player/Vehicle/Object(names?)</code></td><td>Remove by name (or all).</td></tr>
+            <tr><td><code>addModel(models, options)</code> / <code>removeModel(models, names?)</code></td><td>By model name or hash.</td></tr>
+            <tr><td><code>addEntity(netIds, options)</code> / <code>removeEntity(netIds, names?)</code></td><td>Networked entities.</td></tr>
+            <tr><td><code>addLocalEntity(entities, options)</code> / <code>removeLocalEntity(entities, names?)</code></td><td>Local entity handles.</td></tr>
+            <tr><td><code>addSphereZone(data)</code></td><td><code>{ coords, radius, options, name?, debug? }</code> &rarr; zone ID.</td></tr>
+            <tr><td><code>addBoxZone(data)</code></td><td><code>{ coords, size, rotation, options, name?, debug? }</code> &rarr; zone ID.</td></tr>
+            <tr><td><code>removeZone(idOrName)</code></td><td>Remove a zone.</td></tr>
+            <tr><td><code>disableTargeting(state)</code></td><td>Turn targeting off/on.</td></tr>
+            <tr><td><code>isActive()</code></td><td><code>true</code> while targeting.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Zones</h2>
+    <pre><code class="language-lua">local zone = exports.arca_target:addBoxZone({
+    coords = vec3(441.8, -982.0, 30.7),
+    size = vec3(1.5, 1.5, 2.0),
+    rotation = 90.0,
+    debug = true,
+    options = {
+        { label = 'Toggle duty', icon = 'fa-solid fa-clipboard', groups = 'police', serverEvent = 'QBCore:ToggleDuty' },
+    },
+})
+
+exports.arca_target:removeZone(zone)</code></pre>
+
+    <div class="callout tip">
+        <div class="title">Tip</div>
+        <p>Targets registered by a resource are removed automatically when that resource stops.</p>
+    </div>
+
+    <h2>Config</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Key</code></td><td><code>'LMENU'</code></td><td>Default key (Left Alt).</td></tr>
+            <tr><td><code>MaxDistance</code></td><td><code>7.0</code></td><td>How far the eye looks.</td></tr>
+            <tr><td><code>DefaultDistance</code></td><td><code>2.5</code></td><td>Option distance when none given.</td></tr>
+            <tr><td><code>Debug</code></td><td><code>false</code></td><td>Draw every zone.</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+<article class="doc" id="arca-character" data-group="Resources" data-title="arca_character">
+    <h1>arca_character</h1>
+    <p class="desc">Character selection and creation.</p>
+
+    <h2>How it works</h2>
+    <ol>
+        <li>When a player joins, the loading screen closes and the selection menu opens.</li>
+        <li>They pick a character, or create one in an empty slot (name, birthdate, gender, nationality).</li>
+        <li>The character spawns at their last position. New characters spawn at <code>Config.Player.DefaultSpawn</code>.</li>
+        <li><code>/logout</code> returns to the menu.</li>
+    </ol>
+
+    <h2>illenium-appearance</h2>
+    <p>If <code>illenium-appearance</code> is running, it's used automatically:</p>
+    <ul>
+        <li><strong>New characters</strong> open the appearance editor right after spawning.</li>
+        <li><strong>Existing characters</strong> get their saved look applied before the screen fades in.</li>
+        <li>Skins are stored in the <a href="#database">playerskins</a> table.</li>
+    </ul>
+
+    <h2>Config</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>Scene.ped</code></td><td>Where the preview character stands (<code>vector4</code>). Default: Michael's living room.</td></tr>
+            <tr><td><code>Scene.distance</code> / <code>height</code> / <code>fov</code></td><td>Camera placement in front of the character. The floor is measured on open, so every character is framed the same.</td></tr>
+            <tr><td><code>Scene.hour</code> / <code>anim</code></td><td>Time of day and the preview idle animation.</td></tr>
+            <tr><td><code>UseSpawnSelector</code></td><td>Let players choose with <a href="#arca-spawn">arca_spawn</a> (default <code>true</code>). Falls back to the last position when it isn't running.</td></tr>
+            <tr><td><code>Appearance.Resource</code></td><td>Appearance resource name (default <code>illenium-appearance</code>).</td></tr>
+            <tr><td><code>Appearance.Customization</code></td><td>Which editor tabs new characters see.</td></tr>
+            <tr><td><code>Models</code></td><td>Ped models for male (<code>0</code>) and female (<code>1</code>).</td></tr>
+            <tr><td><code>Nationalities</code></td><td>Options in the creation form.</td></tr>
+            <tr><td><code>MinAge</code> / <code>MaxAge</code></td><td>Allowed character age.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Events</h2>
+    <p><code>arca_character:client:spawned</code> fires on the client after a character has spawned, with their PlayerData.</p>
+</article>
+
+<!-- ---------------------------------------------------------------------
+     Other resources
+---------------------------------------------------------------------- -->
+<article class="doc" id="arca-spawn" data-group="Resources" data-title="arca_spawn">
+    <h1>arca_spawn</h1>
+    <p class="desc">Choose where to spawn after picking a character.</p>
+
+    <h2>How it works</h2>
+    <ol>
+        <li>After a player presses <strong>Play</strong> in <a href="#arca-character">arca_character</a>, a camera opens high above the city.</li>
+        <li>Clicking a location flies the camera there. <kbd>↑</kbd> / <kbd>↓</kbd> browse the list.</li>
+        <li><strong>Spawn here</strong>, <kbd>Enter</kbd> or clicking the selected card again dives the camera down and spawns the player.</li>
+    </ol>
+    <ul>
+        <li><strong>Last location</strong> is offered first (where the character logged out).</li>
+        <li>Players who are downed or dead (<a href="#arca-health">arca_health</a>) or still in jail (<code>metadata.jailtime</code>) only get <em>Last location</em>, so relogging can't skip death or a sentence.</li>
+        <li>New characters skip the selector: they spawn at <code>ArcaConfig.Player.DefaultSpawn</code> and go straight into the appearance editor.</li>
+        <li>The server keeps the coordinates and only accepts a location it offered that player.</li>
+    </ul>
+
+    <h2>Setup</h2>
+    <p>Start it after <code>arca_core</code>. arca_character uses it when <code>CharConfig.UseSpawnSelector = true</code> (the default). Without arca_spawn running, characters spawn at their last position.</p>
+
+    <h2>Config</h2>
+    <pre data-title="arca_spawn/config.lua"><code class="language-lua">SpawnConfig = {
+    LastLocation = true,        -- offer "Last location"
+    ForceLastWhenDown = true,   -- downed / dead / jailed players only get "Last location"
+    CameraHeight = 220.0,       -- camera height while browsing
+
+    Locations = {
+        { id = 'legion', label = 'Legion Square', area = 'Downtown Los Santos',
+          icon = 'fa-solid fa-tree-city', coords = vector4(195.17, -933.77, 30.69, 144.5) },
+
+        -- job / gang only: groups = { name = minimum grade }
+        { id = 'mrpd', label = 'Mission Row PD', area = 'Police Department',
+          icon = 'fa-solid fa-building-shield', coords = vector4(428.23, -984.28, 30.71, 3.0),
+          groups = { police = 0 } },
+    },
+}</code></pre>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Location field</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>id</code></td><td>Unique name.</td></tr>
+            <tr><td><code>label</code> / <code>area</code></td><td>Shown on the card.</td></tr>
+            <tr><td><code>icon</code></td><td>Font Awesome class.</td></tr>
+            <tr><td><code>coords</code></td><td><code>vector4</code> &mdash; position and heading.</td></tr>
+            <tr><td><code>groups</code></td><td>Optional. Only these jobs / gangs see it, with a <strong>JOB</strong> badge.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Using it from your script</h2>
+    <pre data-title="client.lua"><code class="language-lua">-- open the selector again (e.g. leaving an apartment or after a prison release)
+exports.arca_spawn:Open()
+
+-- after the player has spawned somewhere
+AddEventHandler('arca_spawn:client:spawned', function(coords)
+    print(('spawned at %.1f, %.1f'):format(coords.x, coords.y))
+end)</code></pre>
+    <p><code>arca_character:client:spawned</code> still fires after spawning, so scripts listening to it keep working.</p>
+</article>
+
+<article class="doc" id="arca-bank" data-group="Resources" data-title="arca_bank">
+    <h1>arca_bank</h1>
+    <p class="desc">Banking: personal, savings, shared and job accounts, Fleeca branches, ATMs with card PINs and a phone app.</p>
+
+    <h2>Accounts</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Type</th><th>Who can use it</th><th>Notes</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Personal</strong></td><td>The character</td><td>Everyone has one. It <em>is</em> the arca_core <code>bank</code> balance, so <code>player.AddMoney('bank', ...)</code> keeps working everywhere. Can't be shared or closed.</td></tr>
+            <tr><td><strong>Savings / Shared / Business</strong></td><td>The owner + people they add</td><td>Opened at a branch (up to <code>MaxAccountsPerPlayer</code>). The owner renames it, adds / removes people by citizen ID and can close it (the balance goes to their personal account).</td></tr>
+            <tr><td><strong>Job</strong></td><td>Job members at or above <code>minGrade</code></td><td>Created automatically for every job with <code>bank = { minGrade = n }</code> in <a href="#jobs-gangs">jobs.lua</a>.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Where you can do what</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th></th><th>Branch (teller)</th><th>ATM</th><th>Phone (Fleeca app)</th></tr></thead>
+        <tbody>
+            <tr><td>Balances &amp; activity</td><td>✓</td><td>balance</td><td>✓</td></tr>
+            <tr><td>Deposit cash</td><td>✓</td><td></td><td></td></tr>
+            <tr><td>Withdraw cash</td><td>✓</td><td>✓ (PIN)</td><td></td></tr>
+            <tr><td>Transfer</td><td>✓</td><td></td><td>✓</td></tr>
+            <tr><td>Open / rename / close, manage access</td><td>✓</td><td></td><td></td></tr>
+            <tr><td>Set a card PIN</td><td>✓</td><td></td><td></td></tr>
+        </tbody>
+    </table></div>
+    <ul>
+        <li><strong>Cards</strong> &mdash; setting a PIN turns an account into a virtual card. ATMs list only accounts you can use, and only ones with a card work. Three wrong PINs lock the card for 2 minutes.</li>
+        <li><strong>Transfers</strong> go to a <strong>citizen ID</strong> (that person's personal account, even offline) or an <strong>account number</strong>.</li>
+        <li><strong>Locations</strong> &mdash; all Fleeca branches, Blaine County Savings and Pacific Standard (teller ped + blip), and every ATM prop in the map. Third-eye them, or press <kbd>E</kbd>.</li>
+    </ul>
+
+    <h2>Job accounts</h2>
+    <pre data-title="arca_core/shared/jobs.lua"><code class="language-lua">police = {
+    label = 'Law Enforcement',
+    bank = { minGrade = 3 },    -- Lieutenant and up can use the police account
+    grades = { ... },
+},</code></pre>
+
+    <h2>Account refs</h2>
+    <p>Every export takes an account <strong>ref</strong>:</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Ref</th><th>Account</th></tr></thead>
+        <tbody>
+            <tr><td><code>'p:ABC12345'</code></td><td>A citizen's personal account (their arca_core bank).</td></tr>
+            <tr><td><code>'a:1004'</code></td><td>An extra account or a job account, by number.</td></tr>
+            <tr><td><code>'job:police'</code></td><td>Shortcut for a job's account.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Examples</h2>
+    <pre data-title="server.lua"><code class="language-lua">local bank = exports.arca_bank
+
+-- pay a fine from someone's personal account into the police account
+local cid = exports.arca_core:GetPlayer(source).PlayerData.citizenid
+if bank:RemoveMoney('p:' .. cid, 500, 'Speeding fine') then
+    bank:AddJobMoney('police', 500, 'Fine from ' .. cid)
+end
+
+-- a business pays its employees from the job account
+if bank:GetJobBalance('mechanic') >= 250 then
+    bank:RemoveJobMoney('mechanic', 250, 'Wages')
+end
+
+-- open an account for a player from a script (e.g. a property purchase)
+local ref = bank:CreateAccount(cid, 'House savings', 'savings', 'Jordan Reyes')
+
+-- what can this player use?
+for _, acc in ipairs(bank:GetAccounts(source)) do
+    print(acc.label, acc.ref, acc.balance, acc.access)   -- access: 'personal' | 'manage' | 'use'
+end
+
+-- transfer as the player (checks their access and balance)
+local ok, msg = bank:Transfer(source, 'p:' .. cid, '1004', 250, 'Rent')</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_bank:OpenBank()      -- only works near a teller
+exports.arca_bank:OpenATM()</code></pre>
+
+    <h2>Server exports</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>GetAccounts</code></td><td><code>source</code></td><td>list</td></tr>
+            <tr><td><code>GetBalance</code></td><td><code>ref</code></td><td>number</td></tr>
+            <tr><td><code>AddMoney</code> / <code>RemoveMoney</code></td><td><code>ref, amount, reason?</code></td><td>boolean</td></tr>
+            <tr><td><code>Transfer</code></td><td><code>source, fromRef, target, amount, note?</code></td><td>ok, message</td></tr>
+            <tr><td><code>HasAccess</code> / <code>GetAccess</code></td><td><code>source, ref</code></td><td>boolean / level</td></tr>
+            <tr><td><code>GetJobAccount</code> / <code>GetJobBalance</code></td><td><code>job</code></td><td>ref / number</td></tr>
+            <tr><td><code>AddJobMoney</code> / <code>RemoveJobMoney</code></td><td><code>job, amount, reason?</code></td><td>boolean</td></tr>
+            <tr><td><code>CreateAccount</code></td><td><code>citizenid, label, kind?, ownerName?</code></td><td>ref</td></tr>
+            <tr><td><code>GetTransactions</code></td><td><code>ref, limit?</code></td><td>rows</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Config</h2>
+    <pre data-title="arca_bank/config.lua"><code class="language-lua">BankConfig = {
+    MaxAccountsPerPlayer = 3,
+    AccountTypes = { { id = 'savings', ... }, { id = 'shared', ... }, { id = 'business', ... } },
+    MaxMembers = 8,
+    PinLength = 4, PinAttempts = 3, PinLockTime = 120,
+    AtmMaxWithdraw = 5000,
+    Branches = { { label = 'Fleeca · Legion Square', ped = vector4(...) }, ... },
+    AtmModels = { 'prop_atm_01', 'prop_atm_02', 'prop_atm_03', 'prop_fleeca_atm' },
+}</code></pre>
+</article>
+
+<article class="doc" id="arca-phone" data-group="Resources" data-title="arca_phone">
+    <h1>arca_phone</h1>
+    <p class="desc">An iFruit smartphone with calls, messages, contacts and Fleeca banking &mdash; built around phone chips.</p>
+
+    <h2>Phone chips</h2>
+    <p>A phone's number, contacts, messages, call history and settings live on its <strong>chip</strong> &mdash; not on the phone or the character.</p>
+    <ul>
+        <li>Every new phone (shops, <code>/giveitem</code>, the starter phone) comes with its own chip and a <code>555-####</code> number.</li>
+        <li><strong>Right-click a phone</strong> in the inventory to see its chip, <strong>remove</strong> it (it becomes a <code>phone_chip</code> item) or <strong>insert</strong> one.</li>
+        <li>No chip = the phone shows an <strong>"OS visual issue"</strong> screen. Whoever holds your phone can take your chip &mdash; and your number and messages with it.</li>
+        <li>Spare chips are sold at the <strong>Digital Den</strong> electronics stores.</li>
+    </ul>
+
+    <h2>Apps</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>App</th><th>What it does</th></tr></thead>
+        <tbody>
+            <tr><td>Phone</td><td>Keypad, recent calls, contacts. Calls ring the other player and use pma-voice for audio.</td></tr>
+            <tr><td>Messages</td><td>Conversations with unread badges, delivered live to whoever carries that chip.</td></tr>
+            <tr><td>Contacts</td><td>Add, edit, delete, search &mdash; call or message from the list.</td></tr>
+            <tr><td>Fleeca</td><td>Account balances, activity and transfers (needs <a href="#arca-bank">arca_bank</a>).</td></tr>
+            <tr><td>Settings</td><td>Chip number, silent mode, wallpapers.</td></tr>
+        </tbody>
+    </table></div>
+    <p>Open it with <kbd>M</kbd> or by using the phone item. You can keep walking while it's open; movement is blocked while typing. Incoming calls and messages show as banners while it's put away.</p>
+
+    <h2>Config &amp; exports</h2>
+    <pre data-title="arca_phone/config.lua"><code class="language-lua">PhoneConfig = {
+    Key = 'M',
+    NumberFormat = '555-####',
+    StarterPhone = true,        -- new characters get a phone
+    RingTime = 30,
+    MaxMessageLength = 500,
+    Voice = 'pma-voice',
+}</code></pre>
+    <pre data-title="lua"><code class="language-lua">-- client
+exports.arca_phone:Open()      exports.arca_phone:Close()      exports.arca_phone:IsOpen()
+
+-- server
+local number = exports.arca_phone:NewChipNumber()     -- a new unused number
+local holders = exports.arca_phone:GetHolders('555-0123')   -- players carrying that chip</code></pre>
+</article>
+
+<article class="doc" id="arca-health" data-group="Resources" data-title="arca_health">
+    <h1>arca_health</h1>
+    <p class="desc">The medical core: last stand, death screen, injuries, bleeding, EMS and hospital respawns.</p>
+
+    <h2>How it works</h2>
+    <ol>
+        <li><strong>Downed</strong> &mdash; at 0 health you go into last stand. Press <kbd>G</kbd> to call EMS. A timer counts down until you bleed out.</li>
+        <li><strong>Unconscious</strong> &mdash; after the timer (or with last stand off). Once <code>DeathTime</code> has passed, <strong>hold <kbd>E</kbd></strong> to respawn at the nearest hospital for a fee.</li>
+        <li><strong>Revived</strong> &mdash; by EMS, an admin or a script, at any point.</li>
+    </ol>
+    <p>The state is saved in metadata, so relogging doesn't get you out of it.</p>
+
+    <h2>Injuries</h2>
+    <ul>
+        <li>Each hit is recorded per body part (head, torso, arms, legs) with severity 1&ndash;4, and the cause is worked out from the weapon (gunshot, stab, blunt force, fall, vehicle, burns&hellip;).</li>
+        <li>Bullets and blades cause <strong>bleeding</strong>, which drains health; heavy bleeding blurs the screen.</li>
+        <li>Leg injuries make you <strong>limp</strong> (no sprinting or jumping).</li>
+        <li>An arca_inventory <code>bandage</code> slows bleeding; a <code>medikit</code> stops it.</li>
+    </ul>
+
+    <h2>EMS</h2>
+    <p>On-duty EMS (<code>EMSJobs</code>, default <code>ambulance</code>) get third-eye options on players: <strong>Revive</strong>, <strong>Treat wounds</strong> and <strong>Check injuries</strong> (state, likely cause, bleeding and every injured part). Pressing <kbd>G</kbd> sends EMS an alert with a flashing blip. When no EMS are on duty, players can pay at the hospital <strong>check-in desk</strong>.</p>
+
+    <h2>Config</h2>
+    <pre data-title="arca_health/config.lua"><code class="language-lua">HealthConfig = {
+    LastStand = { Enabled = true, Time = 180 },
+    DeathTime = 300,
+    Respawn = { Fee = 500, ClearInventory = false, Hospitals = { ... } },
+    EMSJobs = { ambulance = 0 },
+    Revive = { Distance = 3.0, Duration = 8000, Item = false },   -- Item = 'medikit' to use one per revive
+    Treat = { Duration = 5000, Item = false },
+    CheckIn = { Enabled = true, Fee = 250, MaxEMSOnDuty = 0, Locations = { ... } },
+    Injuries = { Enabled = true, BleedInterval = 30, BleedDamage = 2, LimpFromSeverity = 2 },
+}</code></pre>
+
+    <h2>Using it from your script</h2>
+    <pre data-title="server.lua"><code class="language-lua">if exports.arca_health:IsDown(source) then
+    return Arca.Notify(source, "You can't do that while down", 'error')
+end
+
+exports.arca_health:Revive(target)      -- get them up
+exports.arca_health:Heal(target)        -- full health, injuries cleared
+local state = exports.arca_health:GetState(target)  -- 'alive' | 'laststand' | 'dead'
+
+AddEventHandler('arca_health:server:emsCalled', function(source, coords)
+    -- send it to your dispatch / MDT
+end)</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">-- another player's state (statebag, works for anyone nearby)
+local state = Player(serverId).state.healthState
+
+-- your own
+if exports.arca_health:IsDown() then return end
+if exports.arca_health:IsBleeding() then ... end
+
+AddEventHandler('arca_health:client:stateChanged', function(state, cause)
+    print('now ' .. state)
+end)</code></pre>
+
+    <h2>Commands &amp; exports</h2>
+    <p><code>/revive [id]</code> and <code>/heal [id]</code> (admin). Server exports: <code>Revive</code>, <code>Heal</code>, <code>Kill</code>, <code>GetState</code>, <code>IsDead</code>, <code>IsDown</code>. Client exports: <code>GetState</code>, <code>IsDead</code>, <code>IsDown</code>, <code>Revive</code>, <code>GetInjuries</code>, <code>ClearInjuries</code>, <code>IsBleeding</code>. qb scripts using <code>hospital:client:Revive</code> / <code>HealInjuries</code> keep working.</p>
+</article>
+
+<article class="doc" id="arca-hud" data-group="Resources" data-title="arca_hud">
+    <h1>arca_hud</h1>
+    <p class="desc">Player status, speedometer and a framed minimap.</p>
+
+    <ul>
+        <li><strong>Status</strong> &mdash; health, armour, hunger, thirst and stress.</li>
+        <li><strong>Vehicle</strong> &mdash; speed (mph or km/h), fuel and seatbelt.</li>
+        <li><strong>Location</strong> &mdash; street, area and compass.</li>
+        <li><strong>Money</strong> &mdash; pops up when cash or bank changes (or always / never).</li>
+        <li><strong><code>/hud</code></strong> &mdash; a settings menu where players turn HUD elements on and off.</li>
+        <li><strong>GTA HUD</strong> &mdash; hides the GTA pieces Arca replaces (wanted stars, cash, street name&hellip;).</li>
+    </ul>
+
+    <h2>Config</h2>
+    <pre data-title="arca_hud/config.lua"><code class="language-lua">HudConfig = {
+    SpeedUnit = 'mph',          -- 'mph' or 'kmh'
+    MinimapOnFoot = false,
+    ShowMoney = 'change',       -- 'always', 'change' or 'never'
+    ShowLocation = true,
+    ShowStress = true,
+    Minimap = { Zoom = 1100, Style = 'frame' },
+    DisableComponents = { WANTED_STARS = true, CASH = true, STREET_NAME = true, ... },
+}</code></pre>
+
+    <h2>Exports</h2>
+    <p><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code>.</p>
+</article>
+
+<article class="doc" id="arca-loadingscreen" data-group="Resources" data-title="arca_loadingscreen">
+    <h1>arca_loadingscreen</h1>
+    <p class="desc">An Arca-themed loading screen: welcome, tips, links, team and a real progress bar.</p>
+
+    <p>Everything is set in <code>web/config.js</code> &mdash; no Lua needed:</p>
+    <pre data-title="web/config.js"><code class="language-js">window.ArcaLoading = {
+    serverName: 'Arca Roleplay',    // sv_projectName overrides this
+    tagline: 'Your story starts here.',
+    background: 'assets/background.svg',
+    backgroundVideo: '',            // 'assets/background.webm'
+    music: '',                      // 'assets/music.mp3'
+    musicVolume: 0.25,
+    tips: ['Press Z to open the radial menu.'],
+    links: [{ icon: 'fa-brands fa-discord', label: 'Discord', url: 'discord.gg/yourserver' }],
+    team: [{ name: 'Owner', role: 'Founder' }],
+};</code></pre>
+    <p>The screen stays up until <code>arca_character</code> is ready, and GTA's own &ldquo;Loading game&rdquo; spinner is hidden while it's shown.</p>
+</article>
+
+<article class="doc" id="arca-admin" data-group="Resources" data-title="arca_admin">
+    <h1>arca_admin</h1>
+    <p class="desc">One menu to run the server: <code>/admin</code> or <kbd>F10</kbd>.</p>
+
+    <div class="table-wrap"><table>
+        <thead><tr><th>Tab</th><th>What's in it</th></tr></thead>
+        <tbody>
+            <tr><td>Dashboard</td><td>Players, uptime, weather, time and quick actions.</td></tr>
+            <tr><td>Players</td><td>Searchable list. Go to, bring, send back, spectate, freeze, heal, revive, kill, set job / gang, give or remove money, give items, open or clear inventory, clothing menu, spawn a vehicle for them, message, kick, ban.</td></tr>
+            <tr><td>Vehicles</td><td>Spawn by model or quick list; repair, clean, refuel, flip, max upgrades, delete; clear empty vehicles nearby or map-wide.</td></tr>
+            <tr><td>World</td><td>Weather, time, freeze time and blackout, synced to everyone.</td></tr>
+            <tr><td>Self &amp; Dev</td><td>Noclip, god mode, invisible, names, map-wide blips, teleport to waypoint / coords, <strong>coords editor</strong>, copy vector3 / vector4.</td></tr>
+            <tr><td>Server</td><td>Announcements, revive all, active bans with unban, and a resource manager (start / stop / restart).</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Permissions</h2>
+    <p>The menu opens for <code>mod</code> and up. Every action has its own minimum level in <code>AdminConfig.Permissions</code>; buttons an admin can't use are hidden and refused by the server.</p>
+    <pre data-title="shared/config.lua"><code class="language-lua">AdminConfig.Permissions = {
+    kick = 'mod', ban = 'admin', givemoney = 'god', resources = 'god',
+    noclip = 'mod', weather = 'admin', clothing = 'admin', ...
+}</code></pre>
+    <p>The resource manager needs <code>add_ace resource.arca_admin command allow</code> (the recipe adds it).</p>
+
+    <h2>Bans</h2>
+    <p>Stored in <code>arca_bans</code> and checked on connect against license, Discord, FiveM ID and IP. Choose permanent or 1 hour &ndash; 30 days.</p>
+
+    <h2>Weather &amp; time</h2>
+    <p>arca_admin runs the server clock (48-minute day by default) and weather through GlobalState. Set <code>AdminConfig.World.Enabled = false</code> if you use another weather script.</p>
+    <p>Exports: <code>SetWeather(name)</code>, <code>SetTime(hour, minute)</code>, <code>GetWorld()</code>.</p>
+</article>
+
+<article class="doc" id="arca-chattheme" data-group="Resources" data-title="arca_chattheme">
+    <h1>arca_chattheme</h1>
+    <p class="desc">Arca's look for the default cfx chat.</p>
+    <p>Messages become dark cards with a green accent; the input and command suggestions match. It applies automatically once started after <code>chat</code>.</p>
+
+    <h2>Badge templates</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Kind</th><th>Arguments</th><th>Look</th></tr></thead>
+        <tbody>
+            <tr><td><code>system</code></td><td>text</td><td>Blue SYSTEM badge</td></tr>
+            <tr><td><code>announce</code></td><td>text</td><td>Amber ANNOUNCEMENT card</td></tr>
+            <tr><td><code>error</code></td><td>text</td><td>Red ERROR badge</td></tr>
+            <tr><td><code>staff</code></td><td>author, text</td><td>Red STAFF badge</td></tr>
+            <tr><td><code>ooc</code></td><td>author, text</td><td>Grey OOC badge</td></tr>
+            <tr><td><code>me</code></td><td>name, action</td><td>Purple italic action</td></tr>
+        </tbody>
+    </table></div>
+    <pre><code class="language-lua">-- server
+exports.arca_chattheme:Send(-1, 'announce', 'Server restart in 10 minutes')
+-- client
+exports.arca_chattheme:Send('error', 'You can\'t do that here')</code></pre>
+</article>
+
+<article class="doc" id="illenium-appearance" data-group="Resources" data-title="illenium-appearance (fork)">
+    <h1>illenium-appearance</h1>
+    <p class="desc">The Arca fork of illenium-appearance.</p>
+    <ul>
+        <li><strong>Native Arca support</strong> &mdash; detects <code>arca_core</code> directly (no qb-core detection tricks) and handles first-character creation with starter clothes.</li>
+        <li><strong>Arca theme</strong> &mdash; dark panels, the Arca green and Inter; set as <code>currentTheme = "arca"</code> in <code>shared/theme.lua</code>.</li>
+        <li><strong>Creates its tables</strong> &mdash; outfit and skin tables are created on start if missing.</li>
+        <li>Admins can open it for any player from the <a href="#arca-admin">admin menu</a>.</li>
+    </ul>
+    <p>Start <code>arca_core</code> before it so it picks Arca as the framework.</p>
+</article>
+
+<!-- ---------------------------------------------------------------------
+     arca_inventory
+---------------------------------------------------------------------- -->
+<article class="doc" id="arca-inventory" data-group="Inventory" data-title="Overview">
+    <h1>arca_inventory</h1>
+    <p class="desc">A container-based inventory: every inventory is a window you can drag items between.</p>
+
+    <h2>Features</h2>
+    <ul>
+        <li><strong>Containers</strong> &mdash; player, ground drops, trunks (size per vehicle class), gloveboxes, stashes, shops and dumpsters, side by side. Windows can be dragged and remember their position.</li>
+        <li><strong>Weight or slots</strong> &mdash; weights in grams, or set <code>UseWeight = false</code> for slot-only.</li>
+        <li><strong>Hotbar</strong> &mdash; slots 1&ndash;5 are used with keys <kbd>1</kbd>&ndash;<kbd>5</kbd>.</li>
+        <li><strong>Cash as an item</strong> &mdash; the <code>cash</code> item always equals the player's cash balance. Dropping, giving or storing it moves the money.</li>
+        <li><strong>Rarity</strong> &mdash; common, uncommon, rare and legendary slot highlights.</li>
+        <li><strong>Weapons</strong> &mdash; see <a href="#inventory-weapons">Weapons</a>.</li>
+        <li><strong>Server-owned</strong> &mdash; the server validates every move, purchase and use.</li>
+    </ul>
+
+    <h2>Controls</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Action</th><th>How</th></tr></thead>
+        <tbody>
+            <tr><td>Open</td><td><kbd>I</kbd> (rebindable) &mdash; opens the trunk you stand behind or the glovebox you sit in</td></tr>
+            <tr><td>Move</td><td>Drag; <kbd>Shift</kbd>+drag moves half a stack</td></tr>
+            <tr><td>Use</td><td>Double-click, or the hotbar keys</td></tr>
+            <tr><td>Weapon menu</td><td>Right-click a weapon to see ammo, durability, registration and remove attachments</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Config</h2>
+    <p>Everything lives in <code>arca_inventory/shared/config.lua</code>:</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Option</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>OpenKey</code> / <code>HotbarSlots</code></td><td>Default open key and number of hotbar slots.</td></tr>
+            <tr><td><code>UseWeight</code></td><td><code>true</code> = weight + slots, <code>false</code> = slots only.</td></tr>
+            <tr><td><code>Player</code> / <code>Drop</code> / <code>Glovebox</code></td><td><code>{ slots, weight }</code> for each container.</td></tr>
+            <tr><td><code>Trunk</code></td><td>Default size plus sizes per vehicle class (<code>0</code> slots = no trunk).</td></tr>
+            <tr><td><code>CashItem</code></td><td>Keep cash as an item in sync with the cash account.</td></tr>
+            <tr><td><code>ShopPayment</code> / <code>Shops</code></td><td>See <a href="#inventory-shops">Shops &amp; stashes</a>.</td></tr>
+            <tr><td><code>Dumpsters</code></td><td>Searchable dumpster models, loot table and cooldown.</td></tr>
+            <tr><td><code>Rarity</code></td><td>Turn rarity highlights on/off and set their colours.</td></tr>
+            <tr><td><code>Weapons</code></td><td>See <a href="#inventory-weapons">Weapons</a>.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Server exports</h2>
+    <p><code>target</code> is a player source or an inventory ID (e.g. <code>'stash:police'</code>).</p>
+    <pre><code class="language-lua">exports.arca_inventory:AddItem(source, 'water', 2)
+exports.arca_inventory:RemoveItem(source, 'lockpick', 1)
+if exports.arca_inventory:HasItem(source, { bread = 1, water = 1 }) then ... end
+local count = exports.arca_inventory:GetItemCount(source, 'cash')</code></pre>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th></tr></thead>
+        <tbody>
+            <tr><td><code>AddItem</code></td><td><code>target, name, count, slot?, metadata?</code></td></tr>
+            <tr><td><code>RemoveItem</code></td><td><code>target, name, count, slot?</code></td></tr>
+            <tr><td><code>GetItemCount</code> / <code>HasItem</code> / <code>CanCarryItem</code></td><td><code>target, name | items, amount?</code></td></tr>
+            <tr><td><code>GetItemByName</code> / <code>GetItemsByName</code> / <code>GetItemBySlot</code></td><td><code>target, name | slot</code></td></tr>
+            <tr><td><code>GetInventory</code> / <code>ClearInventory</code> / <code>SetInventory</code></td><td><code>target, items?</code></td></tr>
+            <tr><td><code>RegisterStash</code></td><td><code>id, { label, slots, weight, coords?, range?, groups? }</code></td></tr>
+            <tr><td><code>GetItems</code></td><td>the item list</td></tr>
+            <tr><td><code>OpenPlayerInventory</code></td><td><code>adminSource, targetSource</code> (admin only)</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Client exports</h2>
+    <p><code>OpenStash(id)</code>, <code>OpenTrunk(vehicle)</code>, <code>CloseInventory()</code>, <code>SetBusy(state, reason?)</code>, <code>IsBusy()</code>, <code>HasItem(items, amount?)</code>, <code>GetItemCount(name)</code>, <code>GetPlayerItems()</code>, <code>GetEquippedWeapon()</code>, <code>Disarm()</code>.</p>
+</article>
+
+<article class="doc" id="inventory-items" data-group="Inventory" data-title="Items">
+    <h1>Items</h1>
+    <p class="desc">Items are defined in <code>arca_inventory/shared/items.lua</code>.</p>
+
+    <pre data-title="shared/items.lua"><code class="language-lua">water = {
+    label = 'Water', weight = 500, stack = true, close = true,
+    rarity = 'common', icon = 'fa-solid fa-bottle-water',
+    description = 'Fresh bottled water.',
+},</code></pre>
+
+    <div class="table-wrap"><table>
+        <thead><tr><th>Field</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>label</code> / <code>description</code></td><td>Shown in the slot and tooltip.</td></tr>
+            <tr><td><code>weight</code></td><td>Grams per item.</td></tr>
+            <tr><td><code>stack</code></td><td><code>false</code> = one per slot (items with metadata, weapons).</td></tr>
+            <tr><td><code>close</code></td><td>Close the inventory when used.</td></tr>
+            <tr><td><code>rarity</code></td><td><code>common</code> | <code>uncommon</code> | <code>rare</code> | <code>legendary</code></td></tr>
+            <tr><td><code>icon</code></td><td>Font Awesome icon used when <code>web/images/&lt;name&gt;.png</code> doesn't exist.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Images</h2>
+    <p>Put a PNG named after the item in <code>arca_inventory/web/images/</code>. The default items ship with images from the <a href="https://items.rainmad.com" target="_blank" rel="noopener">RAINMAD gallery</a>.</p>
+
+    <h2>Usable items</h2>
+    <p>Register what happens when an item is used through the core:</p>
+    <pre><code class="language-lua">Arca.Functions.CreateUseableItem('sandwich', function(source, item)
+    exports.arca_inventory:RemoveItem(source, 'sandwich', 1, item.slot)
+    -- feed the player...
+end)</code></pre>
+</article>
+
+<article class="doc" id="inventory-examples" data-group="Inventory" data-title="Examples">
+    <h1>Inventory examples</h1>
+    <p class="desc">Copy-paste recipes for the things every server needs.</p>
+
+    <div class="callout info">
+        <div class="title">The basics</div>
+        <ul>
+            <li>Item changes happen on the <strong>server</strong>. The client can only read (to show or hide options).</li>
+            <li><code>target</code> is a player's <code>source</code>, or an inventory ID like <code>'stash:police_evidence'</code>.</li>
+            <li>Every item you use must exist in <code>arca_inventory/shared/items.lua</code>.</li>
+        </ul>
+    </div>
+
+    <h2>Give and take items</h2>
+    <pre data-title="server.lua"><code class="language-lua">local inv = exports.arca_inventory
+
+-- give 3 water (returns false if they can't carry it)
+if not inv:AddItem(source, 'water', 3) then
+    exports.arca_core:Notify(source, 'Your pockets are full', 'error')
+end
+
+-- take 1 lockpick (returns false if they don't have it)
+if inv:RemoveItem(source, 'lockpick', 1) then
+    print('lockpick used')
+end
+
+-- how many do they have?
+local copper = inv:GetItemCount(source, 'copper')</code></pre>
+
+    <h2>Check before you give</h2>
+    <p>Check that the reward fits <em>before</em> taking anything, so players never lose items to a full inventory.</p>
+    <pre data-title="server.lua"><code class="language-lua">if not exports.arca_inventory:CanCarryItem(source, 'goldbar', 1) then
+    return exports.arca_core:Notify(source, 'You can\'t carry that', 'error')
+end
+exports.arca_inventory:AddItem(source, 'goldbar', 1)</code></pre>
+
+    <h2>Crafting: needs several items</h2>
+    <pre data-title="server.lua"><code class="language-lua">local recipe = { copper = 5, lockpick = 1 }
+
+RegisterNetEvent('myres:craftPick', function()
+    local src = source
+    local inv = exports.arca_inventory
+
+    if not inv:HasItem(src, recipe) then
+        return exports.arca_core:Notify(src, 'You are missing materials', 'error')
+    end
+    if not inv:CanCarryItem(src, 'advancedlockpick', 1) then
+        return exports.arca_core:Notify(src, 'No room for the result', 'error')
+    end
+
+    for name, count in pairs(recipe) do
+        inv:RemoveItem(src, name, count)
+    end
+    inv:AddItem(src, 'advancedlockpick', 1)
+    exports.arca_core:Notify(src, 'Crafted an advanced lockpick', 'success')
+end)</code></pre>
+    <p><code>HasItem</code> also takes a single name (<code>HasItem(src, 'water', 2)</code>) or a list (<code>HasItem(src, { 'phone', 'radio' })</code>, 1 of each).</p>
+
+    <h2>A usable item</h2>
+    <p>Add the item to <code>items.lua</code>, then register what using it does. The <code>item</code> table has <code>name</code>, <code>label</code>, <code>slot</code>, <code>count</code> and <code>metadata</code>.</p>
+    <pre data-title="arca_inventory/shared/items.lua"><code class="language-lua">energydrink = { label = 'Energy Drink', weight = 350, stack = true, close = true, rarity = 'uncommon', icon = 'fa-solid fa-bolt', description = 'Run faster for a bit.' },</code></pre>
+    <pre data-title="server.lua"><code class="language-lua">local Arca = exports.arca_core:GetCoreObject()
+
+Arca.Functions.CreateUseableItem('energydrink', function(source, item)
+    -- remove from the exact slot that was used
+    if not exports.arca_inventory:RemoveItem(source, item.name, 1, item.slot) then return end
+    TriggerClientEvent('myres:energyBoost', source)
+end)</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">RegisterNetEvent('myres:energyBoost', function()
+    SetRunSprintMultiplierForPlayer(PlayerId(), 1.2)
+    Wait(30000)
+    SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
+end)</code></pre>
+
+    <h2>A usable item with a progress bar</h2>
+    <p>Only remove the item once the progress finished. Ask the client with a server &rarr; client callback:</p>
+    <pre data-title="client.lua"><code class="language-lua">local Arca = exports.arca_core:GetCoreObject()
+
+Arca.Callback.Register('myres:drinkProgress', function()
+    return exports.arca_core:Progress({
+        label = 'Drinking',
+        duration = 4000,
+        canCancel = true,
+        disable = { combat = true },
+        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+    })
+end)</code></pre>
+    <pre data-title="server.lua"><code class="language-lua">Arca.Functions.CreateUseableItem('energydrink', function(source, item)
+    local finished = Arca.Callback.Await('myres:drinkProgress', source, 10000) -- 10s timeout
+    if not finished then return end                 -- cancelled
+    if exports.arca_inventory:RemoveItem(source, item.name, 1, item.slot) then
+        TriggerClientEvent('myres:energyBoost', source)
+    end
+end)</code></pre>
+
+    <h2>Items with metadata</h2>
+    <p>Metadata is saved on the item and shown in its tooltip. Use <code>stack = false</code> for items that each carry their own data.</p>
+    <pre data-title="server.lua"><code class="language-lua">-- hand out an ID card with the character's details
+local player = exports.arca_core:GetPlayer(source)
+local info = player.PlayerData.charinfo
+exports.arca_inventory:AddItem(source, 'id_card', 1, nil, {
+    name = info.firstname .. ' ' .. info.lastname,
+    dob = info.birthdate,
+    citizenid = player.PlayerData.citizenid,
+})
+
+-- read it back when it's used
+Arca.Functions.CreateUseableItem('id_card', function(source, item)
+    local m = item.metadata
+    exports.arca_core:Notify(source, ('%s · born %s'):format(m.name, m.dob), 'inform')
+end)</code></pre>
+
+    <h2>Find a specific item</h2>
+    <pre data-title="server.lua"><code class="language-lua">-- first one
+local phone = exports.arca_inventory:GetItemByName(source, 'phone')
+if phone then print(phone.slot, phone.metadata.number) end
+
+-- every copy (e.g. all keys)
+for _, key in ipairs(exports.arca_inventory:GetItemsByName(source, 'housekey')) do
+    if key.metadata.house == 'grove_12' then print('has the key in slot ' .. key.slot) end
+end
+
+-- what's in slot 1?
+local item = exports.arca_inventory:GetItemBySlot(source, 1)
+
+-- everything
+for _, it in ipairs(exports.arca_inventory:GetInventory(source)) do
+    print(it.slot, it.name, it.count)
+end</code></pre>
+
+    <h2>Selling items to an NPC</h2>
+    <pre data-title="server.lua"><code class="language-lua">local prices = { copper = 15, goldbar = 900 }
+
+RegisterNetEvent('myres:sell', function(name)
+    local src = source
+    local price = prices[name]
+    if not price then return end
+
+    local count = exports.arca_inventory:GetItemCount(src, name)
+    if count == 0 then return exports.arca_core:Notify(src, 'Nothing to sell', 'error') end
+
+    if exports.arca_inventory:RemoveItem(src, name, count) then
+        local player = exports.arca_core:GetPlayer(src)
+        player.AddMoney('cash', count * price, 'sold ' .. name)
+    end
+end)</code></pre>
+    <p>With <code>CashItem</code> on, the <code>cash</code> item updates by itself &mdash; always use <code>player.AddMoney</code> / <code>RemoveMoney</code> for money, not <code>AddItem('cash')</code>.</p>
+
+    <h2>Only show an option if they have the item</h2>
+    <p>The client exports read the player's own inventory &mdash; perfect for <code>canInteract</code>:</p>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_target:addGlobalVehicle({
+    {
+        name = 'myres:lockpick',
+        label = 'Lockpick door',
+        icon = 'fa-solid fa-key',
+        canInteract = function()
+            return exports.arca_inventory:HasItem('lockpick')
+        end,
+        serverEvent = 'myres:lockpickVehicle',
+    },
+})</code></pre>
+    <div class="callout warn">
+        <div class="title">Always check again on the server</div>
+        <p>The client check is only for showing the option. Check <code>HasItem</code> / <code>RemoveItem</code> again in the server event &mdash; clients can be modified.</p>
+    </div>
+
+    <h2>A job stash</h2>
+    <pre data-title="server.lua"><code class="language-lua">exports.arca_inventory:RegisterStash('police_lockers', {
+    label = 'Police lockers',
+    slots = 40, weight = 200000,
+    coords = vector3(461.5, -995.8, 30.7), range = 2.0,
+    groups = { police = 0 },                -- police, any grade
+})</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_target:addSphereZone({
+    coords = vector3(461.5, -995.8, 30.7),
+    radius = 1.0,
+    options = {
+        { name = 'police_lockers', label = 'Open lockers', icon = 'fa-solid fa-box-archive', groups = 'police',
+          onSelect = function() exports.arca_inventory:OpenStash('police_lockers') end },
+    },
+})</code></pre>
+
+    <h2>Put items into a stash from a script</h2>
+    <p>Registered stashes load on demand, so this works even if nobody has opened it yet:</p>
+    <pre data-title="server.lua"><code class="language-lua">-- move a seized weapon into evidence
+local weapon = exports.arca_inventory:GetItemByName(suspect, 'weapon_pistol')
+if weapon and exports.arca_inventory:AddItem('stash:police_evidence', weapon.name, 1, nil, weapon.metadata) then
+    exports.arca_inventory:RemoveItem(suspect, weapon.name, 1, weapon.slot)
+end</code></pre>
+
+    <h2>Weapons</h2>
+    <pre data-title="server.lua"><code class="language-lua">-- a pistol that's already loaded, with a suppressor
+exports.arca_inventory:AddItem(source, 'weapon_pistol', 1, nil, {
+    ammo = 36,
+    components = { 'suppressor' },
+})
+
+-- ammo is a normal item
+exports.arca_inventory:AddItem(source, 'pistol_ammo', 60)
+
+-- grenades stack; each throw uses one
+exports.arca_inventory:AddItem(source, 'weapon_grenade', 3)
+
+-- does the player have a weapon licence?
+if exports.arca_inventory:HasLicence(source, 'weapon') then ... end
+
+-- who owns this serial?
+local reg = exports.arca_inventory:GetWeaponRegistration('ARC481203')
+if reg then print(reg.owner, reg.citizenid, reg.weapon) end</code></pre>
+    <pre data-title="client.lua"><code class="language-lua">-- what's in their hands?
+local weapon = exports.arca_inventory:GetEquippedWeapon()
+if weapon then print(weapon.name, weapon.serial) end
+
+-- put it away (e.g. when cuffed)
+exports.arca_inventory:Disarm()</code></pre>
+
+    <h2>Opening inventories from your script</h2>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_inventory:OpenStash('police_lockers')     -- a registered stash
+exports.arca_inventory:OpenTrunk(vehicle)              -- a vehicle's trunk
+exports.arca_inventory:CloseInventory()                -- close whatever is open</code></pre>
+
+    <h2>Busy state: block the inventory during an action</h2>
+    <p>The inventory won't open, and hotbar keys and item use do nothing, while the player is busy. That's automatic during any <code>arca_core</code> progress bar, ragdoll, falling, getting into a vehicle, death / last stand and handcuffs (<code>metadata.ishandcuffed</code> or <code>LocalPlayer.state.isCuffed</code>).</p>
+    <p>Mark your own actions as busy from the client:</p>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_inventory:SetBusy(true)        -- also closes the inventory if it's open
+TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_BUM_BIN', 0, true)
+Wait(8000)
+ClearPedTasks(PlayerPedId())
+exports.arca_inventory:SetBusy(false)
+
+-- check it yourself
+if exports.arca_inventory:IsBusy() then return end</code></pre>
+    <p>Each resource is tracked separately, so one script finishing doesn't clear another's busy state. From the server, set the player's statebag:</p>
+    <pre data-title="server.lua"><code class="language-lua">Player(source).state:set('invBusy', true, true)
+-- ...
+Player(source).state:set('invBusy', false, true)</code></pre>
+
+    <h2>Starter items for new characters</h2>
+    <pre data-title="server.lua"><code class="language-lua">AddEventHandler('arca_core:server:playerLoaded', function(player)
+    local source = player.PlayerData.source
+    if player.PlayerData.metadata.starterItems then return end
+    exports.arca_inventory:AddItem(source, 'phone', 1)
+    exports.arca_inventory:AddItem(source, 'water', 2)
+    exports.arca_inventory:AddItem(source, 'sandwich', 2)
+    player.SetMetaData('starterItems', true)
+end)</code></pre>
+
+    <h2>qb resources</h2>
+    <p>Resources written for qb-core keep working: <code>Player.Functions.AddItem</code>, <code>RemoveItem</code>, <code>GetItemByName</code> and <code>QBCore.Functions.HasItem</code> all go to arca_inventory through the <a href="#qb-bridge">bridge</a>.</p>
+</article>
+
+<article class="doc" id="inventory-shops" data-group="Inventory" data-title="Shops &amp; stashes">
+    <h1>Shops &amp; stashes</h1>
+    <p class="desc">Shops open next to your inventory with a cart; stashes are shared storage.</p>
+
+    <h2>Shops</h2>
+    <p>Drag items into the cart, choose the amount and pay with one of the <code>ShopPayment</code> accounts. Shopkeeper peds spawn when you're close; use third-eye or walk up and press <kbd>E</kbd>.</p>
+    <pre data-title="shared/config.lua"><code class="language-lua">{
+    id = 'ammunation', label = 'Ammu-Nation',
+    ped = 's_m_y_ammucity_01',
+    blip = { sprite = 110, color = 1 },
+    register = true,                -- weapons sold here go into the weapon registry
+    -- groups = { police = 0 },     -- only these jobs/gangs (minimum grade)
+    -- ignoreLicence = true,        -- skip licence checks (e.g. a police armory)
+    locations = { vector4(22.09, -1105.36, 29.80, 157.0) },
+    items = {
+        { name = 'weapon_pistol', price = 2500 },
+        { name = 'weapon_pumpshotgun', price = 6000, stock = 10 }, -- limited stock
+        { name = 'pistol_ammo', price = 3 },
+    },
+},</code></pre>
+    <p>Arca ships with a 24/7, a hardware store, <strong>Ammu-Nation</strong> and a <strong>Police Armory</strong> (police only, free, no licence needed).</p>
+
+    <h2>Stashes</h2>
+    <pre><code class="language-lua">-- server
+exports.arca_inventory:RegisterStash('police_evidence', {
+    label = 'Evidence locker', slots = 50, weight = 500000,
+    coords = vector3(474.8, -996.3, 26.3), range = 2.0,
+    groups = { police = 0 },
+})
+
+-- client
+exports.arca_inventory:OpenStash('police_evidence')</code></pre>
+
+    <h2>Dumpsters</h2>
+    <p>Third-eye a dumpster to search it. Loot is rolled into the dumpster itself, which also works as temporary storage until restart. Configure models, loot chances and cooldown in <code>InvConfig.Dumpsters</code>.</p>
+</article>
+
+<article class="doc" id="inventory-weapons" data-group="Inventory" data-title="Weapons">
+    <h1>Weapons</h1>
+    <p class="desc">Weapons are items with serials, ammo, durability and attachments.</p>
+
+    <h2>How it works</h2>
+    <ul>
+        <li><strong>Equip / holster</strong> by using the weapon. The GTA weapon wheel is disabled and weapons that didn't come from the inventory are removed.</li>
+        <li><strong>Ammo lives on the weapon.</strong> Press <kbd>R</kbd> (or use an ammo item) to load ammo items from your inventory.</li>
+        <li><strong>Durability</strong> drops with every shot (<code>wear</code>). At 0% the weapon breaks until repaired.</li>
+        <li><strong>Attachments</strong> &mdash; equip the weapon and use an attachment item; remove them from the right-click menu.</li>
+        <li><strong>Throwables</strong> &mdash; grenades, smoke, tear gas, molotovs and flares stack like normal items; each throw uses one.</li>
+    </ul>
+
+    <h2>Item fields</h2>
+    <pre data-title="shared/items.lua"><code class="language-lua">weapon_pistol = {
+    label = 'Pistol', weight = 1000, rarity = 'uncommon',
+    weapon = 'WEAPON_PISTOL', ammo = 'pistol_ammo',
+    licence = 'weapon',     -- shops only sell it to licence holders
+    -- maxAmmo = 250, wear = 0.05, noSerial = true
+},
+weapon_grenade = { label = 'Grenade', weight = 400, stack = true, throwable = true, weapon = 'WEAPON_GRENADE' },
+pistol_ammo = { label = 'Pistol Ammo', weight = 10, stack = true, ammoType = 'pistol' },
+suppressor = { label = 'Suppressor', weight = 200, stack = true, attachment = {
+    WEAPON_PISTOL = 'COMPONENT_AT_PI_SUPP_02',
+} },
+weapon_repairkit = { label = 'Weapon Repair Kit', weight = 1500, stack = true, repair = 35 },</code></pre>
+
+    <h2>Licences</h2>
+    <p>Licences are stored in player metadata (<code>metadata.licences.weapon = true</code>), like qb-core. Admins and the jobs in <code>Licences.Issuers</code> use <code>/givelicence id weapon</code> and <code>/revokelicence id weapon</code>. Giving a weapon licence also hands out a <code>weapon_licence</code> card.</p>
+    <p>Exports: <code>HasLicence(source, name)</code>, <code>SetLicence(source, name, state)</code>.</p>
+
+    <h2>Registry</h2>
+    <p>Weapons bought from a shop with <code>register = true</code> are saved to <code>arca_weapon_registry</code> under the buyer's name and show <em>Registered to</em> on the item. Police look serials up with <code>/checkserial ABC123456</code>; scripts can use <code>GetWeaponRegistration(serial)</code>.</p>
+
+    <h2>Repairs</h2>
+    <ul>
+        <li><strong>Repair kit</strong> &mdash; hold the weapon and use the kit to restore <code>repair</code> durability points.</li>
+        <li><strong>Repair benches</strong> &mdash; third-eye the bench, pick a damaged weapon and pay per point to restore it to 100%.</li>
+    </ul>
+
+    <h2>Config</h2>
+    <pre data-title="shared/config.lua"><code class="language-lua">InvConfig.Weapons = {
+    ReloadKey = 'R',
+    MaxAmmo = 250,              -- default ammo a weapon can hold
+    Wear = 0.05,                -- durability lost per shot
+    DisableWeaponWheel = true,
+    StripUnknownWeapons = true,
+    Licences = {
+        Types = { weapon = 'Weapon Licence', hunting = 'Hunting Licence' },
+        Issuers = { police = 2 },
+        CardItem = 'weapon_licence',
+    },
+    Registry = { Enabled = true, Lookup = { police = 0 } },
+    RepairBenches = {
+        { label = 'Weapon Bench', coords = vector3(16.72, -1110.35, 29.80), price = 5, account = 'cash', duration = 6000 },
+    },
+}</code></pre>
+</article>
+
+<!-- =====================================================================
+     COMPATIBILITY
+====================================================================== -->
+<article class="doc" id="qb-bridge" data-group="Compatibility" data-title="qb-core bridge">
+    <h1>qb-core bridge</h1>
+    <p class="desc">Run resources made for qb-core on Arca.</p>
+
+    <p><code>arca_core</code> declares <code>provide 'qb-core'</code>, so resources that use <code>exports['qb-core']:GetCoreObject()</code> or <code>dependency 'qb-core'</code> talk to Arca instead. The QBCore object they get is the Arca object with qb-named functions added.</p>
+
+    <div class="callout warn">
+        <div class="title">Third-party resources</div>
+        <p>Arca makes the bridge as complete as possible, but can't fix or support third-party scripts. If a qb resource doesn't work, contact its author.</p>
+    </div>
+
+    <h2>Supported</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Area</th><th>What works</th></tr></thead>
+        <tbody>
+            <tr><td>Core object</td><td><code>QBCore.Functions</code>, <code>QBCore.Players</code>, <code>QBCore.Shared.Jobs/Gangs/Items</code>, <code>QBCore.Commands.Add</code></td></tr>
+            <tr><td>Server functions</td><td><code>GetPlayer</code>, <code>GetPlayerByCitizenId</code>, <code>GetPlayerByPhone</code>, <code>GetPlayers</code>, <code>GetQBPlayers</code>, <code>GetPlayersOnDuty</code>, <code>GetDutyCount</code>, <code>CreateCallback</code>, <code>TriggerClientCallback</code>, <code>CreateUseableItem</code>, <code>HasItem</code>, <code>Notify</code>, <code>Kick</code>, <code>SpawnVehicle</code>, <code>CreateVehicle</code>, <code>GetCoords</code>&hellip;</td></tr>
+            <tr><td>Player methods</td><td><code>SetJob</code>, <code>SetGang</code>, <code>SetJobDuty</code>, <code>AddMoney</code>, <code>RemoveMoney</code>, <code>SetMoney</code>, <code>GetMoney</code>, <code>SetMetaData</code>, <code>SetPlayerData</code>, <code>AddJobReputation</code>, <code>AddItem</code>, <code>RemoveItem</code>, <code>GetItemByName</code>, <code>Save</code>, <code>Logout</code>&hellip;</td></tr>
+            <tr><td>Client functions</td><td><code>GetPlayerData</code>, <code>TriggerCallback</code>, <code>Notify</code>, <code>Progressbar</code>, <code>HasItem</code>, <code>GetClosestPlayer/Ped/Vehicle/Object</code>, <code>SpawnVehicle</code>, <code>GetVehicleProperties</code>, <code>SetVehicleProperties</code>, <code>DrawText3D</code>&hellip;</td></tr>
+            <tr><td>Exports</td><td><code>GetCoreObject</code>, <code>AddJob(s)</code>, <code>AddGang(s)</code>, <code>AddItem(s)</code>, <code>Update*</code>, <code>Remove*</code>, <code>DrawText</code>, <code>ChangeText</code>, <code>HideText</code>, <code>KeyPressed</code></td></tr>
+            <tr><td>Events</td><td><code>QBCore:Client:OnPlayerLoaded</code>, <code>OnPlayerUnload</code>, <code>OnJobUpdate</code>, <code>OnGangUpdate</code>, <code>OnMoneyChange</code>, <code>SetDuty</code>, <code>QBCore:Player:SetPlayerData</code>, <code>QBCore:Server:PlayerLoaded</code>, <code>QBCore:Notify</code>, <code>QBCore:ToggleDuty</code>&hellip;</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Inventory</h2>
+    <p>Item functions (<code>AddItem</code>, <code>RemoveItem</code>, <code>HasItem</code>&hellip;) are forwarded to <a href="#arca-inventory"><strong>arca_inventory</strong></a>. Without it running they return <code>false</code>.</p>
+
+    <h2>Not supported yet</h2>
+    <ul>
+        <li>Resources hard-wired to other qb resources &mdash; switch them to <a href="#arca-target">arca_target</a>, the <a href="#context-menu">context menu</a> and <a href="#arca-inventory">arca_inventory</a>.</li>
+        <li><code>AddPermission</code> / <code>RemovePermission</code> &mdash; use <a href="#permissions">aces</a> instead.</li>
+        <li>Rarely-used or undocumented qb-core internals.</li>
+    </ul>
+
+    <h2>Disabling the bridge</h2>
+    <pre data-title="arca_core/shared/config.lua"><code class="language-lua">ArcaConfig.Bridge = {
+    qb = false,
+}</code></pre>
+</article>
+
+<article class="doc" id="qb-porting" data-group="Compatibility" data-title="Porting qb scripts">
+    <h1>Porting qb scripts</h1>
+    <p class="desc">Most qb-core scripts run unchanged. This page covers the parts you do need to change, and how to convert a script to native Arca.</p>
+
+    <h2>Step 1: try it as-is</h2>
+    <p>Drop the script in and start it after <code>arca_core</code>. Thanks to the <a href="#qb-bridge">bridge</a>, these work without edits:</p>
+    <ul>
+        <li><code>exports['qb-core']:GetCoreObject()</code> and <code>dependency 'qb-core'</code></li>
+        <li><code>QBCore.Functions.GetPlayer</code>, <code>Player.Functions.AddMoney</code>, <code>SetJob</code>, <code>SetMetaData</code>&hellip;</li>
+        <li><code>QBCore.Functions.CreateCallback</code> / <code>TriggerCallback</code>, <code>Notify</code>, <code>Progressbar</code></li>
+        <li><code>Player.Functions.AddItem</code> / <code>RemoveItem</code> / <code>GetItemByName</code> &rarr; <a href="#arca-inventory">arca_inventory</a></li>
+        <li>Events like <code>QBCore:Client:OnPlayerLoaded</code>, <code>OnJobUpdate</code>, <code>QBCore:Server:PlayerLoaded</code></li>
+    </ul>
+
+    <h2>Step 2: swap qb resources for Arca ones</h2>
+    <p>The bridge covers qb-core only. Calls to other qb resources need changing.</p>
+
+    <h3>qb-target &rarr; arca_target</h3>
+    <div class="table-wrap"><table>
+        <thead><tr><th>qb-target</th><th>arca_target</th></tr></thead>
+        <tbody>
+            <tr><td><code>AddTargetModel(models, { options, distance })</code></td><td><code>addModel(models, options)</code></td></tr>
+            <tr><td><code>AddTargetEntity(entity, { options, distance })</code></td><td><code>addLocalEntity(entity, options)</code> &middot; networked: <code>addEntity(netId, options)</code></td></tr>
+            <tr><td><code>AddGlobalVehicle</code> / <code>Ped</code> / <code>Player</code> / <code>Object</code></td><td><code>addGlobalVehicle</code> / <code>Ped</code> / <code>Player</code> / <code>Object</code></td></tr>
+            <tr><td><code>AddBoxZone(name, coords, length, width, { heading, minZ, maxZ }, { options })</code></td><td><code>addBoxZone({ name, coords, size = vec3(length, width, maxZ - minZ), rotation = heading, options })</code></td></tr>
+            <tr><td><code>AddCircleZone(name, coords, radius, ...)</code></td><td><code>addSphereZone({ name, coords, radius, options })</code></td></tr>
+            <tr><td><code>RemoveZone(name)</code></td><td><code>removeZone(name)</code></td></tr>
+        </tbody>
+    </table></div>
+    <p>Option fields:</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>qb-target option</th><th>arca_target option</th></tr></thead>
+        <tbody>
+            <tr><td><code>label</code>, <code>icon</code></td><td><code>label</code>, <code>icon</code> (plus a unique <code>name</code>)</td></tr>
+            <tr><td><code>type = 'client', event = 'x'</code></td><td><code>event = 'x'</code></td></tr>
+            <tr><td><code>type = 'server', event = 'x'</code></td><td><code>serverEvent = 'x'</code></td></tr>
+            <tr><td><code>type = 'command', event = 'x'</code></td><td><code>command = 'x'</code></td></tr>
+            <tr><td><code>action = function(entity)</code></td><td><code>onSelect = function(data)</code> &mdash; <code>data.entity</code>, <code>data.coords</code></td></tr>
+            <tr><td><code>job = 'police'</code> / <code>job = { police = 2 }</code></td><td><code>groups = 'police'</code> / <code>groups = { police = 2 }</code></td></tr>
+            <tr><td><code>canInteract = function(entity, distance)</code></td><td><code>canInteract = function(entity, distance, coords)</code></td></tr>
+            <tr><td><code>distance</code> (on the whole call)</td><td><code>distance</code> on each option</td></tr>
+        </tbody>
+    </table></div>
+    <pre data-title="before (qb-target)"><code class="language-lua">exports['qb-target']:AddTargetModel({ 'prop_atm_01' }, {
+    options = {
+        { type = 'client', event = 'bank:openATM', icon = 'fas fa-credit-card', label = 'Use ATM' },
+    },
+    distance = 1.5,
+})</code></pre>
+    <pre data-title="after (arca_target)"><code class="language-lua">exports.arca_target:addModel({ 'prop_atm_01' }, {
+    { name = 'bank:atm', event = 'bank:openATM', icon = 'fa-solid fa-credit-card', label = 'Use ATM', distance = 1.5 },
+})</code></pre>
+
+    <h3>qb-menu &rarr; context menu</h3>
+    <pre data-title="before (qb-menu)"><code class="language-lua">exports['qb-menu']:openMenu({
+    { header = 'Garage', isMenuHeader = true },
+    { header = 'Sultan', txt = 'Plate ARCA123', params = { event = 'garage:takeOut', args = { plate = 'ARCA123' } } },
+})</code></pre>
+    <pre data-title="after (Arca)"><code class="language-lua">Arca.RegisterContext({
+    id = 'garage',
+    title = 'Garage',
+    options = {
+        { title = 'Sultan', description = 'Plate ARCA123', event = 'garage:takeOut', args = { plate = 'ARCA123' } },
+    },
+})
+Arca.ShowContext('garage')</code></pre>
+    <p>Use <code>serverEvent</code> instead of <code>params.isServer</code>, <code>onSelect</code> for a function, and <code>menu = 'id'</code> for submenus.</p>
+
+    <h3>qb-input</h3>
+    <p>Arca doesn't have an input dialog yet. Use a context menu with fixed choices, a chat command with arguments, or your own small NUI.</p>
+
+    <h3>qb-inventory &rarr; arca_inventory</h3>
+    <div class="table-wrap"><table>
+        <thead><tr><th>qb-inventory</th><th>arca_inventory</th></tr></thead>
+        <tbody>
+            <tr><td>Items in <code>qb-core/shared/items.lua</code></td><td>Items in <code>arca_inventory/shared/items.lua</code> (<a href="#inventory-items">format</a>) &mdash; weight in grams</td></tr>
+            <tr><td>Images in <code>qb-inventory/html/images</code></td><td><code>arca_inventory/web/images/&lt;item&gt;.png</code></td></tr>
+            <tr><td><code>TriggerServerEvent('inventory:server:OpenInventory', 'stash', id)</code></td><td>Server: <code>RegisterStash(id, data)</code> once &middot; client: <code>OpenStash(id)</code></td></tr>
+            <tr><td><code>exports['qb-inventory']:AddItem(src, item, amount)</code></td><td><code>exports.arca_inventory:AddItem(src, item, amount)</code></td></tr>
+            <tr><td><code>exports['qb-inventory']:HasItem(src, item, amount)</code></td><td><code>exports.arca_inventory:HasItem(src, item, amount)</code></td></tr>
+            <tr><td><code>TriggerClientEvent('inventory:client:ItemBox', ...)</code></td><td>Not needed &mdash; use <code>Arca.Notify</code> if you want a message</td></tr>
+            <tr><td><code>item.info</code></td><td><code>item.metadata</code> (<code>info</code> also works)</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Step 3 (optional): go native</h2>
+    <p>Native Arca code is shorter and doesn't depend on the bridge. Search and replace:</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>qb-core</th><th>Arca</th></tr></thead>
+        <tbody>
+            <tr><td><code>local QBCore = exports['qb-core']:GetCoreObject()</code></td><td><code>shared_script '@arca_core/shared/import.lua'</code> (global <code>Arca</code>)</td></tr>
+            <tr><td><code>QBCore.Functions.GetPlayer(src)</code></td><td><code>Arca.Functions.GetPlayer(src)</code></td></tr>
+            <tr><td><code>Player.Functions.AddMoney(...)</code></td><td><code>player.AddMoney(...)</code></td></tr>
+            <tr><td><code>QBCore.Functions.CreateCallback(name, function(src, cb, ...) cb(x) end)</code></td><td><code>Arca.Callback.Register(name, function(src, ...) return x end)</code></td></tr>
+            <tr><td><code>QBCore.Functions.TriggerCallback(name, function(x) end, ...)</code></td><td><code>local x = Arca.Callback.Await(name, ...)</code></td></tr>
+            <tr><td><code>QBCore.Functions.Notify(text, type)</code></td><td><code>Arca.Notify(text, type)</code></td></tr>
+            <tr><td><code>QBCore.Functions.Progressbar(name, label, ms, ...)</code></td><td><code>Arca.Progress({ label, duration, ... })</code> (returns <code>true</code> when finished)</td></tr>
+            <tr><td><code>QBCore.Functions.GetPlayerData()</code></td><td><code>exports.arca_core:GetPlayerData()</code></td></tr>
+            <tr><td><code>QBCore.Commands.Add(name, help, args, argsrequired, fn, perm)</code></td><td><code>Arca.Commands.Add(name, help, perm, fn)</code></td></tr>
+            <tr><td><code>QBCore.Functions.CreateUseableItem</code></td><td><code>Arca.Functions.CreateUseableItem</code></td></tr>
+            <tr><td><code>QBCore:Client:OnPlayerLoaded</code></td><td><code>arca_core:client:onPlayerLoaded</code> (receives PlayerData)</td></tr>
+            <tr><td><code>QBCore:Client:OnJobUpdate</code></td><td><code>arca_core:client:onJobUpdate</code> (<code>RegisterNetEvent</code>)</td></tr>
+            <tr><td><code>Player.PlayerData.job.grade.level</code></td><td>same &mdash; PlayerData has the same shape</td></tr>
+        </tbody>
+    </table></div>
+
+    <div class="callout tip">
+        <div class="title">Callbacks read top to bottom</div>
+        <p><code>Arca.Callback.Await</code> waits for the answer, so nested <code>TriggerCallback</code> pyramids become a few lines in a row.</p>
+    </div>
+</article>
+
+
+
+<!-- =====================================================================
+     REFERENCE
+====================================================================== -->
+<article class="doc" id="exports" data-group="Reference" data-title="All exports">
+    <h1>All exports</h1>
+    <p class="desc">Every export in Arca on one page.</p>
+
+    <h2>arca_core &middot; server</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>GetCoreObject</code></td><td>&mdash;</td><td>Arca object</td></tr>
+            <tr><td><code>GetPlayer</code></td><td><code>source</code></td><td>player | nil</td></tr>
+            <tr><td><code>GetPlayerByCitizenId</code></td><td><code>citizenid</code></td><td>player | nil</td></tr>
+            <tr><td><code>GetPlayers</code></td><td>&mdash;</td><td>sources</td></tr>
+            <tr><td><code>GetPlayersByJob</code></td><td><code>job, onDutyOnly?</code></td><td>sources</td></tr>
+            <tr><td><code>HasPermission</code></td><td><code>source, level</code></td><td>boolean</td></tr>
+            <tr><td><code>Notify</code></td><td><code>source, data | text, type?, duration?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>RegisterCallback</code></td><td><code>name, fn(source, ...)</code></td><td>&mdash;</td></tr>
+            <tr><td><code>AddCommand</code></td><td><code>name, help, perm?, fn</code></td><td>&mdash;</td></tr>
+            <tr><td><code>CreateUseableItem</code></td><td><code>item, fn</code></td><td>&mdash;</td></tr>
+            <tr><td><code>CanUseItem</code></td><td><code>item</code></td><td>function | nil</td></tr>
+            <tr><td><code>GetJobs</code> / <code>GetGangs</code></td><td>&mdash;</td><td>table</td></tr>
+            <tr><td><code>AddPlayerJob</code> / <code>RemovePlayerJob</code> / <code>SwitchJob</code></td><td><code>source, job, grade?</code></td><td>ok, reason</td></tr>
+            <tr><td><code>GetPlayerJobs</code> / <code>HoldsJob</code></td><td><code>source, job?, minGrade?</code></td><td>list / boolean</td></tr>
+            <tr><td><code>SetDuty</code> / <code>ToggleDuty</code> / <code>IsOnDuty</code></td><td><code>source, state | job?</code></td><td>boolean</td></tr>
+            <tr><td><code>GetOnDuty</code> / <code>GetDutyCount</code></td><td><code>job?</code></td><td>sources / number</td></tr>
+            <tr><td><code>Login</code></td><td><code>source, citizenid?, newData?</code></td><td>player | false</td></tr>
+            <tr><td><code>Logout</code></td><td><code>source</code></td><td>&mdash;</td></tr>
+            <tr><td><code>GetCharacters</code></td><td><code>source</code></td><td>rows</td></tr>
+            <tr><td><code>DeleteCharacter</code></td><td><code>source, citizenid</code></td><td>boolean</td></tr>
+            <tr><td><code>AddJob</code> / <code>AddGang</code> / <code>AddItem</code></td><td><code>name, data</code></td><td>ok, message</td></tr>
+            <tr><td><code>AddJobs</code> / <code>AddGangs</code> / <code>AddItems</code></td><td><code>table</code></td><td>ok, message</td></tr>
+            <tr><td><code>UpdateJob</code> / <code>UpdateGang</code> / <code>UpdateItem</code></td><td><code>name, data</code></td><td>ok, message</td></tr>
+            <tr><td><code>RemoveJob</code> / <code>RemoveGang</code> / <code>RemoveItem</code></td><td><code>name</code></td><td>ok, message</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>arca_core &middot; client</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>GetCoreObject</code></td><td>&mdash;</td><td>Arca object</td></tr>
+            <tr><td><code>GetPlayerData</code></td><td>&mdash;</td><td>PlayerData</td></tr>
+            <tr><td><code>IsLoggedIn</code></td><td>&mdash;</td><td>boolean</td></tr>
+            <tr><td><code>HasJob</code></td><td><code>name, onDutyOnly?</code></td><td>boolean</td></tr>
+            <tr><td><code>OpenJobMenu</code> / <code>GetJobs</code> / <code>IsOnDuty</code></td><td>&mdash; / &mdash; / <code>job?</code></td><td>&mdash; / table / boolean</td></tr>
+            <tr><td><code>Notify</code></td><td><code>data | text, type?, duration?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>Progress</code></td><td><code>data</code></td><td>boolean</td></tr>
+            <tr><td><code>ProgressActive</code> / <code>CancelProgress</code></td><td>&mdash;</td><td>boolean / &mdash;</td></tr>
+            <tr><td><code>ShowTextUI</code></td><td><code>text, options?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>HideTextUI</code> / <code>IsTextUIOpen</code></td><td>&mdash;</td><td>&mdash; / boolean, text</td></tr>
+            <tr><td><code>RegisterContext</code></td><td><code>menu | menus</code></td><td>&mdash;</td></tr>
+            <tr><td><code>ShowContext</code> / <code>HideContext</code> / <code>GetOpenContext</code></td><td><code>id</code> / &mdash; / &mdash;</td><td>&mdash; / &mdash; / id</td></tr>
+            <tr><td><code>AddRadialItem</code> / <code>RemoveRadialItem</code></td><td><code>item(s)</code> / <code>id</code></td><td>&mdash;</td></tr>
+            <tr><td><code>RegisterRadial</code></td><td><code>{ id, items }</code></td><td>&mdash;</td></tr>
+            <tr><td><code>ClearRadialItems</code> / <code>OpenRadial</code> / <code>CloseRadial</code></td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td><code>DisableRadial</code></td><td><code>state</code></td><td>&mdash;</td></tr>
+            <tr><td><code>DrawText</code> / <code>ChangeText</code></td><td><code>text, position?</code></td><td>&mdash; (qb bridge)</td></tr>
+            <tr><td><code>HideText</code> / <code>KeyPressed</code></td><td>&mdash;</td><td>&mdash; (qb bridge)</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>arca_target &middot; client</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>addGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>options</code></td><td>&mdash;</td></tr>
+            <tr><td><code>removeGlobalPed</code> / <code>Player</code> / <code>Vehicle</code> / <code>Object</code></td><td><code>names?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>addModel</code> / <code>removeModel</code></td><td><code>models, options</code> / <code>models, names?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>addEntity</code> / <code>removeEntity</code></td><td><code>netIds, options</code> / <code>netIds, names?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>addLocalEntity</code> / <code>removeLocalEntity</code></td><td><code>entities, options</code> / <code>entities, names?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>addSphereZone</code> / <code>addBoxZone</code></td><td><code>data</code></td><td>zone ID</td></tr>
+            <tr><td><code>removeZone</code></td><td><code>idOrName</code></td><td>&mdash;</td></tr>
+            <tr><td><code>disableTargeting</code></td><td><code>state</code></td><td>&mdash;</td></tr>
+            <tr><td><code>isActive</code></td><td>&mdash;</td><td>boolean</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>arca_inventory &middot; server</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>AddItem</code></td><td><code>target, name, count, slot?, metadata?</code></td><td>boolean</td></tr>
+            <tr><td><code>RemoveItem</code></td><td><code>target, name, count, slot?</code></td><td>boolean</td></tr>
+            <tr><td><code>GetItemCount</code></td><td><code>target, name</code></td><td>number</td></tr>
+            <tr><td><code>HasItem</code></td><td><code>target, items, amount?</code></td><td>boolean</td></tr>
+            <tr><td><code>CanCarryItem</code></td><td><code>target, name, count</code></td><td>boolean</td></tr>
+            <tr><td><code>GetItemByName</code> / <code>GetItemsByName</code> / <code>GetItemBySlot</code></td><td><code>target, name | slot</code></td><td>item(s)</td></tr>
+            <tr><td><code>GetInventory</code> / <code>ClearInventory</code> / <code>SetInventory</code></td><td><code>target, items?</code></td><td>&mdash;</td></tr>
+            <tr><td><code>RegisterStash</code></td><td><code>id, data</code></td><td>&mdash;</td></tr>
+            <tr><td><code>GetItems</code></td><td>&mdash;</td><td>item list</td></tr>
+            <tr><td><code>OpenPlayerInventory</code></td><td><code>adminSource, target</code></td><td>&mdash;</td></tr>
+            <tr><td><code>HasLicence</code> / <code>SetLicence</code></td><td><code>source, name, state?</code></td><td>boolean</td></tr>
+            <tr><td><code>GetWeaponRegistration</code></td><td><code>serial</code></td><td>row | nil</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>arca_inventory &middot; client</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>OpenStash</code> / <code>OpenTrunk</code></td><td><code>id</code> / <code>vehicle</code></td><td>&mdash;</td></tr>
+            <tr><td><code>CloseInventory</code></td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td><code>SetBusy</code> / <code>IsBusy</code></td><td><code>state, reason?</code> / &mdash;</td><td>&mdash; / boolean</td></tr>
+            <tr><td><code>HasItem</code> / <code>GetItemCount</code></td><td><code>items, amount?</code> / <code>name</code></td><td>boolean / number</td></tr>
+            <tr><td><code>GetPlayerItems</code></td><td>&mdash;</td><td>items</td></tr>
+            <tr><td><code>GetEquippedWeapon</code> / <code>Disarm</code></td><td>&mdash;</td><td>weapon | nil / &mdash;</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Other resources</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Resource</th><th>Export</th><th>Side</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca_admin</code></td><td><code>SetWeather(name)</code>, <code>SetTime(h, m)</code>, <code>GetWorld()</code></td><td>server</td></tr>
+            <tr><td><code>arca_hud</code></td><td><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code></td><td>client</td></tr>
+            <tr><td><code>arca_spawn</code></td><td><code>Open()</code></td><td>client</td></tr>
+            <tr><td><code>arca_bank</code></td><td><code>GetAccounts</code>, <code>GetBalance</code>, <code>AddMoney</code>, <code>RemoveMoney</code>, <code>Transfer</code>, <code>HasAccess</code>, <code>GetAccess</code>, <code>GetJobAccount</code>, <code>GetJobBalance</code>, <code>AddJobMoney</code>, <code>RemoveJobMoney</code>, <code>CreateAccount</code>, <code>GetTransactions</code></td><td>server</td></tr>
+            <tr><td><code>arca_bank</code></td><td><code>OpenBank()</code>, <code>OpenATM(entity?)</code></td><td>client</td></tr>
+            <tr><td><code>arca_phone</code></td><td><code>Open()</code>, <code>Close()</code>, <code>IsOpen()</code></td><td>client</td></tr>
+            <tr><td><code>arca_phone</code></td><td><code>NewChipNumber()</code>, <code>GetHolders(number)</code></td><td>server</td></tr>
+            <tr><td><code>arca_chattheme</code></td><td><code>Send(target, kind, a, b?)</code> / <code>Send(kind, a, b?)</code></td><td>server / client</td></tr>
+        </tbody>
+    </table></div>
+</article>
+
+            <nav class="pager"></nav>
+        </main>
+
+        <aside class="toc">
+            <h5><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h12M3 18h8"/></svg> On this page</h5>
+            <ul></ul>
+        </aside>
+    </div>
+
+    <div class="search-modal">
+        <div class="search-box">
+            <div class="search-input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input type="text" placeholder="Search docs..." aria-label="Search docs">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="results"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lua.min.js"></script>
+    <script src="assets/theme.js"></script>
+    <script src="assets/wiki.js"></script>
+</body>
+</html>
