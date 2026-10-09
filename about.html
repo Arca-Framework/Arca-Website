@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About · Arca</title>
+    <meta name="description" content="Who makes Arca, why it exists and how it is maintained.">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/home.css">
+</head>
+<body class="arca-home page-about">
+
+    <header class="bnav">
+        <div class="wrap nav-row">
+            <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>arca</span></a>
+            <nav>
+                <a href="index.html#modules">Modules</a>
+                <a href="index.html#playground">Try it</a>
+                <a href="wiki.html">Docs</a>
+                <a href="about.html" class="on">About</a>
+                <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener">Community</a>
+            </nav>
+            <div class="nav-r">
+                <a class="icon-link" href="https://github.com/Arca-Framework" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="index.html#get" class="bbtn sm">Get Arca</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="page-hero">
+            <div class="tile white">
+                <span class="label">About Arca</span>
+                <h1>A framework that feels like one piece.</h1>
+                <p>Arca is a free FiveM roleplay framework: one core and every system a city needs, designed, written and styled together. It is created and maintained by ScapeScripts.</p>
+            </div>
+            <div class="tile green logo-tile">
+                <img src="assets/logo.png" alt="">
+                <b>arca</b>
+                <small>by ScapeScripts</small>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="prose-grid">
+                <div class="tile white prose">
+                    <span class="label">Why it exists</span>
+                    <h2>Most servers run on patchwork</h2>
+                    <p>A typical FiveM roleplay server is dozens of unrelated scripts glued together. Every one has its own look, its own way of storing data and its own idea of how money, jobs or items work. Menus don't match, updates break each other, and server owners spend more time fixing conflicts than building their city.</p>
+                    <p>Arca was started to fix that. Instead of collecting scripts, it is built as <strong>one system</strong>:</p>
+                    <ul>
+                        <li><strong>One core.</strong> Players, money, jobs, callbacks and UI live in <code>arca_core</code>, and every module uses it the same way.</li>
+                        <li><strong>One design.</strong> Inventory, phone, bank, HUD, menus and jobs share the same visual language, so the whole server feels like one game.</li>
+                        <li><strong>Modern code.</strong> Lua 5.4, OneSync, server-side checks on everything that matters, and documentation for every export.</li>
+                        <li><strong>No lock-in.</strong> Arca answers as <code>qb-core</code>, so most existing qb scripts keep working while you move over.</li>
+                    </ul>
+                </div>
+                <div class="side-col">
+                    <div class="tile white facts-tile">
+                        <span class="label">At a glance</span>
+                        <dl>
+                            <div><dt>Made by</dt><dd>ScapeScripts</dd></div>
+                            <div><dt>Status</dt><dd>v0.1 · early access</dd></div>
+                            <div><dt>Price</dt><dd>Free</dd></div>
+                            <div><dt>Resources</dt><dd>30 and growing</dd></div>
+                            <div><dt>Compatible with</dt><dd>qb-core scripts</dd></div>
+                            <div><dt>Install</dt><dd>txAdmin recipe</dd></div>
+                        </dl>
+                    </div>
+                    <div class="tile dark quote">
+                        <p>“Install it, open the server, and everything already works together. That's the whole idea.”</p>
+                        <span>ScapeScripts</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="sec-head">
+                <span class="label">Who's behind it</span>
+                <h2>Made and maintained by ScapeScripts</h2>
+            </div>
+            <div class="three">
+                <div class="tile white">
+                    <span class="num">01</span>
+                    <h3>Built</h3>
+                    <p>Every Arca resource is written by ScapeScripts, from the core and the bridge to the inventory, phone and jobs.</p>
+                </div>
+                <div class="tile white">
+                    <span class="num">02</span>
+                    <h3>Maintained</h3>
+                    <p>Fixes, new modules and FiveM updates are handled by ScapeScripts. Changes ship through the txAdmin recipe and GitHub.</p>
+                </div>
+                <div class="tile white">
+                    <span class="num">03</span>
+                    <h3>Shaped by servers</h3>
+                    <p>Bug reports and ideas from server owners decide what comes next. The Discord is the place to share them.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="cta-tile tile green">
+                <div>
+                    <h2>Build your city on Arca</h2>
+                    <p>Free to use on your server. Questions, bugs or ideas? Join the community.</p>
+                </div>
+                <div class="cta-btns">
+                    <a href="index.html#get" class="bbtn white">Install Arca</a>
+                    <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener" class="bbtn ghost-w"><i class="fa-brands fa-discord"></i> Join Discord</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot-grid">
+            <div class="foot-brand">
+                <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>arca</span></a>
+                <p>The FiveM framework built for roleplay. Made and maintained by ScapeScripts.</p>
+            </div>
+            <div><h4>Product</h4><a href="index.html#modules">Modules</a><a href="index.html#playground">Try it</a><a href="index.html#get">Install</a></div>
+            <div><h4>Resources</h4><a href="wiki.html">Documentation</a><a href="wiki.html#installation">Install guide</a><a href="https://github.com/Arca-Framework" target="_blank" rel="noopener">GitHub</a></div>
+            <div><h4>Arca</h4><a href="about.html">About</a><a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener">Discord</a></div>
+            <div><h4>Legal</h4><a href="legal.html#terms">Terms of use</a><a href="legal.html#licence">Licence</a><a href="legal.html#privacy">Privacy</a></div>
+        </div>
+        <div class="wrap foot-bottom">
+            <span>© 2026 ScapeScripts. All rights reserved.</span>
+            <span>Not affiliated with Rockstar Games, Take-Two Interactive or Cfx.re.</span>
+        </div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+</body>
+</html>

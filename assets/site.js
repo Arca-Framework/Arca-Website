@@ -86,3 +86,31 @@
     }, { threshold: 0.6 });
     $$('[data-count]').forEach((el) => counters.observe(el));
 })();
+
+// Install dialog: "Get Arca" / "Install with txAdmin" open it instead of scrolling to the install section
+(() => {
+    const modal = document.getElementById('installModal');
+    if (!modal) return;
+    let last = null;
+    const open = (e) => {
+        e.preventDefault();
+        last = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add('locked');
+        modal.querySelector('.ix').focus();
+    };
+    const close = () => {
+        modal.hidden = true;
+        document.body.classList.remove('locked');
+        if (last) last.focus();
+    };
+    document.querySelectorAll('[data-install]').forEach((b) => b.addEventListener('click', open));
+    modal.addEventListener('click', (e) => { if (e.target === modal || e.target.closest('[data-close]')) close(); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+})();
+
+// index.html#get (linked from other pages) opens the install dialog straight away
+(() => {
+    const btn = document.querySelector('[data-install]');
+    if (btn && location.hash === '#get') btn.click();
+})();

@@ -499,35 +499,4 @@
         if (!locked && !hotThing) setHot(null);
     });
     tg.addEventListener('mouseleave', () => { if (!locked) setHot(null); });
-
-    // ------------------------------------------------------------ fun bits around the page
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce && matchMedia('(pointer: fine)').matches) {
-        // soft green glow following the cursor
-        const glow = document.createElement('div');
-        glow.className = 'cursor-glow';
-        document.body.appendChild(glow);
-        addEventListener('pointermove', (e) => { glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; });
-
-        // cards tilt towards the cursor
-        $$('.feature, .resource').forEach((card) => {
-            card.classList.add('tilt');
-            card.addEventListener('pointermove', (e) => {
-                const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-                card.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-3px)`;
-            });
-            card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-        });
-    }
-
-    // hero stats count up
-    $$('.hero-stats strong').forEach((el) => {
-        const end = parseInt(el.textContent, 10);
-        if (!end || reduce) return;
-        let n = 0;
-        const step = () => { n++; el.textContent = n; if (n < end) setTimeout(step, 600 / end); };
-        el.textContent = '0';
-        setTimeout(step, 500);
-    });
 })();

@@ -4,151 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arca · The FiveM Framework</title>
-    <meta name="description" content="Arca is a FiveM roleplay framework: one core, every system, inventory, phone, banking, jobs, EMS, admin, and qb-core compatible.">
+    <meta name="description" content="Arca is a free FiveM roleplay framework: one core and 30 resources, from inventory, phone, banking and garages to police, jail, businesses, crime, skills and jobs. Compatible with qb-core scripts.">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/home.css">
     <link rel="stylesheet" href="assets/playground.css">
-    <link rel="stylesheet" href="assets/brand.css">
 </head>
 <body class="arca-home">
 
-    <!-- ================= LOADER ================= -->
-    <div id="loader" aria-hidden="true">
-        <div class="ld-core">
-            <div class="ld-mark"><span class="ld-ring"></span><span class="ld-ring r2"></span><img src="assets/logo.png" alt=""></div>
-            <div class="ld-word"><span>A</span><span>R</span><span>C</span><span>A</span></div>
-            <div class="ld-line"><i></i></div>
-            <div class="ld-boot mono"><span id="ld-text">booting core</span><b id="ld-pct">00</b></div>
-        </div>
-    </div>
-
-    <div class="grid-bg" aria-hidden="true"></div>
-
-    <!-- ================= NAV ================= -->
     <header class="bnav">
-        <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>ARCA</span></a>
-        <nav>
-            <a href="#what"><i class="fa-solid fa-circle-info"></i> What</a>
-            <a href="#modules"><i class="fa-solid fa-cubes"></i> Modules</a>
-            <a href="#playground"><i class="fa-solid fa-gamepad"></i> Try it</a>
-            <a href="#code"><i class="fa-solid fa-code"></i> Code</a>
-            <a href="wiki.html"><i class="fa-solid fa-book"></i> Docs</a>
-            <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Community</a>
-        </nav>
-        <div class="bnav-r">
-            <a class="icon-link" href="https://github.com/Arca-Framework" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#install" class="bbtn sm">Install <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="wrap nav-row">
+            <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>arca</span></a>
+            <nav>
+                <a href="#modules">Modules</a>
+                <a href="#playground">Try it</a>
+                <a href="wiki.html">Docs</a>
+                <a href="about.html">About</a>
+                <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener">Community</a>
+            </nav>
+            <div class="nav-r">
+                <a class="icon-link" href="https://github.com/Arca-Framework" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#install" class="bbtn sm" data-install>Get Arca</a>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- ================= HERO ================= -->
-        <section class="bhero">
-            <div class="bhero-top mono">
-                <span><i class="dot"></i> FIVEM ROLEPLAY FRAMEWORK</span>
-                <span>v0.1 / EARLY ACCESS</span>
-                <span>LUA 5.4 · ONESYNC</span>
-            </div>
-
-            <h1 class="wordmark" aria-label="Arca">
-                <img src="assets/logo.png" alt="" class="wm-logo">
-                <span class="wm-text">ARCA</span>
-            </h1>
-
-            <div class="bhero-bottom">
-                <p class="statement">One core. Every system.<br><em>Ready to roleplay.</em></p>
-                <div class="bhero-cta">
-                    <a href="#install" class="bbtn"><i class="fa-solid fa-bolt"></i> Install with txAdmin</a>
-                    <a href="wiki.html" class="bbtn ghost">Read the docs</a>
-                    <div class="recipe mono" title="txAdmin recipe URL">
-                        <span>recipe</span><code id="recipe-url">https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml</code>
-                        <button data-copy="https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml" aria-label="Copy recipe URL"><i class="fa-regular fa-copy"></i></button>
-                    </div>
+    <main class="wrap">
+        <!-- ================= HERO BENTO ================= -->
+        <section class="bento">
+            <div class="tile white hero-tile">
+                <span class="label">FiveM roleplay framework</span>
+                <h1>One core.<br>Every system.</h1>
+                <p>Inventory, phone, banking, jobs, EMS, admin and more, built as one framework and compatible with qb-core scripts.</p>
+                <div class="hero-cta">
+                    <a href="#install" class="bbtn" data-install><i class="fa-solid fa-download"></i> Install with txAdmin</a>
+                    <a href="wiki.html" class="bbtn line">Documentation</a>
                 </div>
             </div>
 
-            <a href="#what" class="scroll-cue mono">SCROLL <i class="fa-solid fa-arrow-down"></i></a>
+            <div class="tile green logo-tile">
+                <img src="assets/logo.png" alt="Arca">
+                <b>arca</b>
+                <small>v0.1 · early access · Lua 5.4 · OneSync</small>
+            </div>
+
+            <div class="tile ticket">
+                <div class="ticket-top">
+                    <span class="label">txAdmin recipe</span>
+                    <p>Paste this URL in txAdmin under <b>Remote URL Template</b>.</p>
+                </div>
+                <div class="ticket-bottom">
+                    <code>raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml</code>
+                    <button data-copy="https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+            </div>
+
+            <div class="tile stat"><b>30</b><span>resources included</span></div>
+            <div class="tile stat light"><b>qb-core</b><span>scripts run unchanged</span></div>
         </section>
 
-        <!-- ================= TICKER ================= -->
-        <div class="ticker" aria-hidden="true">
-            <div class="ticker-track">
-                <span>Inventory</span><i>✦</i><span>Weapons &amp; ammo</span><i>✦</i><span>Phone chips</span><i>✦</i><span>Fleeca banking</span><i>✦</i>
-                <span>Multi-job &amp; duty</span><i>✦</i><span>Death &amp; EMS</span><i>✦</i><span>Admin menu</span><i>✦</i><span>Spawn selector</span><i>✦</i>
-                <span>Third eye</span><i>✦</i><span>HUD</span><i>✦</i><span>qb-core bridge</span><i>✦</i><span>txAdmin recipe</span><i>✦</i>
-                <span>Inventory</span><i>✦</i><span>Weapons &amp; ammo</span><i>✦</i><span>Phone chips</span><i>✦</i><span>Fleeca banking</span><i>✦</i>
-                <span>Multi-job &amp; duty</span><i>✦</i><span>Death &amp; EMS</span><i>✦</i><span>Admin menu</span><i>✦</i><span>Spawn selector</span><i>✦</i>
-                <span>Third eye</span><i>✦</i><span>HUD</span><i>✦</i><span>qb-core bridge</span><i>✦</i><span>txAdmin recipe</span><i>✦</i>
-            </div>
-        </div>
-
-        <!-- ================= WHAT ================= -->
-        <section class="bsec" id="what">
-            <div class="bsec-head">
-                <span class="tag mono">01 · WHAT IS ARCA</span>
-                <h2>A complete roleplay server,<br>built around <em>one core.</em></h2>
-            </div>
-
-            <div class="pillars">
-                <article class="pillar reveal">
-                    <span class="num mono">01</span>
+        <!-- ================= WHY ================= -->
+        <section class="sec" id="what">
+            <div class="three">
+                <div class="tile white">
+                    <span class="num">01</span>
                     <h3>One export</h3>
-                    <p>Players, money, jobs, callbacks, notifications and UI all live in <code>arca_core</code>. Grab the object once and build.</p>
-                    <pre class="mini mono"><span class="k">local</span> Arca = exports.arca_core:<span class="f">GetCoreObject</span>()</pre>
-                </article>
-                <article class="pillar reveal">
-                    <span class="num mono">02</span>
+                    <p>Players, money, jobs, callbacks, notifications and UI live in <code>arca_core</code>. Grab the object once and build.</p>
+                </div>
+                <div class="tile white">
+                    <span class="num">02</span>
                     <h3>Everything included</h3>
-                    <p>Inventory, weapons, phone, banking, jobs, death &amp; EMS, admin, HUD and spawn, designed together, styled together, working together.</p>
-                    <div class="count-row"><b class="mono" data-count="13">13</b><span>resources<br>out of the box</span></div>
-                </article>
-                <article class="pillar reveal">
-                    <span class="num mono">03</span>
+                    <p>Every module looks the same and talks through the core. Use them all, or swap any one out.</p>
+                </div>
+                <div class="tile white">
+                    <span class="num">03</span>
                     <h3>Speaks qb-core</h3>
-                    <p>Arca answers as <code>qb-core</code>. Most qb scripts run unchanged, and porting the rest takes minutes, not days.</p>
-                    <pre class="mini mono">exports[<span class="s">'qb-core'</span>] <span class="c">→ Arca</span></pre>
-                </article>
+                    <p>Arca answers as <code>qb-core</code>. Most qb scripts run unchanged; porting the rest takes minutes.</p>
+                </div>
             </div>
         </section>
 
         <!-- ================= MODULES ================= -->
-        <section class="bsec" id="modules">
-            <div class="bsec-head split">
-                <div>
-                    <span class="tag mono">02 · MODULES</span>
-                    <h2>Every system<br>your city <em>needs.</em></h2>
-                </div>
-                <p class="lede">Each module is its own resource with its own docs. Use them all, or swap any one out, they talk through the core.</p>
+        <section class="sec" id="modules">
+            <div class="sec-head">
+                <span class="label">Modules</span>
+                <h2>Every system your city needs</h2>
+                <p>Each module is its own resource with its own documentation.</p>
             </div>
-
-            <div class="modules">
-                <a class="mod reveal big" href="wiki.html#core-object"><span class="mod-id mono">arca_core</span><i class="fa-solid fa-cube"></i><h3>Core</h3><p>Players, money, multi-job &amp; duty, callbacks, commands, notify, progress, context &amp; radial menus, qb bridge.</p><span class="mod-tags mono">CORE · UI · BRIDGE</span></a>
-                <a class="mod reveal big" href="wiki.html#arca-inventory"><span class="mod-id mono">arca_inventory</span><i class="fa-solid fa-box-open"></i><h3>Inventory</h3><p>Drag-and-drop containers, shops with a cart, stashes, trunks, rarity, and weapons with serials, ammo, attachments, licences and repairs.</p><span class="mod-tags mono">ITEMS · SHOPS · WEAPONS</span></a>
-                <a class="mod reveal" href="wiki.html#arca-phone"><span class="mod-id mono">arca_phone</span><i class="fa-solid fa-mobile-screen"></i><h3>Phone</h3><p>iFruit phone. Your number lives on a removable chip.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-bank"><span class="mod-id mono">arca_bank</span><i class="fa-solid fa-building-columns"></i><h3>Bank</h3><p>Personal, shared &amp; job accounts, ATMs, card PINs.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-health"><span class="mod-id mono">arca_health</span><i class="fa-solid fa-heart-pulse"></i><h3>Health</h3><p>Last stand, injuries, bleeding, EMS and respawns.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-admin"><span class="mod-id mono">arca_admin</span><i class="fa-solid fa-user-shield"></i><h3>Admin</h3><p>One menu: players, vehicles, weather, bans, resources.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-target"><span class="mod-id mono">arca_target</span><i class="fa-solid fa-eye"></i><h3>Third eye</h3><p>Entities, models and zones with job filters.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-character"><span class="mod-id mono">arca_character</span><i class="fa-solid fa-users"></i><h3>Characters</h3><p>Multicharacter with a live 3D preview.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-spawn"><span class="mod-id mono">arca_spawn</span><i class="fa-solid fa-location-dot"></i><h3>Spawn</h3><p>Fly over the city and pick where you land.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-hud"><span class="mod-id mono">arca_hud</span><i class="fa-solid fa-gauge-high"></i><h3>HUD</h3><p>Status rings, speedometer, framed minimap.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-loadingscreen"><span class="mod-id mono">arca_loadingscreen</span><i class="fa-solid fa-spinner"></i><h3>Loading screen</h3><p>Tips, links, team, all in one config.</p></a>
-                <a class="mod reveal" href="wiki.html#arca-chattheme"><span class="mod-id mono">arca_chattheme</span><i class="fa-solid fa-comments"></i><h3>Chat theme</h3><p>Arca-styled chat with badge templates.</p></a>
-                <a class="mod reveal" href="wiki.html#illenium-appearance"><span class="mod-id mono">illenium-appearance</span><i class="fa-solid fa-shirt"></i><h3>Clothing</h3><p>Arca fork with native support and theme.</p></a>
-                <div class="mod soon reveal"><span class="mod-id mono">arca_identity</span><i class="fa-solid fa-id-card"></i><h3>Identity</h3><p>IDs, licences and documents.</p><span class="mod-tags mono">IN PROGRESS</span></div>
+            <div class="tile white modlist">
+                <a href="wiki.html#core-object"><i class="fa-solid fa-cube"></i><b>Core</b><span>Players, money, jobs, callbacks, menus, qb bridge</span><code>arca_core</code></a>
+                <a href="wiki.html#arca-inventory"><i class="fa-solid fa-box-open"></i><b>Inventory</b><span>Containers, shops, stashes, trunks and weapons</span><code>arca_inventory</code></a>
+                <a href="wiki.html#arca-phone"><i class="fa-solid fa-mobile-screen"></i><b>Phone</b><span>Camera, Lifeinvader, FruitPay, taxi, your own apps</span><code>arca_phone</code></a>
+                <a href="wiki.html#arca-bank"><i class="fa-solid fa-building-columns"></i><b>Bank</b><span>Personal, shared and job accounts, ATMs, PINs</span><code>arca_bank</code></a>
+                <a href="wiki.html#arca-health"><i class="fa-solid fa-heart-pulse"></i><b>Health</b><span>Last stand, injuries, bleeding, EMS, respawns</span><code>arca_health</code></a>
+                <a href="wiki.html#arca-gangs"><i class="fa-solid fa-people-group"></i><b>Gangs</b><span>Player-made gangs, ranks and management</span><code>arca_gangs</code></a>
+                <a href="wiki.html#arca-admin"><i class="fa-solid fa-user-shield"></i><b>Admin</b><span>Players, vehicles, weather, bans, resources</span><code>arca_admin</code></a>
+                <a href="wiki.html#arca-target"><i class="fa-solid fa-eye"></i><b>Third eye</b><span>Entities, models and zones with job filters</span><code>arca_target</code></a>
+                <a href="wiki.html#arca-hud"><i class="fa-solid fa-gauge-high"></i><b>HUD</b><span>Status rings, speedometer, framed minimap</span><code>arca_hud</code></a>
+                <a href="wiki.html#arca-character"><i class="fa-solid fa-users"></i><b>Characters</b><span>Multicharacter with a live 3D preview</span><code>arca_character</code></a>
+                <a href="wiki.html#arca-spawn"><i class="fa-solid fa-location-dot"></i><b>Spawn</b><span>Fly over the city and pick where you land</span><code>arca_spawn</code></a>
+                <a href="wiki.html#arca-interface"><i class="fa-solid fa-bars"></i><b>Pause menu</b><span>Arca Esc menu and GTA map re-skin</span><code>arca_interface</code></a>
+                <a href="wiki.html#arca-fuel"><i class="fa-solid fa-gas-pump"></i><b>Fuel</b><span>Nozzle and hose at the pump</span><code>arca_fuel</code></a>
+                <a href="wiki.html#arca-busdriver"><i class="fa-solid fa-bus"></i><b>Bus driver</b><span>Job · tiered routes with NPC passengers</span><code>arca_busdriver</code></a>
+                <a href="wiki.html#arca-postop"><i class="fa-solid fa-box"></i><b>PostOp</b><span>Job · load the van, deliver parcels</span><code>arca_postop</code></a>
+                <a href="wiki.html#arca-trucking"><i class="fa-solid fa-truck"></i><b>Trucking</b><span>Job · trailers, box trucks, dock crews</span><code>arca_trucking</code></a>
+                <a href="wiki.html#arca-loadingscreen"><i class="fa-solid fa-spinner"></i><b>Loading screen</b><span>Tips, links and team in one config</span><code>arca_loadingscreen</code></a>
+                <a href="wiki.html#arca-chattheme"><i class="fa-solid fa-comments"></i><b>Chat theme</b><span>Arca-styled chat with badges</span><code>arca_chattheme</code></a>
+                <a href="wiki.html#illenium-appearance"><i class="fa-solid fa-shirt"></i><b>Clothing</b><span>illenium-appearance, Arca fork</span><code>illenium-appearance</code></a>
+                <a href="wiki.html#arca-police"><i class="fa-solid fa-shield-halved"></i><b>Police</b><span>Departments, MDT, dispatch, evidence, cuffs</span><code>arca_police</code></a>
+                <a href="wiki.html#arca-jail"><i class="fa-solid fa-dungeon"></i><b>Jail</b><span>Sentences, prison work, escapes</span><code>arca_jail</code></a>
+                <a href="wiki.html#arca-doors"><i class="fa-solid fa-door-closed"></i><b>Doors</b><span>In-game door creator, keypads, lockpicking, lockdowns</span><code>arca_doors</code></a>
+                <a href="wiki.html#arca-vehiclekeys"><i class="fa-solid fa-key"></i><b>Vehicle keys</b><span>Lock, share keys, lockpick, hotwire</span><code>arca_vehiclekeys</code></a>
+                <a href="wiki.html#arca-garage"><i class="fa-solid fa-warehouse"></i><b>Garages</b><span>Personal, gang and job garages, impound</span><code>arca_garage</code></a>
+                <a href="wiki.html#arca-mechanic"><i class="fa-solid fa-wrench"></i><b>Mechanic</b><span>Job · upgrades, parts, invoices, vehicle wear</span><code>arca_mechanic</code></a>
+                <a href="wiki.html#arca-electrician"><i class="fa-solid fa-bolt"></i><b>Electrician</b><span>Job · repair streetlights, solo or as a crew</span><code>arca_electrician</code></a>
+                <a href="wiki.html#arca-businesses"><i class="fa-solid fa-store"></i><b>Businesses</b><span>Build restaurants, bars and shops live</span><code>arca_businesses</code></a>
+                <a href="wiki.html#arca-illegal"><i class="fa-solid fa-mask"></i><b>Illegal</b><span>Build robberies, drugs and stashes live</span><code>arca_illegal</code></a>
+                <a href="wiki.html#arca-skills"><i class="fa-solid fa-diagram-project"></i><b>Skills</b><span>Skill trees, XP, perks</span><code>arca_skills</code></a>
+                <a href="wiki.html#arca-emotes"><i class="fa-solid fa-face-smile"></i><b>Emotes</b><span>Emote menu, walk styles, shared emotes</span><code>arca_emotes</code></a>
+                <div class="soon"><i class="fa-solid fa-id-card"></i><b>Identity</b><span>IDs, licences and documents · coming soon</span><code>arca_identity</code></div>
             </div>
         </section>
 
         <!-- ================= PLAYGROUND ================= -->
-        <section class="section" id="playground">
-            <div class="section-head">
-                <div><span class="eyebrow">03 · TRY IT</span>
-                <h2>Don't read about it.<br><em>Play with it.</em></h2></div>
-                <p>Live mini versions of Arca's in-game UI. Drag items, buy from the shop, get shot, call EMS.</p>
+        <section class="sec" id="playground">
+            <div class="sec-head">
+                <span class="label">Try it</span>
+                <h2>Play with the real UI</h2>
+                <p>Live mini versions of Arca's in-game screens. Drag items, buy from the shop, get shot, call EMS.</p>
             </div>
 
             <div class="pg-tabs" role="tablist">
@@ -290,24 +276,21 @@
             </div>
         </section>
 
-
         <!-- ================= CODE ================= -->
-        <section class="bsec" id="code">
-            <div class="bsec-head split">
-                <div>
-                    <span class="tag mono">04 · CODE</span>
-                    <h2>Write less.<br><em>Ship more.</em></h2>
+        <section class="sec" id="code">
+            <div class="split">
+                <div class="tile green">
+                    <span class="label">Developers</span>
+                    <h2>Write less.<br>Ship more.</h2>
+                    <p>Callbacks wait for their answer, UI is one call away, and every module has exports for your own scripts.</p>
+                    <a href="wiki.html" class="bbtn white">Read the API</a>
                 </div>
-                <p class="lede">Clean APIs that read top to bottom. Callbacks wait for their answer, UI is one call away, and every module has exports for your scripts.</p>
-            </div>
-
-            <div class="codebox reveal">
-                <div class="code-tabs mono">
-                    <button class="on" data-code="0">server.lua</button>
-                    <button data-code="1">client.lua</button>
-                    <button data-code="2">inventory.lua</button>
-                    <span class="code-dots"><i></i><i></i><i></i></span>
-                </div>
+                <div class="codebox">
+                    <div class="code-tabs mono">
+                        <button class="on" data-code="0">server.lua</button>
+                        <button data-code="1">client.lua</button>
+                        <button data-code="2">inventory.lua</button>
+                    </div>
 <pre class="code-pane on mono" data-pane="0"><span class="c">-- pay every on-duty medic a bonus from the EMS bank account</span>
 <span class="k">for</span> _, src <span class="k">in</span> <span class="f">ipairs</span>(exports.arca_core:<span class="f">GetOnDuty</span>(<span class="s">'ambulance'</span>)) <span class="k">do</span>
     <span class="k">if</span> exports.arca_bank:<span class="f">RemoveJobMoney</span>(<span class="s">'ambulance'</span>, <span class="n">250</span>, <span class="s">'Bonus'</span>) <span class="k">then</span>
@@ -332,46 +315,65 @@ Arca.Functions.<span class="f">CreateUseableItem</span>(<span class="s">'energyd
         <span class="f">TriggerClientEvent</span>(<span class="s">'drink:boost'</span>, source)
     <span class="k">end</span>
 <span class="k">end</span>)</pre>
+                </div>
             </div>
         </section>
 
         <!-- ================= INSTALL ================= -->
-        <section class="bsec" id="install">
-            <div class="bsec-head">
-                <span class="tag mono">05 · INSTALL</span>
-                <h2>From zero to city<br><em>in minutes.</em></h2>
+        <section class="sec" id="install">
+            <div class="sec-head">
+                <span class="label">Install</span>
+                <h2>From zero to city in four steps</h2>
             </div>
-            <ol class="steps-b">
-                <li class="reveal"><span class="mono">01</span><h3>MariaDB</h3><p>Install MariaDB 10.6+ and remember your root password.</p></li>
-                <li class="reveal"><span class="mono">02</span><h3>FXServer</h3><p>Download the recommended artifacts and open txAdmin.</p></li>
-                <li class="reveal"><span class="mono">03</span><h3>Recipe</h3><p>Choose <em>Remote URL Template</em> and paste the Arca recipe.</p></li>
-                <li class="reveal"><span class="mono">04</span><h3>Play</h3><p>Connect, create a character, and start building.</p></li>
+            <ol class="steps">
+                <li class="tile white"><b>1</b><h3>MariaDB</h3><p>Install MariaDB 10.6+ and note your root password.</p></li>
+                <li class="tile white"><b>2</b><h3>FXServer</h3><p>Download the recommended artifacts and open txAdmin.</p></li>
+                <li class="tile white"><b>3</b><h3>Recipe</h3><p>Choose Remote URL Template and paste the Arca recipe.</p></li>
+                <li class="tile green"><b>4</b><h3>Play</h3><p>Connect, create a character and start building.</p></li>
             </ol>
-            <div class="install-cta reveal">
-                <div class="recipe big mono">
-                    <span>recipe</span><code>https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml</code>
-                    <button data-copy="https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml"><i class="fa-regular fa-copy"></i> Copy</button>
-                </div>
-                <a href="wiki.html#installation" class="bbtn">Full install guide <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+            <p class="center"><a href="wiki.html#installation" class="text-link">Full installation guide <i class="fa-solid fa-arrow-right"></i></a></p>
         </section>
     </main>
 
-    <footer class="bfoot">
-        <div class="bfoot-word" aria-hidden="true">ARCA</div>
-        <div class="bfoot-row">
-            <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>ARCA</span></a>
-            <span class="mono">The FiveM framework · built for roleplay</span>
-            <nav>
-                <a href="wiki.html">Docs</a>
-                <a href="https://github.com/Arca-Framework" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener">Community</a>
-                <a href="wiki.html#installation">Install</a>
-            </nav>
+    <footer class="foot">
+        <div class="wrap foot-grid">
+            <div class="foot-brand">
+                <a href="index.html" class="bbrand"><img src="assets/logo.png" alt=""><span>arca</span></a>
+                <p>The FiveM framework built for roleplay. Made and maintained by ScapeScripts.</p>
+            </div>
+            <div><h4>Product</h4><a href="index.html#modules">Modules</a><a href="index.html#playground">Try it</a><a href="index.html#get">Install</a></div>
+            <div><h4>Resources</h4><a href="wiki.html">Documentation</a><a href="wiki.html#installation">Install guide</a><a href="https://github.com/Arca-Framework" target="_blank" rel="noopener">GitHub</a></div>
+            <div><h4>Arca</h4><a href="about.html">About</a><a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener">Discord</a></div>
+            <div><h4>Legal</h4><a href="legal.html#terms">Terms of use</a><a href="legal.html#licence">Licence</a><a href="legal.html#privacy">Privacy</a></div>
+        </div>
+        <div class="wrap foot-bottom">
+            <span>© 2026 ScapeScripts. All rights reserved.</span>
+            <span>Not affiliated with Rockstar Games, Take-Two Interactive or Cfx.re.</span>
         </div>
     </footer>
 
-    <div id="copied" class="mono">COPIED</div>
+    <!-- ================= INSTALL DIALOG ================= -->
+    <div class="imodal" id="installModal" hidden>
+        <div class="ibox" role="dialog" aria-modal="true" aria-labelledby="imTitle">
+            <button class="ix" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <span class="label">Get Arca</span>
+            <h2 id="imTitle">Install with txAdmin</h2>
+            <p class="isub">A fresh Arca server in a few minutes. You need Windows or Linux, MariaDB and a FiveM licence key.</p>
+            <ol class="isteps">
+                <li><b>1</b><div><h3>Install MariaDB</h3><p>Version 10.6 or newer. Note the root password you set.</p></div></li>
+                <li><b>2</b><div><h3>Download FXServer</h3><p>Get the <a href="https://runtime.fivem.net/artifacts/fivem/" target="_blank" rel="noopener">recommended artifacts</a>, run FXServer and open txAdmin in your browser.</p></div></li>
+                <li><b>3</b><div><h3>Use the Arca recipe</h3><p>In the setup choose <strong>Popular Recipes → Remote URL Template</strong> and paste:</p>
+                    <div class="irecipe"><code>https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml</code><button data-copy="https://raw.githubusercontent.com/Arca-Framework/txAdmin-recipe/main/recipe.yaml"><i class="fa-regular fa-copy"></i> Copy</button></div></div></li>
+                <li><b>4</b><div><h3>Start and join</h3><p>txAdmin downloads everything and imports the database. Connect, create a character, done.</p></div></li>
+            </ol>
+            <div class="ifoot">
+                <a href="wiki.html#installation" class="bbtn line">Full install guide</a>
+                <a href="https://discord.gg/w3A3B4BBRz" target="_blank" rel="noopener" class="bbtn"><i class="fa-brands fa-discord"></i> Need help?</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="copied">Copied to clipboard</div>
 
     <script src="assets/playground.js"></script>
     <script src="assets/site.js"></script>

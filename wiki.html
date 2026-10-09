@@ -73,7 +73,24 @@
             <tr><td><code>arca_spawn</code></td><td>Spawn selector with a flying camera, job spawns and forced last location.</td><td>Available</td></tr>
             <tr><td><code>arca_health</code></td><td>Last stand, death screen, injuries, bleeding, EMS and hospital respawns.</td><td>Available</td></tr>
             <tr><td><code>arca_bank</code></td><td>Personal, shared and job accounts, Fleeca branches, ATMs with card PINs.</td><td>Available</td></tr>
-            <tr><td><code>arca_phone</code></td><td>iFruit phone with chips, calls, messages, contacts and Fleeca banking.</td><td>Available</td></tr>
+            <tr><td><code>arca_phone</code></td><td>iFruit phone with chips: calls, messages, camera, Lifeinvader, FruitPay invoices, Fleeca, DownTown Taxi and custom apps.</td><td>Available</td></tr>
+            <tr><td><code>arca_interface</code></td><td>Arca pause menu (settings, keybinds, switch character), GTA pause menu re-skin, map legend and blip tooltips.</td><td>Available</td></tr>
+            <tr><td><code>arca_fuel</code></td><td>Fuel with a nozzle and hose, fuel use while driving, server-checked payment.</td><td>Available</td></tr>
+            <tr><td><code>arca_busdriver</code></td><td>Bus driver job: tiered routes, NPC passengers paying fares, commission, XP and levels.</td><td>Available</td></tr>
+            <tr><td><code>arca_postop</code></td><td>PostOp parcel delivery: load the van, deliver to doors, van damage checks, uniform.</td><td>Available</td></tr>
+            <tr><td><code>arca_trucking</code></td><td>Trailer hauling with precision parking and box truck deliveries with dock crews; rent or own your truck.</td><td>Available</td></tr>
+            <tr><td><code>arca_gangs</code></td><td>Player-made gangs: create (with a cost), invite, promote, remove and disband from a menu, with exports and hooks for add-ons.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-mechanic"><code>arca_mechanic</code></a></td><td>Mechanic job: upgrade previews, job sheets, crafted parts, invoices, boss menu, plus vehicle wear, mileage and seatbelts.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-electrician"><code>arca_electrician</code></a></td><td>LS Water &amp; Power job: repair streetlights and electrical boxes, solo or as a crew.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-police"><code>arca_police</code></a></td><td>Departments, MDT, dispatch, evidence, cuffs, props, fines and charges.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-jail"><code>arca_jail</code></a></td><td>Prison sentences that count down, confiscated belongings, prison work and escapes.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-doors"><code>arca_doors</code></a></td><td>Door locks with an in-game creator: jobs, gangs, items, keypads, lockpicking, hacking, breaching, lockdowns.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-vehiclekeys"><code>arca_vehiclekeys</code></a></td><td>Vehicle keys: lock / unlock, shared keys, lockpicking, hotwiring, locked AI vehicles.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-garage"><code>arca_garage</code></a></td><td>Personal, gang and job garages, job fleets and an impound depot.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-businesses"><code>arca_businesses</code></a></td><td>Build restaurants, bars and shops live: products, staff, tills, finances and a phone app.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-illegal"><code>arca_illegal</code></a></td><td>Build robberies, drugs, secret NPCs and stashes live, plus corner selling and petty crime.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-skills"><code>arca_skills</code></a></td><td>Skill trees: XP from activities, levels, tokens and perks.</td><td>Available</td></tr>
+            <tr><td><a href="#arca-emotes"><code>arca_emotes</code></a></td><td>Emote menu, /e, walk styles, expressions, quick slots and shared emotes.</td><td>Available</td></tr>
             <tr><td><code>arca_identity</code></td><td>Planned resource.</td><td>Coming soon</td></tr>
         </tbody>
     </table></div>
@@ -152,9 +169,9 @@
         <thead><tr><th>Task</th><th>Details</th></tr></thead>
         <tbody>
             <tr><td>CFX default resources</td><td><code>chat</code>, <code>spawnmanager</code>, <code>sessionmanager</code>, <code>mapmanager</code>, <code>hardcap</code></td></tr>
-            <tr><td>Dependencies</td><td><code>oxmysql</code>, <code>ox_lib</code>, <code>bob74_ipl</code>, <code>illenium-appearance</code> (Arca fork) &rarr; <code>resources/[standalone]</code></td></tr>
-            <tr><td>Arca</td><td><code>arca_core</code>, <code>arca_target</code>, <code>arca_character</code>, <code>arca_inventory</code>, <code>arca_hud</code>, <code>arca_loadingscreen</code>, <code>arca_admin</code> &rarr; <code>resources/[arca]</code></td></tr>
-            <tr><td>Database</td><td>Runs <code>arca.sql</code>, <code>inventory.sql</code> and illenium's outfit tables. Resources also create their own tables on start (<code>arca_inventories</code>, <code>arca_weapon_registry</code>, <code>arca_bans</code>, outfit tables).</td></tr>
+            <tr><td>Dependencies</td><td><code>oxmysql</code>, <code>ox_lib</code>, <code>bob74_ipl</code>, <code>screenshot-basic</code>, <code>illenium-appearance</code> (Arca fork) &rarr; <code>resources/[standalone]</code></td></tr>
+            <tr><td>Arca</td><td><code>arca_core</code>, <code>arca_target</code>, <code>arca_character</code>, <code>arca_inventory</code>, <code>arca_spawn</code>, <code>arca_hud</code>, <code>arca_loadingscreen</code>, <code>arca_admin</code>, <code>arca_bank</code>, <code>arca_health</code>, <code>arca_phone</code>, <code>arca_chattheme</code>, <code>arca_interface</code> &rarr; <code>resources/[arca]</code></td></tr>
+            <tr><td>Database</td><td>Runs <code>arca.sql</code>, <code>inventory.sql</code> and illenium's outfit tables. Resources also create their own tables on start (<code>arca_inventories</code>, <code>arca_weapon_registry</code>, <code>arca_bans</code>, <code>arca_bank_*</code>, <code>arca_phone_*</code>, outfit tables).</td></tr>
             <tr><td><code>server.cfg</code></td><td>License key, database connection, resource order and admin permissions (including the ace that lets arca_admin start / stop resources)</td></tr>
         </tbody>
     </table></div>
@@ -207,6 +224,7 @@ ensure arca_target
 ensure ox_lib
 ensure illenium-appearance
 ensure arca_character
+ensure arca_gangs   # player-made gangs (creates its table on first start)
 
 add_ace group.admin arca.god allow</code></pre>
 
@@ -527,7 +545,7 @@ player.AddMoney('bank', 500, 'salary bonus')</code></pre>
         <h3><code>player.SetJobDuty(onduty)</code></h3>
         <p>Sets on/off duty.</p>
         <h3><code>player.SetGang(name, grade)</code></h3>
-        <p>Sets the gang. Returns <code>false</code> if the gang doesn't exist.</p>
+        <p>Sets the gang. Returns <code>false</code> if the gang doesn't exist. Player-made gangs are managed by <a href="#arca-gangs">arca_gangs</a>.</p>
         <h3><code>player.AddMoney(type, amount, reason?)</code></h3>
         <p>Adds money. Returns <code>true</code> on success.</p>
         <h3><code>player.RemoveMoney(type, amount, reason?)</code></h3>
@@ -751,7 +769,9 @@ end)</code></pre>
 
 <article class="doc" id="jobs-gangs" data-group="Core" data-title="Jobs &amp; gangs">
     <h1>Jobs &amp; gangs</h1>
-    <p class="desc">Defined in <code>arca_core/shared/jobs.lua</code> and <code>gangs.lua</code>.</p>
+    <p class="desc">Jobs are defined in <code>arca_core/shared/jobs.lua</code>. Gangs are made by players with <a href="#arca-gangs">arca_gangs</a>.</p>
+
+    <div class="callout info"><div class="title">Gangs</div><p>There is no <code>gangs.lua</code> any more. Players create gangs in-game and <code>arca_gangs</code> registers them with arca_core at runtime, so <code>PlayerData.gang</code>, <code>SetGang</code>, <code>groups</code> checks and <code>QBCore.Shared.Gangs</code> work exactly as before. The only built-in gang is <code>none</code>.</p></div>
 
     <p>The format is the same as qb-core, so you can paste qb job files straight in. Grade keys are strings.</p>
     <pre data-title="shared/jobs.lua"><code class="language-lua">mechanic = {
@@ -834,6 +854,45 @@ exports.arca_target:addSphereZone({
 })</code></pre>
 </article>
 
+<article class="doc" id="world-settings" data-group="Core" data-title="World settings">
+    <h1>World settings</h1>
+    <p class="desc">Traffic, AI police and ambient world, in <code>arca_core/shared/small.lua</code>. Blacklisted vehicles in <code>arca_core/shared/blacklisted_vehicles.lua</code>.</p>
+
+    <h2>Traffic, police &amp; ambient</h2>
+    <pre data-title="arca_core/shared/small.lua"><code class="language-lua">ArcaWorld = {
+    Density = { peds = 0.8, scenarioPeds = 0.8, vehicles = 0.6, parked = 0.6, randomVehicles = 0.6 },
+    Police = {
+        disableWanted = true,       -- never get wanted stars
+        disableRandomCops = true,   -- no AI cops around the city
+        disableDispatch = true,     -- no AI police / ambulance / fire / army response
+        ignorePlayer = true,
+    },
+    Gangs = 'friendly',             -- 'friendly' (never attack), 'remove' (deleted), false (GTA default)
+    Emergencies = {
+        disableRandomEvents = true,     -- muggings, car thefts, street events
+        disableEmergencyTraffic = true, -- no AI police / ambulance / fire vehicles in traffic
+        disablePoliceScanner = true,
+    },
+    DisableIdleCamera = true,
+    DisableVehicleRewards = true,   -- no free weapons from police cars
+    DisableDistantSirens = true,
+    DisableGarbageTrucks = true,
+    DisableRandomBoats = true,
+    DisableAmbientPlanes = true,    -- no planes, helicopters or blimps over the city
+    DisableNpcWeaponDrops = true,
+}</code></pre>
+    <div class="callout info"><div class="title">Idle camera</div><p><code>DisableIdleCamera = true</code> overrides the player's <strong>Idle Camera</strong> setting in <a href="#arca-interface">arca_interface</a>. Set it to <code>false</code> to let players choose.</p></div>
+
+    <h2>Blacklisted vehicles</h2>
+    <p>Models in the list can't be spawned by anyone, admins included: the server refuses them when a client tries to create one, deletes any made by server scripts every 5 seconds, and they never appear in traffic. The default list covers flying cars (Deluxo, Oppressor, &hellip;), weaponised and Arena War vehicles, tanks and military aircraft.</p>
+    <pre data-title="arca_core/shared/blacklisted_vehicles.lua"><code class="language-lua">ArcaBlacklist = {
+    Vehicles = {
+        'deluxo', 'oppressor', 'oppressor2', 'vigilante', 'scramjet', 'toreador', 'stromberg',
+        'rhino', 'khanjali', 'lazer', 'hydra', 'savage', 'hunter', 'akula', ...
+    },
+}</code></pre>
+</article>
+
 <article class="doc" id="database" data-group="Core" data-title="Database">
     <h1>Database</h1>
     <p class="desc">Tables created by <code>arca_core/sql/arca.sql</code>.</p>
@@ -870,7 +929,7 @@ exports.arca_target:addSphereZone({
 
     <div class="callout info">
         <div class="title">What Arca doesn't ship yet</div>
-        <p>There is no Arca vehicle keys, fuel, garage or phone resource yet. If you build one, follow the conventions below so the HUD, inventory and admin menu work with it automatically. Death and EMS are handled by <a href="#arca-health">arca_health</a>.</p>
+        <p>There is no Arca vehicle keys, fuel or garage resource yet. If you build one, follow the conventions below so the HUD, inventory and admin menu work with it automatically. Death and EMS are handled by <a href="#arca-health">arca_health</a>.</p>
     </div>
 
     <h2>Checking jobs and duty</h2>
@@ -1420,14 +1479,14 @@ exports.arca_bank:OpenATM()</code></pre>
 
 <article class="doc" id="arca-phone" data-group="Resources" data-title="arca_phone">
     <h1>arca_phone</h1>
-    <p class="desc">An iFruit smartphone with calls, messages, contacts and Fleeca banking, built around phone chips.</p>
+    <p class="desc">An iFruit smartphone built around phone chips: calls, messages, a camera, Lifeinvader, FruitPay, Fleeca, DownTown Taxi, and your own apps.</p>
 
     <h2>Phone chips</h2>
-    <p>A phone's number, contacts, messages, call history and settings live on its <strong>chip</strong>, not on the phone or the character.</p>
+    <p>A phone's number, contacts, messages, call history, photos, Lifeinvader profile and settings live on its <strong>chip</strong>, not on the phone or the character.</p>
     <ul>
         <li>Every new phone (shops, <code>/giveitem</code>, the starter phone) comes with its own chip and a <code>555-####</code> number.</li>
         <li><strong>Right-click a phone</strong> in the inventory to see its chip, <strong>remove</strong> it (it becomes a <code>phone_chip</code> item) or <strong>insert</strong> one.</li>
-        <li>No chip = the phone shows an <strong>"OS visual issue"</strong> screen. Whoever holds your phone can take your chip, and your number and messages with it.</li>
+        <li>No chip = iFruit OS <strong>fails to boot</strong>: the loading bar stalls, the status bar shows <em>No Chip</em> with no signal or wifi. Whoever holds your phone can take your chip, and your number and messages with it.</li>
         <li>Spare chips are sold at the <strong>Digital Den</strong> electronics stores.</li>
     </ul>
 
@@ -1435,14 +1494,88 @@ exports.arca_bank:OpenATM()</code></pre>
     <div class="table-wrap"><table>
         <thead><tr><th>App</th><th>What it does</th></tr></thead>
         <tbody>
-            <tr><td>Phone</td><td>Keypad, recent calls, contacts. Calls ring the other player and use pma-voice for audio.</td></tr>
-            <tr><td>Messages</td><td>Conversations with unread badges, delivered live to whoever carries that chip.</td></tr>
-            <tr><td>Contacts</td><td>Add, edit, delete, search, call or message from the list.</td></tr>
+            <tr><td>Phone</td><td>Keypad, recent calls, contacts. Calls ring the other player and use pma-voice for audio, filtered to sound like a phone. <strong>Speaker</strong> during a call lets people standing next to you hear and talk. Right-click a recent call (or tap <kbd>&hellip;</kbd>) to call, message or add it to contacts.</td></tr>
+            <tr><td>Messages</td><td>Conversations with unread badges, delivered live to whoever carries that chip. Send your <strong>location</strong> (tap it to set a waypoint) or a <strong>photo</strong> from your gallery.</td></tr>
+            <tr><td>Camera</td><td>Phone camera with zoom (0.5&times; to 8&times;, scroll wheel), selfie mode and an iFruit viewfinder. Needs <code>screenshot-basic</code>.</td></tr>
+            <tr><td>Photos</td><td>Gallery of the chip's photos. View, delete, or share to Lifeinvader.</td></tr>
+            <tr><td>Lifeinvader</td><td>Social feed with text and photo posts, likes, and profiles with a picture (from Photos or a selfie), name and bio.</td></tr>
+            <tr><td>FruitPay</td><td>Pay invoices from any bank account you can use, decline them, or request money from a number into your personal or a job account (needs <a href="#arca-bank">arca_bank</a>).</td></tr>
             <tr><td>Fleeca</td><td>Account balances, activity and transfers (needs <a href="#arca-bank">arca_bank</a>).</td></tr>
-            <tr><td>Settings</td><td>Chip number, silent mode, wallpapers.</td></tr>
+            <tr><td>DownTown</td><td>Downtown Cab Co. ride hailing: hail a cab, or drive and take fares from players and NPC locals. <a href="#arca-phone--downtown-taxi">More below</a>.</td></tr>
+            <tr><td>Contacts</td><td>Add, edit, delete, search, call or message from the list. <strong>Share</strong> a contact (or your own number) with everyone standing nearby; they get a card to save it.</td></tr>
+            <tr><td>Notes</td><td>Notes saved on the chip as you type, with search. The first line is the title.</td></tr>
+            <tr><td>Calculator</td><td>A standard calculator that also takes keyboard input.</td></tr>
+            <tr><td>Settings</td><td>Silent mode, wallpapers, and <strong>About</strong>: iFruit OS version, model, serial, capacity and the inserted chip (network, number, ICCID). Cosmetic, set in <code>PhoneConfig.About</code>.</td></tr>
         </tbody>
     </table></div>
-    <p>Open it with <kbd>M</kbd> or by using the phone item. You can keep walking while it's open; movement is blocked while typing. Incoming calls and messages show as banners while it's put away.</p>
+    <p>Open it with <kbd>M</kbd> or by using the phone item. You can keep walking while it's open; movement is blocked while typing. Calls, messages, invoices and ride updates show as banners while it's put away and stay on the lock screen: <strong>tap</strong> one to open its app, <strong>swipe</strong> it away, or <strong>Clear all</strong>.</p>
+
+    <h2>Camera &amp; photos</h2>
+    <p>Install <a href="https://github.com/citizenfx/screenshot-basic" target="_blank" rel="noopener">screenshot-basic</a> (the txAdmin recipe does). By default photos are shrunk to about 50&nbsp;KB and stored in the database, so it works with no setup. To store links instead, set an upload host:</p>
+    <pre data-title="arca_phone/config.lua"><code class="language-lua">Photos = {
+    Upload = 'https://api.fivemanage.com/api/image',   -- or a Discord webhook, or your own host
+    Field = 'file',
+    Headers = { Authorization = 'your-api-key' },      -- sent from the client: players can see it
+    MaxPerChip = 60,
+},</code></pre>
+    <p>Controls: <kbd>Enter</kbd> / left click shoot, scroll zoom, <kbd>&uarr;</kbd> flip, <kbd>Backspace</kbd> / right click close. The HUD is hidden while the camera is open (<code>exports.arca_hud:SetHidden</code>).</p>
+
+    <h2>FruitPay invoices</h2>
+    <p>Players bill each other from the app. Your scripts can bill players too, for shops, fines or jobs:</p>
+    <pre data-title="server.lua"><code class="language-lua">-- to = a server id or a phone number; job = pay into that job's bank account
+local id, err = exports.arca_phone:SendInvoice({
+    to = source, amount = 500, reason = 'Speeding · Route 68',
+    from = 'LSPD', job = 'police',
+})
+
+AddEventHandler('arca_phone:server:invoicePaid', function(inv)
+    print(inv.id, inv.payer, inv.amount, inv.reason, inv.payee)
+end)</code></pre>
+    <p>Instead of <code>job</code>, give <code>payee</code> (a citizen ID or account number) or <code>sender</code> (a server id, paid into their personal account). An invoice is marked paid before the transfer and reopened if it fails, so it can't be paid twice.</p>
+
+    <h2>DownTown Taxi</h2>
+    <ul>
+        <li><strong>Hail a cab:</strong> set a waypoint on your map (that's your drop-off, and the fare is worked out from the distance to it) and call. Drivers can use any vehicle. You pay on arrival, from the bank or cash.</li>
+        <li><strong>Drive:</strong> get in a vehicle and start a shift. Dispatch tickets show the fare on a meter, the pickup and trip legs and a countdown to take the fare.</li>
+        <li><strong>Player fares:</strong> start the meter once they're in your car, end the fare at the drop-off.</li>
+        <li><strong>Street fares (NPCs):</strong> the local gets in when you stop next to them and pays when you stop at the drop-off.</li>
+        <li>The server sets every fare and checks positions itself (pickup where the rider stands, rider in your car, near the destination, not faster than driving).</li>
+    </ul>
+    <pre data-title="arca_phone/config.lua"><code class="language-lua">Taxi = {
+    DriverJob = false,          -- 'taxi' to only let that job drive
+    BaseFare = 25, PerMile = 14,
+    Kinds = { { id = 'downtown', label = 'Cab', mult = 1.0 } },  -- one ride type: drivers use any vehicle
+    Npc = { Enabled = true, Every = { 25, 70 }, PayMultiplier = 0.8, ... },
+},</code></pre>
+
+    <h2>Custom apps</h2>
+    <p>Add your own apps to the home screen from any resource. There's a working template in <code>arca_phone/examples/my_phone_app</code>.</p>
+    <pre data-title="client.lua"><code class="language-lua">exports.arca_phone:AddApp({
+    id = 'notes', label = 'Notes',
+    icon = 'fa-solid fa-note-sticky', color = 'linear-gradient(160deg, #ffd43b, #f59f00)',
+    ui = 'https://cfx-nui-my_resource/web/index.html',   -- a page shown inside the phone
+    job = 'police',                                      -- optional: only these job(s) see it
+})
+
+-- or an app that just runs code when tapped
+exports.arca_phone:AddApp({ id = 'gps_home', label = 'Go home', icon = 'fa-solid fa-house', color = '#2ec4b6',
+    onOpen = function() SetNewWaypoint(-14.0, -1442.0) end })
+
+exports.arca_phone:SetAppBadge('notes', 3)
+exports.arca_phone:SendAppMessage('notes', { hello = 'world' })
+exports.arca_phone:RemoveApp('notes')</code></pre>
+    <p>Apps with no code can go in <code>PhoneConfig.CustomApps</code>. An app is removed when the resource that added it stops.</p>
+    <p>The page calls its own resource with <code>fetch('https://&lt;resource&gt;/...')</code> like any NUI page. It receives <code>{ type: 'arca_phone:open', data: { app, number, owner } }</code> on load and <code>{ type: 'arca_phone:message', data }</code> from <code>SendAppMessage</code>. It talks to the phone with <code>window.parent.postMessage({ arcaApp: ... }, '*')</code>:</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th><code>arcaApp</code></th><th>Does</th></tr></thead>
+        <tbody>
+            <tr><td><code>'home'</code></td><td>Back to the home screen.</td></tr>
+            <tr><td><code>'closePhone'</code></td><td>Put the phone away. Send it on <kbd>Esc</kbd>: the phone can't see keys pressed inside your page.</td></tr>
+            <tr><td><code>'notify'</code> + <code>text</code>, <code>ok</code></td><td>A toast at the top of the phone.</td></tr>
+            <tr><td><code>'badge'</code> + <code>count</code></td><td>Set the icon badge.</td></tr>
+            <tr><td><code>'event'</code> + <code>payload</code></td><td>Fires the client event <code>arca_phone:app:&lt;id&gt;</code>.</td></tr>
+        </tbody>
+    </table></div>
 
     <h2>Config &amp; exports</h2>
     <pre data-title="arca_phone/config.lua"><code class="language-lua">PhoneConfig = {
@@ -1452,13 +1585,23 @@ exports.arca_bank:OpenATM()</code></pre>
     RingTime = 30,
     MaxMessageLength = 500,
     Voice = 'pma-voice',
+    PhoneFilter = true,         -- calls sound like a phone (needs: setr voice_enableSubmix 1)
+    Speaker = { Radius = 3.0 }, -- loudspeaker: people this close hear the call
+    ShareRadius = 3.0,          -- sharing a contact reaches everyone this close
+    About = { Os = 'iFruit OS 9.4', Model = 'iFruit 15 Pro', ModelNumber = 'IF-A2650', Capacity = 256, Network = 'Badger' },
+    Photos = { ... }, Lifeinvader = { MaxLength = 280, FeedSize = 30 }, FruitPay = { MaxAmount = 1000000 },
+    CustomApps = { ... }, Taxi = { ... },
 }</code></pre>
     <pre data-title="lua"><code class="language-lua">-- client
 exports.arca_phone:Open()      exports.arca_phone:Close()      exports.arca_phone:IsOpen()
+exports.arca_phone:AddApp(app) exports.arca_phone:RemoveApp(id)
+exports.arca_phone:SetAppBadge(id, count)   exports.arca_phone:SendAppMessage(id, data)
 
 -- server
-local number = exports.arca_phone:NewChipNumber()     -- a new unused number
-local holders = exports.arca_phone:GetHolders('555-0123')   -- players carrying that chip</code></pre>
+local number = exports.arca_phone:NewChipNumber()            -- a new unused number
+local holders = exports.arca_phone:GetHolders('555-0123')    -- players carrying that chip
+local id = exports.arca_phone:SendInvoice({ to, amount, reason, from, job })</code></pre>
+    <p>All tables (<code>arca_phone_*</code>) are created on start.</p>
 </article>
 
 <article class="doc" id="arca-health" data-group="Resources" data-title="arca_health">
@@ -1523,6 +1666,186 @@ end)</code></pre>
     <p><code>/revive [id]</code> and <code>/heal [id]</code> (admin). Server exports: <code>Revive</code>, <code>Heal</code>, <code>Kill</code>, <code>GetState</code>, <code>IsDead</code>, <code>IsDown</code>. Client exports: <code>GetState</code>, <code>IsDead</code>, <code>IsDown</code>, <code>Revive</code>, <code>GetInjuries</code>, <code>ClearInjuries</code>, <code>IsBleeding</code>. qb scripts using <code>hospital:client:Revive</code> / <code>HealInjuries</code> keep working.</p>
 </article>
 
+<article class="doc" id="arca-gangs" data-group="Resources" data-title="arca_gangs">
+    <h1>arca_gangs</h1>
+    <p class="desc">Player-made gangs. Players start, run and grow their own gangs from a menu.</p>
+
+    <ul>
+        <li><strong>Create</strong>, pick a name and colour and pay the creation cost (default <code>$25,000</code>, bank then cash). The founder is the Boss.</li>
+        <li><strong>Invite</strong>, Lieutenants and the Boss invite players by server ID. The player accepts or declines from their own menu.</li>
+        <li><strong>Manage</strong>, the Boss promotes and demotes. Lieutenants and the Boss remove members ranked below them. Works for offline members too.</li>
+        <li><strong>Leave / disband</strong>, members can leave. The Boss can change the colour or disband the gang.</li>
+        <li><strong>Actions tab</strong>, other resources can add their own buttons (a stash, turf map, &hellip;).</li>
+    </ul>
+    <p>Open it with <code>/gang</code> or <kbd>F6</kbd> (rebindable in GTA Settings &rsaquo; Key Bindings &rsaquo; FiveM).</p>
+
+    <h2>How it fits in</h2>
+    <p>Gangs are stored in the <code>arca_gangs</code> table. Membership is the character's normal <code>gang</code> field, the same as jobs, so everything that already reads gangs keeps working: <code>PlayerData.gang</code>, <code>player.SetGang</code>, <code>groups = { mygang = 1 }</code> in arca_target / inventory / spawn, and qb scripts using <code>QBCore.Shared.Gangs</code>. On start, arca_gangs registers every gang with <code>exports.arca_core:AddGang</code>.</p>
+
+    <h2>Ranks</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Level</th><th>Rank</th><th>Can</th></tr></thead>
+        <tbody>
+            <tr><td><code>0</code></td><td>Recruit</td><td>See members, use actions allowed for their rank</td></tr>
+            <tr><td><code>1</code></td><td>Member</td><td>Same</td></tr>
+            <tr><td><code>2</code></td><td>Lieutenant</td><td>Invite players, remove Recruits and Members</td></tr>
+            <tr><td><code>3</code></td><td>Boss</td><td>Promote / demote, remove anyone, change colour, disband</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Config</h2>
+    <pre data-title="arca_gangs/config.lua"><code class="language-lua">GangConfig.Command = 'gang'
+GangConfig.Key = 'F6'
+GangConfig.CreateCost = 25000
+GangConfig.PayFrom = { 'bank', 'cash' }
+GangConfig.NameLength = { min = 3, max = 24 }
+GangConfig.MaxMembers = 30
+GangConfig.Grades = {
+    [0] = { name = 'Recruit' },
+    [1] = { name = 'Member' },
+    [2] = { name = 'Lieutenant' },
+    [3] = { name = 'Boss', isboss = true },
+}
+GangConfig.InviteGrade = 2   -- invite and remove members ranked below you
+GangConfig.ManageGrade = 3   -- promote / demote, colour, disband
+GangConfig.InviteExpiry = 300
+GangConfig.Colours = { '#00ff6a', '#3ea8ff', '#ff5468', ... }</code></pre>
+
+    <h2>Server exports</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Returns</th></tr></thead>
+        <tbody>
+            <tr><td><code>GetGangs</code></td><td>-</td><td><code>{ [name] = { name, label, colour, owner } }</code></td></tr>
+            <tr><td><code>GetGang</code></td><td><code>name</code></td><td>gang or <code>nil</code></td></tr>
+            <tr><td><code>GetMembers</code></td><td><code>name</code></td><td>list of <code>{ citizenid, name, grade, online, source? }</code></td></tr>
+            <tr><td><code>GetPlayerGang</code></td><td><code>source</code></td><td><code>{ name, label, colour, grade, gradeName, isboss }</code> or <code>nil</code></td></tr>
+            <tr><td><code>IsInGang</code></td><td><code>source, name, minGrade?</code></td><td>boolean</td></tr>
+            <tr><td><code>CreateGang</code></td><td><code>label, ownerSource?, colour?, free?</code></td><td><code>true, gang</code> or <code>false, reason</code></td></tr>
+            <tr><td><code>DeleteGang</code></td><td><code>name</code></td><td>boolean</td></tr>
+            <tr><td><code>AddMember</code></td><td><code>name, citizenid, grade?</code></td><td><code>ok, reason</code></td></tr>
+            <tr><td><code>RemoveMember</code></td><td><code>name, citizenid</code></td><td>boolean</td></tr>
+            <tr><td><code>SetMemberGrade</code></td><td><code>name, citizenid, grade</code></td><td>boolean</td></tr>
+            <tr><td><code>RegisterHook</code></td><td><code>event, fn</code></td><td>-</td></tr>
+        </tbody>
+    </table></div>
+    <p>Member changes work whether the player is online or not.</p>
+
+    <h3>Hooks</h3>
+    <p>Hooks let add-ons block an action. Return <code>false</code> (and optionally a reason the player sees).</p>
+    <pre data-title="server.lua"><code class="language-lua">-- only let players with a reputation of 50+ start a gang
+exports.arca_gangs:RegisterHook('create', function(source, label)
+    local player = exports.arca_core:GetPlayer(source)
+    if (player.PlayerData.metadata.streetrep or 0) &lt; 50 then
+        return false, 'You need more street rep to start a gang'
+    end
+end)</code></pre>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Hook</th><th>Arguments</th></tr></thead>
+        <tbody>
+            <tr><td><code>create</code></td><td><code>source, label</code></td></tr>
+            <tr><td><code>invite</code></td><td><code>source, target, gang</code></td></tr>
+            <tr><td><code>join</code></td><td><code>source, gang</code></td></tr>
+            <tr><td><code>setGrade</code></td><td><code>source, gang, citizenid, grade</code></td></tr>
+            <tr><td><code>kick</code></td><td><code>source, gang, citizenid</code></td></tr>
+            <tr><td><code>disband</code></td><td><code>source, gang</code></td></tr>
+        </tbody>
+    </table></div>
+
+    <h3>Events</h3>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Server event</th><th>Arguments</th></tr></thead>
+        <tbody>
+            <tr><td><code>arca_gangs:server:created</code></td><td><code>gang, source</code></td></tr>
+            <tr><td><code>arca_gangs:server:deleted</code></td><td><code>name</code></td></tr>
+            <tr><td><code>arca_gangs:server:memberAdded</code></td><td><code>name, citizenid, grade</code></td></tr>
+            <tr><td><code>arca_gangs:server:memberRemoved</code></td><td><code>name, citizenid</code></td></tr>
+            <tr><td><code>arca_gangs:server:gradeChanged</code></td><td><code>name, citizenid, grade</code></td></tr>
+        </tbody>
+    </table></div>
+    <p>Your own gang changing also fires the usual <code>arca_core:server:onGangUpdate</code> / <code>arca_core:client:onGangUpdate</code>.</p>
+
+    <h2>Client exports</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Export</th><th>Arguments</th><th>Notes</th></tr></thead>
+        <tbody>
+            <tr><td><code>OpenMenu</code> / <code>CloseMenu</code></td><td>-</td><td>Open or close the gang menu.</td></tr>
+            <tr><td><code>GetGang</code></td><td>-</td><td>Your <code>PlayerData.gang</code> (<code>name = 'none'</code> when not in one).</td></tr>
+            <tr><td><code>RegisterMenuAction</code></td><td><code>{ id, label, icon?, minGrade?, onSelect }</code></td><td>Adds a button to the Actions tab. Removed automatically when your resource stops.</td></tr>
+            <tr><td><code>RemoveMenuAction</code></td><td><code>id</code></td><td></td></tr>
+        </tbody>
+    </table></div>
+    <pre data-title="client.lua"><code class="language-lua">-- a gang stash button for Members and up
+exports.arca_gangs:RegisterMenuAction({
+    id = 'mygang_stash',
+    label = 'Gang stash',
+    icon = 'fa-solid fa-box',
+    minGrade = 1,
+    onSelect = function(gang)
+        TriggerServerEvent('myresource:openStash', gang.name)
+    end,
+})</code></pre>
+
+    <h2>Database</h2>
+    <p><code>arca_gangs</code>: <code>name</code>, <code>label</code>, <code>colour</code>, <code>owner</code> (citizenid), <code>created_at</code>. Created automatically on start (also in <code>sql/gangs.sql</code>).</p>
+</article>
+
+<article class="doc" id="arca-interface" data-group="Resources" data-title="arca_interface">
+    <h1>arca_interface</h1>
+    <p class="desc">Replaces the <kbd>Esc</kbd> / <kbd>P</kbd> pause menu with an Arca menu, re-skins GTA's own pause menu, and adds map extras.</p>
+
+    <ul>
+        <li><strong>Home</strong>, Resume, Map, Settings, Keybinds, GTA Settings, HUD Settings, Switch Character, Disconnect, Quit, and a character card (name, job, IDs, cash, bank).</li>
+        <li><strong>Settings tabs</strong>, Arca settings (streamer mode, idle camera, menu scale, blur, clock format) plus Display, Audio, Camera and Controls showing the player's live GTA settings. GTA settings are read-only from scripts (FiveM blocks writing them), so those rows open GTA's own settings menu to change them.</li>
+        <li><strong>Keybinds</strong>, lists every Arca key and the key it's on. Rebind in GTA Settings &rsaquo; Key Bindings &rsaquo; FiveM.</li>
+        <li><strong>GTA pause menu re-skin</strong>, your server name in the header, character name, time and bank / cash top right, renamed tabs, Arca colours and a backdrop.</li>
+        <li><strong>Map legend</strong>, blips grouped under your own headings (Shops, Banks, Appearance) by icon.</li>
+        <li><strong>Blip tooltips</strong>, hovering a blip on the pause map shows an Arca card with icon, title, description and tags.</li>
+    </ul>
+
+    <h2>Settings API</h2>
+    <pre data-title="client.lua"><code class="language-lua">local on = exports.arca_interface:GetSetting('streamerMode')
+AddEventHandler('arca_interface:settingChanged', function(key, value) end)
+
+-- add your own tab to the pause menu
+exports.arca_interface:RegisterSettings({
+    id = 'hud', label = 'HUD', icon = 'fa-solid fa-gauge',
+    settings = {
+        { key = 'hudScale', label = 'HUD Scale', type = 'slider', default = 100, min = 70, max = 130, step = 5, suffix = '%' },
+        { key = 'hudMoney', label = 'Show Money', type = 'toggle', default = true },
+    },
+})
+
+-- a hover card for one of your blips
+exports.arca_interface:SetBlipInfo(blip, { title = 'Fleeca', description = '...', icon = 'fa-solid fa-building-columns', rows = { { 'Open', '24/7' } } })</code></pre>
+    <p>Other exports: <code>Open(page?)</code>, <code>Close()</code>, <code>IsOpen()</code>, <code>SetSetting(key, value)</code>, <code>ClearBlipInfo(blip)</code>.</p>
+
+    <h2>Config</h2>
+    <p>In <code>arca_interface/config.lua</code>: <code>Keybinds</code> (what the Keybinds tab lists), <code>Settings</code> (tabs and rows; <code>profile = 'name'</code> mirrors a GTA setting), <code>NativeTheme</code> (title, labels, HUD colours, logo, backdrop), <code>MapLegend</code> (headings by blip sprite) and <code>BlipInfo</code> (tooltips by blip sprite). Set <code>UseNativeMenu = true</code> to keep GTA's pause menu (re-skinned) instead of the Arca one.</p>
+    <p>Admin tools for theming: <code>/pmcolour index r g b</code> recolours a HUD colour live, <code>/pmlabel LABEL text</code> renames a text label.</p>
+</article>
+
+<article class="doc" id="arca-fuel" data-group="Resources" data-title="arca_fuel">
+    <h1>arca_fuel</h1>
+    <p class="desc">Fuel with a real nozzle and hose: grab it at the pump, fuel at the car's filler, put it back.</p>
+
+    <ol>
+        <li><strong>Third-eye a pump &rsaquo; Grab nozzle.</strong> A hose runs back to the pump; walk more than the hose length away and it snaps back.</li>
+        <li><strong>Third-eye your vehicle near its filler &rsaquo; Fuel vehicle.</strong> A small panel shows the tank, fuel added, price and total. Stops at 100% or press <kbd>E</kbd> to stop early.</li>
+        <li><strong>Third-eye the pump &rsaquo; Return nozzle.</strong></li>
+    </ol>
+    <p>While holding the nozzle you can't get in a vehicle, sprint or use weapons. The engine has to be off; electric vehicles can't be fuelled. Everyone nearby sees the nozzle and hose.</p>
+    <p>Payment is server-side: before fuelling it works out what you can afford, and at the end checks the amount against how long you fuelled, then takes it from cash, then bank. Fuel drains while driving by RPM and vehicle class and is stored in <code>Entity(veh).state.fuel</code> (arca_hud reads it).</p>
+
+    <pre data-title="arca_fuel/config.lua"><code class="language-lua">FuelConfig.PricePerUnit = 3          -- $ per 1% of tank
+FuelConfig.FillRate = 2.0            -- % per second
+FuelConfig.Payment = { 'cash', 'bank' }
+FuelConfig.HoseLength = 6.0
+FuelConfig.Filler = { Back = 0.55, Height = 0.25, Out = 0.08, RotationLeft = vector3(...), RotationRight = vector3(...) }
+FuelConfig.Usage = 0.08              -- % per second at full revs, times ClassMultiplier
+FuelConfig.Electric = { 'voltic', 'tezeract', ... }</code></pre>
+    <p>Exports (client): <code>GetFuel(veh)</code>, <code>SetFuel(veh, value)</code>, <code>IsHoldingNozzle()</code>.</p>
+</article>
+
 <article class="doc" id="arca-hud" data-group="Resources" data-title="arca_hud">
     <h1>arca_hud</h1>
     <p class="desc">Player status, speedometer and a framed minimap.</p>
@@ -1548,7 +1871,7 @@ end)</code></pre>
 }</code></pre>
 
     <h2>Exports</h2>
-    <p><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code>.</p>
+    <p><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code>, <code>SetHidden(state)</code>.</p>
 </article>
 
 <article class="doc" id="arca-loadingscreen" data-group="Resources" data-title="arca_loadingscreen">
@@ -2090,6 +2413,375 @@ weapon_repairkit = { label = 'Weapon Repair Kit', weight = 1500, stack = true, r
 <!-- =====================================================================
      COMPATIBILITY
 ====================================================================== -->
+<article class="doc" id="arca-busdriver" data-group="Jobs" data-title="arca_busdriver">
+    <h1>arca_busdriver</h1>
+    <p class="desc">Los Santos Transit: drive tiered bus routes, pick up locals and earn a commission on their fares.</p>
+
+    <ol>
+        <li>Talk to the <strong>depot manager</strong> and pick a route in the driver portal. New drivers start at Tier 1; higher tiers unlock with levels.</li>
+        <li>Your bus spawns in a bay with a green arrow over it. The GPS takes you to each stop.</li>
+        <li>Stop in the green marker: the doors open, passengers whose stop it is get off, and locals waiting at the shelter board and <strong>pay their fare</strong>. You keep a commission (40% by default).</li>
+        <li>Everyone gets off at the last stop. Return to the manager to <strong>collect your paycheck</strong> (commission + completion bonus).</li>
+    </ol>
+    <p>XP comes per stop and per passenger. Ending a shift early pays the commission earned, without the bonus. The route panel shows the next stop, distance, passengers on board and earnings.</p>
+    <h2>Passengers (players)</h2>
+    <p>Third-eye a bus stop &rsaquo; <strong>Check bus times</strong> to see which buses are heading there and roughly when.</p>
+    <h2>Config</h2>
+    <p><code>arca_busdriver/config.lua</code>: <code>Boss</code>, <code>SpawnPoints</code>, <code>Levels</code>, <code>Commission</code>, <code>PassengerXp</code>, <code>PedModels</code>, <code>Stops</code> and <code>Tiers</code> (stops, <code>fare</code>, <code>waiting = { min, max }</code>, <code>bonus</code>). Record a stop with <code>/busstop</code> (admin): stand where the bus should stop, facing the way it drives.</p>
+</article>
+
+<article class="doc" id="arca-postop" data-group="Jobs" data-title="arca_postop">
+    <h1>arca_postop</h1>
+    <p class="desc">PostOp parcel delivery: load your van at the depot, deliver to doors, get paid per parcel.</p>
+
+    <ol>
+        <li>Talk to the <strong>depot manager</strong> and pick a route. You're put in a PostOp uniform and your van spawns in a bay.</li>
+        <li><strong>Load the van:</strong> follow the arrow to the parcel pickup, <kbd>E</kbd> to pick up a box (a <code>parcel</code> item), <kbd>E</kbd> at the back of the van to load it. Repeat for the route's parcel count.</li>
+        <li><strong>Deliver:</strong> the GPS takes you to each door. Take a parcel from the van, carry it to the door, <kbd>E</kbd> to deliver.</li>
+        <li><strong>Hand in</strong> at the manager. Your own clothes come back.</li>
+    </ol>
+    <h2>Paycheck</h2>
+    <ul>
+        <li>Commission per parcel delivered, plus a bonus for delivering them all.</li>
+        <li><strong>Undelivered parcels:</strong> commission cut by 35% and 15 XP lost per parcel.</li>
+        <li><strong>Van check:</strong> damage to the van is charged ($1.50 per point above scratches, max $1,500).</li>
+    </ul>
+    <h2>Config</h2>
+    <p><code>arca_postop/config.lua</code>: <code>Boss</code>, <code>SpawnPoints</code>, <code>Pickup</code>, <code>Tiers</code> (parcels, pay, area), <code>Areas</code> (door lists), <code>Undelivered</code>, <code>Damage</code> and <code>Uniform</code> (<code>Mode</code> per gender: <code>'clothes'</code> or <code>'model'</code>; clothing pieces can be picked by <code>collection</code> for streamed clothes). Admin tools: <code>/postopdoor</code> records a door, <code>/postopuniform</code> copies your outfit, <code>/postopuniform try</code> previews the uniform.</p>
+</article>
+
+<article class="doc" id="arca-trucking" data-group="Jobs" data-title="arca_trucking">
+    <h1>arca_trucking</h1>
+    <p class="desc">Los Santos Freight: haul trailers or run box truck deliveries, in a rented truck or your own.</p>
+
+    <h2>Trucks</h2>
+    <p>Rent a truck at dispatch (rent comes out of your pay, damage is charged on return), or drive your own accepted truck to the office and talk to dispatch from the cab: <strong>owner-operators</strong> pay no rent and no damage fee.</p>
+
+    <h2>Trailer jobs</h2>
+    <ol>
+        <li>Drive to the trailer (green arrow) and hook it up.</li>
+        <li>At the drop-off a <strong>painted parking box</strong> appears. Back the trailer in: it has to be within 1&nbsp;m sideways, 1.8&nbsp;m forward / back and 8&deg; of the box's angle. Live hints tell you what's off; the box turns green when you're in.</li>
+        <li>Unhook with <kbd>H</kbd> inside the box, then hand in at dispatch.</li>
+    </ol>
+    <h2>Box truck jobs</h2>
+    <ol>
+        <li>Back into the loading bay and hold still: the <strong>dock crew</strong> carries boxes into your truck.</li>
+        <li>Drive to the delivery bay; the crew unloads you. Leave the bay early and they stop.</li>
+        <li>Hand in at dispatch.</li>
+    </ol>
+    <h2>Paycheck</h2>
+    <p>Payout &times; <strong>cargo condition</strong> (how intact it arrives, minimum 40%), plus up to <strong>+15% for parking precision</strong> on trailers, minus rent and truck damage if rented. Higher tiers carry more valuable cargo: logs and building materials first, up to fuel, new cars and electronics.</p>
+    <h2>Config</h2>
+    <p><code>arca_trucking/config.lua</code>: <code>Boss</code>, <code>SpawnPoints</code>, <code>Trucks</code> (rentable per job type, with level and rent), <code>Damage</code>, <code>Cargo</code>, <code>Parking</code> (box size and tolerances), <code>Bay</code>, <code>LoadTime</code> and <code>Routes</code>. Record a pickup or drop-off with <code>/truckspot</code> (admin): it copies your truck's position, or its trailer's when one is hooked.</p>
+</article>
+
+<article class="doc" id="arca-mechanic" data-group="Jobs" data-title="arca_mechanic">
+    <h1>arca_mechanic</h1>
+    <p class="desc">Mechanic job: customers preview upgrades, mechanics fit them with crafted parts, send invoices and run the shop. Also vehicle wear, mileage and seatbelts for everyone.</p>
+
+    <h2>How a job works</h2>
+    <ol>
+        <li><strong>Preview:</strong> the customer drives onto a preview spot and presses <kbd>E</kbd>. They browse performance, body, wheels, paint, lights, interior and extras on their own vehicle, with a price estimate.</li>
+        <li><strong>Job sheet:</strong> saving gives them a <code>mechanic_sheet</code> item listing every change. Nothing is fitted yet; they hand the sheet to a mechanic.</li>
+        <li><strong>Fitting:</strong> an on-duty mechanic uses the sheet next to the vehicle inside the shop. Each change uses one part item and is saved to the vehicle in <code>player_vehicles</code>. From the sheet the mechanic can also <strong>send an invoice</strong>: the shop account gets the money, the mechanic a commission.</li>
+        <li><strong>Parts:</strong> every part is an item crafted at the shop's workbench from materials sold by the Parts Supplier (mechanics only). Recipes are in <code>config.lua</code>.</li>
+        <li><strong>Boss menu:</strong> hire people standing with you, change ranks, fire (offline staff too), deposit / withdraw from the shop's arca_bank job account.</li>
+    </ol>
+    <p>Each shop also has a clock in / out point, a shared parts stash and a full repair (third-eye a vehicle in the shop, uses a <code>repairkit</code>).</p>
+
+    <h2>Vehicle condition, mileage and seatbelts</h2>
+    <p>Every vehicle has a condition per part (engine, oil, radiator, brakes, clutch, tyres, battery) and an odometer, kept in state bags and saved to <code>player_vehicles</code> (the <code>condition</code> and <code>mileage</code> columns are added automatically). Parts wear with distance, crashes, hard braking and high revs (<code>MechConfig.Condition</code>).</p>
+    <ul>
+        <li>Worn parts light dash lamps in arca_hud (amber at <code>Warn</code>, red at <code>Fail</code>).</li>
+        <li>Failing parts mean less power, weaker brakes, less grip, stalling, burst tyres, a dead battery, overheating and oil leaks that can catch fire.</li>
+        <li>On-duty mechanics third-eye a vehicle &rarr; <strong>Inspect vehicle</strong> to see every part and the mileage, and service parts with <code>engine_oil</code>, <code>coolant</code>, <code>brake_pads</code>, <code>clutch_kit</code>, <code>tyres</code>, <code>car_battery</code> or <code>engine_parts</code>.</li>
+        <li><kbd>B</kbd> toggles the seatbelt. Unbuckled occupants are thrown out in hard crashes; buckled ones can't get out until they unbuckle.</li>
+    </ul>
+
+    <h2>Adding a shop</h2>
+    <ol>
+        <li>Add a job to <code>arca_core/shared/jobs.lua</code> (copy <code>mechanic</code>), with <code>bank = { minGrade = n }</code> if it needs a shop account.</li>
+        <li>Copy the <code>lscustoms</code> block in <code>locations.lua</code>, set <code>job</code> and the positions (<code>/coords</code> in game).</li>
+        <li>To sell materials there, add its job to the <code>mech_supplies</code> shop <code>groups</code> and a location in <code>arca_inventory/shared/config.lua</code>.</li>
+    </ol>
+
+    <h2>Exports</h2>
+    <p>Client: <code>GetVehicleStatus(vehicle)</code>, <code>IsSeatbeltOn()</code>. Server: <code>GetCondition(vehicle)</code>, <code>SetPartCondition(vehicle, part, value)</code>.</p>
+</article>
+
+<article class="doc" id="arca-electrician" data-group="Jobs" data-title="arca_electrician">
+    <h1>arca_electrician</h1>
+    <p class="desc">LS Water &amp; Power: drive a company van around the city and repair broken streetlights and electrical boxes, alone or as a crew.</p>
+
+    <ol>
+        <li>Talk to the <strong>foreman</strong> at the LS Water &amp; Power yard (Mirror Park) and pick a route. You're put in a work uniform and a company van spawns.</li>
+        <li>The GPS takes you to each fault: a <strong>sparking</strong> streetlight or electrical box.</li>
+        <li><strong>Repair:</strong> line the needle up with the green zone (<kbd>E</kbd> / <kbd>Space</kbd>) three times. A miss gives you a shock. The zone gets smaller and faster on higher tiers.</li>
+        <li><strong>Hand in</strong> at the foreman to get paid. Your own clothes come back.</li>
+    </ol>
+
+    <h2>Routes</h2>
+    <p>Five tiers, unlocked by your electrician level: Mirror Park Streetlights, Vinewood Grid, Downtown Substations, South LS Outages and Vinewood Hills Lines. Each pays per fault fixed, plus a bonus for fixing them all.</p>
+
+    <h2>Crews</h2>
+    <p>Third-eye the foreman &rarr; <strong>Crew</strong> to invite up to 3 others. The leader starts the route, everyone shares the van and anyone can repair. Each extra member adds 10% to the total pay and 2 faults to the route; the paycheck is split evenly.</p>
+
+    <h2>Paycheck</h2>
+    <ul>
+        <li><strong>Unfixed faults:</strong> the run's pay is cut by 35% and 20 XP is lost per fault.</li>
+        <li><strong>Van check:</strong> damage is charged ($1.50 per point above scratches, max $1,500).</li>
+    </ul>
+
+    <h2>Config</h2>
+    <p><code>arca_electrician/config.lua</code>: <code>Boss</code>, <code>SpawnPoints</code>, <code>Uniform</code> (<code>'clothes'</code> or <code>'model'</code> per gender), the van livery, the repair minigame (<code>Steps</code>, shock, zone size and speed per tier), <code>Tiers</code>, <code>Areas</code> (fault points) and <code>CrewConfig</code>. Admin tools: <code>/elecspot</code> prints a fault point to paste into an area, <code>/elecuniform</code> copies your outfit (<code>/elecuniform try</code> previews it).</p>
+</article>
+
+<article class="doc" id="arca-police" data-group="Law &amp; Order" data-title="arca_police">
+    <h1>arca_police</h1>
+    <p class="desc">Law enforcement: departments, MDT, dispatch, evidence, cuffs, props and charges that fine or jail.</p>
+
+    <h2>Departments</h2>
+    <p><code>departments.lua</code> holds as many departments as you want (LSPD ships set up). Each is a job in <code>arca_core/shared/jobs.lua</code> with <code>type = 'leo'</code>, its own colour, stations and boss menu; all share the MDT, dispatch, records and warrants.</p>
+    <p>Stations have <strong>duty</strong>, a <strong>cloakroom</strong> (job outfits from illenium-appearance, saved outfits, civilian clothes), a <strong>personal locker</strong>, an <strong>evidence room</strong> (case lockers and a forensics lab) and a <strong>boss menu</strong> (hire, fire, ranks, department account). The armory is the <code>police_armory</code> shop in arca_inventory; the shared garage is <code>mrpd</code> in <a href="#arca-garage">arca_garage</a>.</p>
+
+    <h2>Officer actions</h2>
+    <p>Through the third eye: cuff / soft cuff / uncuff, escort, put in or take out of a vehicle, search (opens their inventory), check ID (licences and warrants), GSR test, slim jim a locked car, impound. <kbd>G</kbd> tackles while sprinting, and everyone has <kbd>X</kbd> for hands up. Spike strips (<code>spike_strip</code>) and placeable props are in the radial menu &rarr; Police.</p>
+
+    <h2>MDT (<code>/mdt</code>, <kbd>F5</kbd>)</h2>
+    <ul>
+        <li>Dashboard, live dispatch and units (status 10-8 / 10-6 / 10-7 / 10-97, callsigns).</li>
+        <li>Citizen profiles: mugshot, notes, flags, licences, vehicles, registered weapons, records, warrants and reports.</li>
+        <li>Vehicle lookup (owner, stolen flag, notes, BOLOs), reports, warrants and BOLOs, weapon serial lookup, penal code.</li>
+        <li><strong>Charge</strong> from a profile: pick charges from <code>penalcode.lua</code>, apply a reduction, then fine (paid into the department account) and / or jail through <a href="#arca-jail">arca_jail</a>.</li>
+    </ul>
+
+    <h2>Dispatch</h2>
+    <p>Alert cards and blips; <kbd>Y</kbd> responds to the newest call. Calls come from <code>/911</code>, <code>/311</code>, shots fired, vehicle theft (arca_vehiclekeys), the panic button, officer down (arca_health), prison breaks (arca_jail) and any script:</p>
+    <pre><code class="language-lua">exports.arca_police:CreateCall({ ... })</code></pre>
+
+    <h2>Evidence</h2>
+    <p>Shooting drops casings and leaves gunshot residue; getting shot or stabbed leaves blood. On-duty officers see evidence nearby, <kbd>E</kbd> bags it (<code>evidence_bag</code>), and the evidence room's lab reveals the weapon serial and registered owner, or the DNA's name.</p>
+</article>
+
+<article class="doc" id="arca-jail" data-group="Law &amp; Order" data-title="arca_jail">
+    <h1>arca_jail</h1>
+    <p class="desc">Prison at Bolingbroke: sentences that count down, confiscated belongings, prison work and escapes.</p>
+
+    <ul>
+        <li>Sentences are in months (<code>SecondsPerMonth</code>, one minute each by default) and only count down while the prisoner is online.</li>
+        <li>Prisoners go to a cell in a prison uniform. Belongings are locked away (except <code>KeepItems</code>) and handed back on release.</li>
+        <li>Prison work spots take time off the sentence.</li>
+        <li>Leaving the prison walks you straight back in, or with <code>AllowEscape</code> you're out and police get a prison-break call.</li>
+    </ul>
+
+    <h2>Commands</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Command</th><th>Who</th><th></th></tr></thead>
+        <tbody>
+            <tr><td><code>/jail id months [reason]</code></td><td>On-duty police, admins</td><td>Send someone to prison</td></tr>
+            <tr><td><code>/unjail id</code></td><td>Admins</td><td>Release early</td></tr>
+            <tr><td><code>/jailtime</code></td><td>Everyone</td><td>Time left</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Exports (server)</h2>
+    <p><code>Jail(src, months, reason?, officerSrc?)</code>, <code>Release(src)</code>, <code>GetJailTime(src)</code>, <code>IsJailed(src)</code>. The <a href="#arca-police">arca_police</a> MDT jails through these.</p>
+</article>
+
+<article class="doc" id="arca-doors" data-group="Law &amp; Order" data-title="arca_doors">
+    <h1>arca_doors</h1>
+    <p class="desc">Door locks made and edited in game: jobs, gangs, items and keypad codes, plus lockpicking, hacking, police breaching and lockdowns.</p>
+
+    <h2>Using doors</h2>
+    <ul>
+        <li>A lock icon floats on locked doors. <kbd>E</kbd> locks / unlocks a door you have access to (rebindable in Settings &rarr; Key Bindings &rarr; FiveM).</li>
+        <li>Doors with a code open a <strong>keypad</strong> for everyone else.</li>
+        <li>Third-eye a door for <strong>Knock</strong>, <strong>Pick the lock</strong>, <strong>Hack the lock</strong> and, for on-duty police with a door ram, <strong>Breach the door</strong>.</li>
+        <li><strong>Automatic</strong> doors (gates, garages) open by themselves for people with access.</li>
+    </ul>
+
+    <h2>The creator: <code>/doors</code> (admin)</h2>
+    <p>Every door grouped by category with its live state (a category's lock / unlock buttons run a lockdown), the door being edited, and a preview of the prompt and who can open it.</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Tab</th><th>What's in it</th></tr></thead>
+        <tbody>
+            <tr><td>Door</td><td>Pick the door in the world (aim + <kbd>E</kbd>), a second one for double doors, locked by default, automatic, hide the prompt, knocking, distance, auto-lock timer, door speed.</td></tr>
+            <tr><td>Access</td><td>Public, jobs (lowest grade, optional on duty), gangs (lowest rank), item keys (optionally used up), a keypad code, specific citizen IDs.</td></tr>
+            <tr><td>Break-in</td><td>Lockpick (item, difficulty, chance to break, police alert), hacking (device, minigame, difficulty, police alert), police breach with a door ram.</td></tr>
+            <tr><td>Feel</td><td>Lock sound and animation.</td></tr>
+            <tr><td>Activity</td><td>Who locked, unlocked, picked or hacked the door, and when.</td></tr>
+        </tbody>
+    </table></div>
+    <p><code>/lockdown &lt;category&gt; [unlock]</code> locks or opens every door in a category (on-duty police in <code>DoorsConfig.LockdownJobs</code>, and admins). Items: <code>lockpick</code>, <code>hacking_device</code>, <code>door_ram</code>, plus any key items you make.</p>
+
+    <h2>Exports (server)</h2>
+<pre><code class="language-lua">exports.arca_doors:SetLocked(id, true)
+exports.arca_doors:IsLocked(id)
+exports.arca_doors:GetDoor(id)               -- or GetDoorByName('MRPD Front Desk')
+exports.arca_doors:Lockdown('MRPD', true)    -- returns how many doors changed</code></pre>
+    <p>Client: <code>IsLocked(id)</code>, <code>GetNearestDoor()</code>. Doors are stored in <code>arca_doors</code>, activity in <code>arca_doors_log</code> (both created on start).</p>
+</article>
+
+<article class="doc" id="arca-vehiclekeys" data-group="Vehicles" data-title="arca_vehiclekeys">
+    <h1>arca_vehiclekeys</h1>
+    <p class="desc">Vehicle keys: lock and unlock, shared keys, lockpicking, hotwiring and locked AI vehicles.</p>
+
+    <ul>
+        <li><kbd>L</kbd> locks / unlocks the closest vehicle you hold keys to.</li>
+        <li>Vehicles spawned through Arca (garages, <code>/car</code>, job fleets) start locked, and whoever spawned them gets the keys. Owners always hold keys to their vehicles.</li>
+        <li><code>/sharekeys [id]</code> gives a copy to another player (closest if no id), <code>/removekeys [id]</code> takes it back (no id: every copy), <code>/keys</code> lists yours.</li>
+        <li>Without keys the engine stays off. Use a <strong>lockpick</strong> on a locked door, or in the driver seat on the ignition, to get temporary keys. <kbd>H</kbd> tries to hotwire.</li>
+        <li><code>Npc.ParkedLocked</code> and <code>Npc.DrivingLocked</code> decide (with a chance) whether AI vehicles are locked.</li>
+    </ul>
+
+    <h2>Exports</h2>
+    <p>Server: <code>HasKeys(src, plate)</code>, <code>GiveKeys(src, plate, kind?)</code>, <code>RemoveKeys(src, plate)</code>, <code>SetLocked(vehicle, locked)</code>, <code>GiveKeysByCitizenId(cid, plate, kind?)</code>. Client: <code>HasKeys(vehicle|plate)</code>, <code>GetKeys()</code>, <code>ToggleLock()</code>.</p>
+    <p>The first player to drive a script-spawned vehicle that nobody manages gets keys to it, so vehicles from other resources keep working. The qb-vehiclekeys events <code>vehiclekeys:client:SetOwner</code> and <code>qb-vehiclekeys:server:AcquireVehicleKeys</code> are supported.</p>
+</article>
+
+<article class="doc" id="arca-garage" data-group="Vehicles" data-title="arca_garage">
+    <h1>arca_garage</h1>
+    <p class="desc">Personal, gang and job garages, job fleets and an impound depot, using the <code>player_vehicles</code> table. Needs <a href="#arca-vehiclekeys">arca_vehiclekeys</a>.</p>
+
+    <div class="table-wrap"><table>
+        <thead><tr><th>Type</th><th>Who can use it</th><th>What's inside</th></tr></thead>
+        <tbody>
+            <tr><td><code>public</code></td><td>Everyone</td><td>Your own vehicles (<code>SharedPublic</code> lets you take them out of any public garage)</td></tr>
+            <tr><td><code>gang</code></td><td>Gang members (<code>gang = '*'</code> gives every gang its own section)</td><td>Everything members parked there</td></tr>
+            <tr><td><code>job</code></td><td>Players with the job (<code>minGrade</code>)</td><td>Everything parked there, plus the job fleet (<code>vehicles</code>)</td></tr>
+            <tr><td><code>depot</code></td><td>Everyone</td><td>Your vehicles that are out but no longer in the world, for a fee</td></tr>
+        </tbody>
+    </table></div>
+    <p>Third-eye the attendant to open a garage; drive near one and press <kbd>E</kbd> to park. Admins: <code>/givecar id model [plate]</code> (arca_core) and <code>/impound [fee]</code>.</p>
+
+    <h2>Exports</h2>
+    <p>Server: <code>Impound(plate, fee?)</code>, <code>GetGarages()</code>, and <code>AddGarage(id, def)</code> / <code>RemoveGarage(id)</code> to add garages at runtime (same fields as the config; synced to every client and removed when the adding resource stops; arca_illegal uses this). Client: <code>OpenGarage(id)</code>.</p>
+</article>
+
+<article class="doc" id="arca-businesses" data-group="World &amp; Gameplay" data-title="arca_businesses">
+    <h1>arca_businesses</h1>
+    <p class="desc">Build restaurants, cafés, bars, nightclubs and shops live in game. Owners design their own products, hire staff and run the books. Everything is saved and goes live without a restart.</p>
+
+    <h2>Admins: <code>/business</code></h2>
+    <ul>
+        <li><strong>Details:</strong> name, type (preset look), colour, icon and blip; its own arca_core job (grades and paychecks edited here) or an existing one; product rules (hunger / thirst / stress limits, prices, making time, max products); which categories and real items it may sell; cashier commission.</li>
+        <li><strong>Locations:</strong> any number of each, as a zone, a placed prop or a ped, optionally with a minimum grade.</li>
+    </ul>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Location</th><th>What it does</th></tr></thead>
+        <tbody>
+            <tr><td>Clock in</td><td>Staff go on / off duty</td></tr>
+            <tr><td>Workstation</td><td>Staff make products from ingredients; the station name (Grill, Drinks…) decides which</td></tr>
+            <tr><td>Till</td><td>Ring up items and bill a customer standing at the till</td></tr>
+            <tr><td>Tray / counter</td><td>Small stash anyone can open, for handing over orders</td></tr>
+            <tr><td>Storage</td><td>Staff-only stash</td></tr>
+            <tr><td>Supplies</td><td>Staff buy ingredients from the business account or their own pocket</td></tr>
+            <tr><td>Office</td><td>Opens the boss menu</td></tr>
+            <tr><td>Garage</td><td>Job garage through arca_garage</td></tr>
+            <tr><td>Decoration</td><td>Just a prop</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Bosses: <code>/bossmenu</code></h2>
+    <ul>
+        <li><strong>Products:</strong> name, category, description, icon or image, how it's eaten or drunk, station, price, hunger / thirst / stress (locked to the admin's limits), making time and up to 8 ingredients, with a live preview.</li>
+        <li><strong>Staff:</strong> hire people nearby; promote, demote or fire anyone below your grade, offline too.</li>
+        <li><strong>Finance:</strong> withdraw, deposit, transaction log.</li>
+    </ul>
+
+    <h2>How products work</h2>
+    <p>Food and drinks become <code>business_food</code>, <code>business_drink</code> or <code>business_alcohol</code> items; goods become <code>business_goods</code> (kept, not used up). "Real item" products hand out the chosen inventory item itself. Name, image and stats live in the item's metadata, and arca_inventory shows the custom name and image. Till sales pay the business account; the cashier gets the commission.</p>
+
+    <h2>Phone app</h2>
+    <p>With arca_phone, the <strong>Businesses</strong> app lists every business: search, filters, open / top rated / nearest, and a profile with Call, Directions, Menu and Reviews (1&ndash;5 stars, one per character, with owner responses). Each business gets a phone line (<code>1-800-</code> + 1000 + id) that rings its clocked-in staff.</p>
+
+    <h2>Exports (server)</h2>
+    <p><code>GetBusinesses()</code>, <code>GetBusiness(id)</code>, <code>GetBusinessByJob(job)</code>, <code>AddBalance(id, amount, note)</code>, <code>GetBalance(id)</code>, <code>GiveProduct(src, bizId, productId, count)</code>, <code>IsEmployee(src, bizId)</code>, <code>IsOnDuty(src, bizId)</code>. Event: <code>arca_businesses:server:sale (bizId, staffSrc, customerSrc, total, items)</code>. Needs MySQL 5.7+ / MariaDB 10.2+.</p>
+</article>
+
+<article class="doc" id="arca-illegal" data-group="World &amp; Gameplay" data-title="arca_illegal">
+    <h1>arca_illegal</h1>
+    <p class="desc">Build criminal activity live in game with <code>/illegal</code> (admin): robberies, drugs, secret NPCs, props, stashes and garages, plus corner selling and petty crime.</p>
+
+    <div class="table-wrap"><table>
+        <thead><tr><th>Type</th><th>What it does</th></tr></thead>
+        <tbody>
+            <tr><td>Robberies</td><td>ATM (one spot or every ATM model, with a cooldown per machine), store, bank or custom. Pays cash, bank or a dirty-money item, plus bonus items; can alert arca_police.</td></tr>
+            <tr><td>Drugs</td><td><strong>Harvest</strong> (a zone, or plants over a field that regrow), <strong>Process</strong> (items in, items out) or <strong>Sell</strong> (a buyer paying per unit), at a zone, ped or prop.</td></tr>
+            <tr><td>Secret NPCs</td><td>A ped that sells, buys or gives info; can be gang-only, hidden, or only around at certain hours.</td></tr>
+            <tr><td>Props</td><td>Decoration, a stash (shared, per gang or per player) or a harvestable prop.</td></tr>
+            <tr><td>Garages</td><td>Added to arca_garage live: personal, per gang, one gang or job.</td></tr>
+        </tbody>
+    </table></div>
+
+    <h2>Requirements</h2>
+    <p>Every setup has the same requirements block: job blacklist, gang only (with minimum rank), certain jobs, police on duty needed, a required item (optionally used up), cooldown (everyone / per gang / per player), opening hours, <a href="#arca-skills">arca_skills</a> levels or perks, extra skill XP on completion, and "secret" (hidden from players who don't qualify).</p>
+
+    <h2>Corner selling</h2>
+    <p>Third-eye a local &rarr; <strong>Sell drugs</strong>, pick a drug, amount and price. They take the deal, haggle with a counter-offer, walk off, or run and sometimes call the police. Which drugs locals buy and their price range are set in <code>/illegal</code> &rarr; Drugs &rarr; Corner selling. Selling in one spot too long makes the area go hot for a while.</p>
+
+    <h2>Petty crime</h2>
+    <p>Mugging (rob a local at gunpoint), pickpocketing, and breaking into mailboxes, parking meters and vending machines across the city. Each has its own loot, cooldowns, required item, police needed and dispatch alert, set in <code>/illegal</code> &rarr; Petty crime.</p>
+
+    <h2>Placer controls</h2>
+    <p><kbd>LMB</kbd> / <kbd>Enter</kbd> place · <kbd>RMB</kbd> / <kbd>Backspace</kbd> cancel · scroll or <kbd>&larr;</kbd><kbd>&rarr;</kbd> rotate · <kbd>&uarr;</kbd><kbd>&darr;</kbd> height · <kbd>Shift</kbd> fine · <kbd>Q</kbd> / <kbd>Z</kbd> tilt · <kbd>G</kbd> ground snap · <kbd>F</kbd> freeze the aim point.</p>
+
+    <h2>Exports</h2>
+    <p>Server: <code>GetSetups()</code>, <code>GetSetup(id)</code>, <code>IsBlacklisted(src)</code>, <code>CanDo(src, id)</code>. Client: <code>GetSetup(id)</code>. Events: <code>arca_illegal:server:completed (src, id, type, kind)</code>, <code>arca_illegal:server:petty (src, kind, cash)</code>. Saved in <code>arca_illegal</code> and <code>arca_illegal_settings</code> (created on first start).</p>
+</article>
+
+<article class="doc" id="arca-skills" data-group="World &amp; Gameplay" data-title="arca_skills">
+    <h1>arca_skills</h1>
+    <p class="desc">Skill trees: earn XP by doing things, level up sub-skills and spend skill tokens on perks along any path.</p>
+
+    <p>Open it with <code>/skills</code> or <kbd>K</kbd>. Drugs, Shooting, Driving, Selling and Stamina are built in. Each tree has branches (e.g. Drugs &rsaquo; Harvesting / The Bench / Dealing) with their own XP and level; every level gives skill tokens, shared across all trees. A perk can be unlocked when it links to one you have, its branch is high enough and you have the tokens (hold the mouse on it). <strong>Reset perks</strong> refunds every token. The <code>skill_token</code> item gives a token when used.</p>
+
+    <h2>Where XP comes from</h2>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Branch</th><th>XP from</th></tr></thead>
+        <tbody>
+            <tr><td>drugs.harvesting / processing / dealing</td><td>arca_illegal harvest spots, labs and buyers</td></tr>
+            <tr><td>selling.corner / haggling / fencing</td><td>Corner sales, haggled deals, NPC buyers</td></tr>
+            <tr><td>shooting.pistols / rifles / combat</td><td>Hits on peds with that kind of weapon</td></tr>
+            <tr><td>driving.street / bikes / pilot</td><td>Distance driven, ridden or flown</td></tr>
+            <tr><td>stamina.running / swimming / cycling</td><td>Distance sprinted, swum or cycled</td></tr>
+        </tbody>
+    </table></div>
+    <p>The server caps every XP source per minute, so a modded client can't farm it.</p>
+
+    <h2>Perks</h2>
+    <p>GTA stats (stamina, strength, shooting, flying, lung capacity…), weapon damage, sprint and swim speed, driving perks (vehicle defence, no windscreen ejection, stay on bike) and arca_illegal perks (harvest and processing yield and speed, drug and fence prices, corner selling and haggling). Every perk is listed in <code>SkillsConfig.Perks</code>.</p>
+
+    <h2>Custom skills</h2>
+    <ul>
+        <li><strong>In game:</strong> admins open the <strong>Skill Tree Configurator</strong> to make or edit trees, branches and nodes. Saved to <code>arca_skills_trees</code>, live straight away.</li>
+        <li><strong>In config:</strong> add a tree to <code>trees.lua</code>.</li>
+        <li><strong>From a resource:</strong> <code>exports.arca_skills:RegisterTree(tree)</code>.</li>
+    </ul>
+
+    <h2>Exports</h2>
+    <p>Server: <code>AddXp(src, key, amount)</code>, <code>GetXp</code>, <code>GetLevel</code>, <code>HasNode</code>, <code>GetPerk(src, perk)</code>, <code>GetPerks</code>, <code>AddTokens(src, n)</code>, <code>Meets(src, list)</code>, <code>ListSkills()</code>, <code>RegisterTree</code>, <code>RemoveTree</code>. Client: <code>Open()</code>, <code>GetPerk</code>, <code>GetLevel</code>, <code>HasNode</code>, <code>GetTokens()</code>, <code>Meets(list)</code>. Events: <code>arca_skills:server:levelUp</code>, <code>arca_skills:server:unlocked</code>. Admin: <code>/skillsadmin id tokens n | xp tree.branch n | level tree.branch n | respec | reset</code>.</p>
+</article>
+
+<article class="doc" id="arca-emotes" data-group="World &amp; Gameplay" data-title="arca_emotes">
+    <h1>arca_emotes</h1>
+    <p class="desc">Emotes, walk styles and facial expressions, with a full emote menu, quick slots and shared emotes.</p>
+
+    <ul>
+        <li><strong>Menu:</strong> <kbd>F3</kbd>, <code>/emotes</code> or the radial menu &rarr; Emotes. Click to play, &#9733; to favourite, &#9889; to put an emote in a quick slot. Search also finds walks and expressions.</li>
+        <li><code>/e &lt;name&gt;</code> plays an emote, <code>/e c</code> (or <kbd>X</kbd>) stops it. Props with colour variations take a number: <code>/e phone 2</code>.</li>
+        <li><code>/walk &lt;name&gt;</code> and <code>/mood &lt;name&gt;</code> (or <code>reset</code>); both are remembered.</li>
+        <li><code>/nearby &lt;name&gt;</code> asks the closest player to do a shared emote (hug, carry…): <kbd>Y</kbd> accepts, <kbd>N</kbd> declines.</li>
+        <li>6 quick slots on <kbd>NUMPAD1</kbd>&ndash;<kbd>6</kbd> by default (rebindable). Emotes with effects (smoking, fireworks…): <kbd>G</kbd> while playing.</li>
+    </ul>
+
+    <h2>Config</h2>
+    <p><code>config.lua</code>: keys, commands, vehicle / bike rules, adult emotes, shared distance, menu tabs and the radial entry. The emote list is the AnimationList from <a href="https://github.com/alberttheprince/rpemotes-reborn" target="_blank" rel="noopener">rpemotes-reborn</a> (GPL-3.0), kept in its original format so a newer copy can be pasted over it. Custom animations and props go in <code>stream/</code>.</p>
+
+    <h2>Exports (client)</h2>
+    <p><code>Play(name, variation?)</code>, <code>Cancel(quick?)</code>, <code>IsPlaying()</code>, <code>GetCurrent()</code>, <code>SetWalk(name)</code>, <code>GetWalk()</code>, <code>SetMood(name)</code>, <code>OpenMenu(tab?)</code>. The player's state bag has <code>emote</code> while one is playing.</p>
+</article>
+
 <article class="doc" id="qb-bridge" data-group="Compatibility" data-title="qb-core bridge">
     <h1>qb-core bridge</h1>
     <p class="desc">Run resources made for qb-core on Arca.</p>
@@ -2360,12 +3052,12 @@ Arca.ShowContext('garage')</code></pre>
         <thead><tr><th>Resource</th><th>Export</th><th>Side</th></tr></thead>
         <tbody>
             <tr><td><code>arca_admin</code></td><td><code>SetWeather(name)</code>, <code>SetTime(h, m)</code>, <code>GetWorld()</code></td><td>server</td></tr>
-            <tr><td><code>arca_hud</code></td><td><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code></td><td>client</td></tr>
+            <tr><td><code>arca_hud</code></td><td><code>ToggleHud(state)</code>, <code>OpenHudMenu()</code>, <code>SetSeatbelt(state)</code>, <code>SetHidden(state)</code></td><td>client</td></tr>
             <tr><td><code>arca_spawn</code></td><td><code>Open()</code></td><td>client</td></tr>
             <tr><td><code>arca_bank</code></td><td><code>GetAccounts</code>, <code>GetBalance</code>, <code>AddMoney</code>, <code>RemoveMoney</code>, <code>Transfer</code>, <code>HasAccess</code>, <code>GetAccess</code>, <code>GetJobAccount</code>, <code>GetJobBalance</code>, <code>AddJobMoney</code>, <code>RemoveJobMoney</code>, <code>CreateAccount</code>, <code>GetTransactions</code></td><td>server</td></tr>
             <tr><td><code>arca_bank</code></td><td><code>OpenBank()</code>, <code>OpenATM(entity?)</code></td><td>client</td></tr>
-            <tr><td><code>arca_phone</code></td><td><code>Open()</code>, <code>Close()</code>, <code>IsOpen()</code></td><td>client</td></tr>
-            <tr><td><code>arca_phone</code></td><td><code>NewChipNumber()</code>, <code>GetHolders(number)</code></td><td>server</td></tr>
+            <tr><td><code>arca_phone</code></td><td><code>Open()</code>, <code>Close()</code>, <code>IsOpen()</code>, <code>AddApp(app)</code>, <code>RemoveApp(id)</code>, <code>SetAppBadge(id, n)</code>, <code>SendAppMessage(id, data)</code></td><td>client</td></tr>
+            <tr><td><code>arca_phone</code></td><td><code>NewChipNumber()</code>, <code>GetHolders(number)</code>, <code>SendInvoice(opts)</code></td><td>server</td></tr>
             <tr><td><code>arca_chattheme</code></td><td><code>Send(target, kind, a, b?)</code> / <code>Send(kind, a, b?)</code></td><td>server / client</td></tr>
         </tbody>
     </table></div>
