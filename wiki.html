@@ -91,7 +91,7 @@
             <tr><td><a href="#arca-illegal"><code>arca_illegal</code></a></td><td>Build robberies, drugs, secret NPCs and stashes live, plus corner selling and petty crime.</td><td>Available</td></tr>
             <tr><td><a href="#arca-skills"><code>arca_skills</code></a></td><td>Skill trees: XP from activities, levels, tokens and perks.</td><td>Available</td></tr>
             <tr><td><a href="#arca-emotes"><code>arca_emotes</code></a></td><td>Emote menu, /e, walk styles, expressions, quick slots and shared emotes.</td><td>Available</td></tr>
-            <tr><td><code>arca_identity</code></td><td>Planned resource.</td><td>Coming soon</td></tr>
+            <tr><td><a href="#arca-identity"><code>arca_identity</code></a></td><td>ID cards and licences shown to people nearby, City Hall, and a Documents phone app with forms, sharing and signatures.</td><td>Available</td></tr>
         </tbody>
     </table></div>
 
@@ -2780,6 +2780,70 @@ exports.arca_doors:Lockdown('MRPD', true)    -- returns how many doors changed</
 
     <h2>Exports (client)</h2>
     <p><code>Play(name, variation?)</code>, <code>Cancel(quick?)</code>, <code>IsPlaying()</code>, <code>GetCurrent()</code>, <code>SetWalk(name)</code>, <code>GetWalk()</code>, <code>SetMood(name)</code>, <code>OpenMenu(tab?)</code>. The player's state bag has <code>emote</code> while one is playing.</p>
+</article>
+
+<article class="doc" id="arca-identity" data-group="World &amp; Gameplay" data-title="arca_identity">
+    <h1>arca_identity</h1>
+    <p class="desc">ID cards and licences you show to the people around you, City Hall, and a Documents phone app with forms, sharing and drawn signatures.</p>
+
+    <h2>Cards</h2>
+    <p>ID cards and licences are inventory items. <strong>Use one</strong> to show it on screen to you and to everyone within 3&nbsp;m (<code>ShowDistance</code>), with a short hand-over animation. It slides away after <code>ShowTime</code> seconds, or press <kbd>Backspace</kbd>.</p>
+    <div class="table-wrap"><table>
+        <thead><tr><th>Item</th><th>Card</th><th>Proves</th></tr></thead>
+        <tbody>
+            <tr><td><code>id_card</code></td><td>Identification card</td><td>Who you are</td></tr>
+            <tr><td><code>driver_licence</code></td><td>Driver licence</td><td><code>metadata.licences.driver</code></td></tr>
+            <tr><td><code>weapon_licence</code></td><td>Firearms licence</td><td><code>metadata.licences.weapon</code></td></tr>
+            <tr><td><code>hunting_licence</code></td><td>Hunting licence</td><td><code>metadata.licences.hunting</code></td></tr>
+            <tr><td><code>pilot_licence</code></td><td>Pilot licence</td><td><code>metadata.licences.pilot</code></td></tr>
+        </tbody>
+    </table></div>
+    <ul>
+        <li>The card is printed when issued: name, date of birth, sex, nationality, card number, issue and expiry date.</li>
+        <li>The <strong>photo</strong> is the live face of the person showing it, only when it's their own card. Someone else's card shows an empty photo.</li>
+        <li>Licence cards are checked <strong>live</strong>: a revoked licence gets a red <em>REVOKED</em> stamp, an old card <em>EXPIRED</em>.</li>
+        <li>New characters get an ID card when they first load in (<code>StarterId</code>).</li>
+        <li>Granting a licence (<code>/givelicence id type</code>, the police MDT or <code>GrantLicence</code>) hands over the matching card.</li>
+    </ul>
+
+    <h2>City Hall</h2>
+    <p>Third-eye the clerk at Los Santos City Hall to buy a new card or replace a lost one. Licences that have to be issued first (firearms, hunting, pilot) can only be replaced once you hold them; the driver licence grants the licence when bought (<code>grants = true</code>).</p>
+
+    <h2>Documents app</h2>
+    <ol>
+        <li><strong>New document:</strong> pick a form: blank, vehicle bill of sale, employment contract, loan, lease, witness statement, and job-only forms like a police or medical report. Fields fill themselves in where they can (your name, today's date, your job, your number).</li>
+        <li><strong>Share</strong> it with someone standing next to you or with a phone number. Tick <em>Ask them to sign it</em> to send a signature request; it appears under <strong>To sign</strong> with a badge on the app icon.</li>
+        <li><strong>Sign</strong> by drawing your signature. Once anyone signs, the document is locked.</li>
+        <li><strong>Print</strong> a copy (<code>document</code> item). Using it shows the paper, signatures included, to the people around you.</li>
+    </ol>
+    <p>Official forms are stamped with the author's job. Stored in <code>arca_identity_documents</code>, <code>arca_identity_access</code> and <code>arca_identity_signatures</code> (created on start).</p>
+
+    <h2>Templates</h2>
+    <p>Forms live in <code>shared/templates.lua</code>. Field types: <code>text</code>, <code>textarea</code>, <code>number</code>, <code>money</code>, <code>date</code>, <code>select</code>, <code>checkbox</code>, with optional <code>auto</code> prefill (<code>name</code>, <code>date</code>, <code>job</code>, <code>phone</code>), <code>jobs</code> (names or <code>{ type = 'leo' }</code>), <code>official</code>, <code>signers</code> and a free-text <code>body</code>. Scripts can add their own:</p>
+<pre><code class="language-lua">exports.arca_identity:RegisterTemplate('gym_waiver', {
+    label = 'Gym waiver', icon = 'fa-solid fa-dumbbell', category = 'Agreements', signers = 1,
+    fields = { { key = 'member', label = 'Member', type = 'text', required = true, auto = 'name' } },
+    body = 'Health notes',
+})</code></pre>
+
+    <h2>Exports (server)</h2>
+<pre><code class="language-lua">exports.arca_identity:GiveCard(src, 'driver_licence')
+exports.arca_identity:ShowCard(src, 'id_card')
+exports.arca_identity:GetCardData(src, 'id_card')         -- what it shows, with its live status
+exports.arca_identity:HasLicence(src, 'driver')
+exports.arca_identity:GrantLicence(src, 'pilot', true)    -- true = also give the card
+exports.arca_identity:RevokeLicence(src, 'weapon')
+exports.arca_identity:GetCitizenLicences(citizenid)        -- works offline
+
+local id = exports.arca_identity:CreateDocument(src, {     -- or { citizenid, name, issuer? }
+    template = 'bill_of_sale', title = 'Sale of my Sultan',
+    fields = { seller = 'Jordan Delgado', buyer = 'Maya Chen', vehicle = 'Sultan RS', plate = 'ARCA123', price = 42000 },
+})
+exports.arca_identity:ShareDocument(id, citizenid, true)   -- true = ask them to sign
+exports.arca_identity:SignDocument(id, citizenid, name)
+exports.arca_identity:GetDocument(id, citizenid)
+exports.arca_identity:GetDocuments(citizenid)</code></pre>
+    <p>Events: <code>arca_identity:server:cardShown (src, card, viewers)</code>, <code>documentCreated (id, citizenid)</code>, <code>documentShared (id, citizenid, requestSign)</code>, <code>documentSigned (id, citizenid)</code>. Client: <code>IsShowing()</code>, <code>Close()</code>, <code>OpenDocuments()</code>.</p>
 </article>
 
 <article class="doc" id="qb-bridge" data-group="Compatibility" data-title="qb-core bridge">
